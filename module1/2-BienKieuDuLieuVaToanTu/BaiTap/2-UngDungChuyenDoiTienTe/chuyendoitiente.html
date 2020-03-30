@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>convert</title>
+</head>
+<body>
+<form>
+     <b>Amount</b>
+    <label>
+        <input id="number" type="number" >
+    </label> <br>
+    <b>To Currency</b>
+    <label>
+
+        <select id="toCurrency">
+            <option value="USD">USD</option>
+            <option value="VND">VND</option>
+        </select>
+
+    </label> <br>
+    <b>From Current</b>
+    <label>
+
+        <select id="fromCurrent">
+            <option value="USD">USD</option>
+            <option value="VND">VND</option>
+        </select>
+
+    </label><br>
+    <button type="button" onclick="convert()">Convert</button>
+</form>
+<script>
+    function convert() {
+        let tCurrent = document.getElementById("toCurrency").value;
+        let fCurrent = document.getElementById("fromCurrent").value;
+        let number = parseInt(document.getElementById("number").value);
+        if(tCurrent ==="USD" && fCurrent === "VND"){
+            let usdvn = number*230000;
+            alert(+number + " USD = " + usdvn + " VND"  );}
+            else if(tCurrent === "VND" && fCurrent === "USD") {
+            let venus = number / 230000;
+            alert(+number + " USD = " + venus + " VND");
+        }
+            else if(tCurrent === "USD" && fCurrent === "USD"){
+                alert(+number +" USD =" + number+ " USD")
+        }
+                else if ( tCurrent==="VND" && fCurrent ==="VND"){
+            alert(+number +" VND =" +number + " VND")
+        }
+        
+    }
+</script>
+</body>
+</html>
+
