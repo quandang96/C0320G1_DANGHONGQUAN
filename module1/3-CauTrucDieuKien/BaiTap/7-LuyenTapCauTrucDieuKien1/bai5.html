@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bai5</title>
+</head>
+<body>
+<form>
+    <table border="1">
+    <tr>
+        <th>Họ và Tên</th>
+        <th>Điểm Kiểm Tra</th>
+        <th>Điểm Giữa Kì</th>
+        <th>Điểm Cuối Kì</th>
+    </tr>
+        <tr>
+            <td>
+                <label>
+                    <input type="text" >
+                </label>
+            </td>
+            <td>
+                <label>
+                    <input id="kT" type="text" >
+                </label>
+            </td>
+            <td>
+                <label>
+                    <input id="gK" type="text" >
+                </label>
+            </td>
+            <td>
+                <label>
+                    <input id="cK" type="text" >
+                </label>
+            </td>
+        </tr>
+    </table>
+    <button type="button" onclick="xeploai()">Xếp hạng</button>
+    <p id="dislay"></p>
+</form>
+<script>
+    function xeploai() {
+        let dKT = document.getElementById("kT");
+        let dGK = document.getElementById("gK");
+        let dCK = document.getElementById("cK");
+        dKT = parseFloat(dKT.value);
+        dGK = parseFloat(dGK.value);
+        dCK = parseFloat(dCK.value);
+
+        if (0 < dKT && dKT < 10 && 0 < dGK && dGK < 10 && 0 < dCK && dCK < 10 ) {
+            let dTB = (dKT + dGK * 2 + dCK * 3) / 6;
+            if (dTB > 8.5) {
+                document.getElementById("dislay").innerHTML = ' Loại Giỏi';
+            } else if (dTB > 6.5) {
+                document.getElementById("dislay").innerHTML = ' Loại Khá';
+
+            } else if (dTB > 5) {
+                document.getElementById("dislay").innerHTML = 'Loại Trung Bình';
+            } else {
+                document.getElementById("dislay").innerHTML = ' Loại Yếu';
+            }
+        }else {
+            alert('Nhập lại điểm ');
+        }
+    }
+</script>
+</body>
+</html>
