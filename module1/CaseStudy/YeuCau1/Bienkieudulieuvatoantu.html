@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>task1</title>
+</head>
+<body>
+<script>
+    let name = prompt("Họ và Tên");
+    let idNumber = prompt("Số CMND");
+    let dateOfBirth = prompt("Ngày tháng năm sinh");
+    let mail = prompt("Email");
+    let address = prompt("Địa Chỉ");
+    let customer = prompt("Loại Customer (Diamond, Platinum, Gold, Silver, Member)");
+    let discount = prompt("Giảm giá");
+    let quantity = prompt("Số lượng đi kèm");
+    let rentDay = prompt("Số ngày thuê");
+    let service = prompt("Loại dịch vụ (Villa, House, Room)");
+    let room = prompt("Loại phòng thuê (Vip, Business,  Normal)");
+    switch (service) {
+        case service="Villa":
+             prices = 500;
+            break;
+        case service="House":
+             prices = 300;
+            break;
+        case service="Room":
+             prices = 100;
+            break;
+    }
+    let pay = prices*rentDay*(1-discount/100);
+    alert("Họ và Tên: "+name+ "\n" +"Số CMND: "+idNumber+ "\n" + "Ngày tháng năm sinh: "+dateOfBirth+ "\n"+"Email: "+mail+ "\n"
+        + "Địa Chỉ: "+address+"\n"+"Loại Customer: "+customer+ "\n"+ "Giảm giá: "+discount+ "\n"
+        + "Số lượng đi kèm: "+quantity+ "\n"+ "Số ngày thuê: "+rentDay+"\n"+"Loại dịch vụ: "+service+ "\n"
+        +"Loại phòng thuê: "+room+ "\n"+ " Số tiền phải trả: "+pay+ "$");
+</script>
+</body>
+</html>
