@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kiểm Tra Ký Tự Trong Mảng</title>
+</head>
+<body>
+<script>
+    let count=0;
+    function check(a,b) {
+        for (let i=0;i<a.length;i++){
+            if(a[i]===b){
+                count++;
+            }
+        }
+        if(count>0){
+            return count;
+        }else {
+            return -1;
+        }
+    }
+    let arr = new Array(4);
+    for(let i=0;i<4;i++){
+        arr[i]=prompt("Nhập phần tử mảng thứ "+i );
+    }
+    let char = prompt("Nhập ký tự bất kỳ");
+    result = check(arr,char);
+    alert(result);
+</script>
+</body>
+</html>
