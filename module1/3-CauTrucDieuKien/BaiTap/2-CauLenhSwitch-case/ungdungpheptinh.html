@@ -2,9 +2,45 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>ungdung</title>
 </head>
 <body>
-$END$
+<form>
+    <label>
+        <input id="month" type="number" >
+    </label>
+    <button type="button" onclick="day()"> Tính số ngày </button>
+    <p id="dislay"> </p>
+</form>
+<script>
+    function day() {
+        let m = document.getElementById("month");
+        m = parseInt(m.value);
+        switch (m) {
+            case 1:
+            case 3:
+            case 5:
+            case 7:
+            case 8:
+            case 10:
+            case 12:
+                document.getElementById("dislay").innerHTML="Tháng 1 có 31 ngày";
+                break;
+            case 2:
+                document.getElementById("dislay").innerHTML="Tháng 1 có 28 hoặc 29 ngày";
+                break;
+            case 4:
+            case 6:
+            case 9:
+            case 11:
+                document.getElementById("dislay").innerHTML="Tháng 1 có 30 ngày";
+                break;
+        }
+        if (m > 12){
+            document.getElementById("dislay").innerHTML = "Nhập Tháng sai";
+        }
+
+    }
+</script>
 </body>
 </html>

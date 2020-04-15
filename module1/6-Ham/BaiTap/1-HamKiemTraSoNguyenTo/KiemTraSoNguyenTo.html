@@ -2,9 +2,30 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Hàm kiểm tra số nguyên tố</title>
 </head>
 <body>
-$END$
+<script>
+    function check(a) {
+        if (a < 2) {
+            return false;
+        }
+        for (let i = 2; i < (a - 1); i++) {
+            if (a % i === 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+    let count = 0;
+    let n = 2;
+     document.write("Số Nguyên Tố Nhỏ Hơn 10000 là: <br>");
+    while (n < 10000) {
+        if (check(n)) {
+            document.write( n + "<br>");
+        }
+        n++;
+    }
+</script>
 </body>
 </html>

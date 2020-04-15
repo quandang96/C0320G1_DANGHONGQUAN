@@ -1,10 +1,57 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>may tinh</title>
 </head>
 <body>
-$END$
+<form>
+    <label>
+        <input id="number1" type="number" >
+    </label>
+    <label>
+        <input id="number2" type="number" >
+    </label><br><br>
+    <button type="button" onclick="Addition()">Addition(+)</button>
+    <button type="button" onclick="Subtraction()">Subtraction(-)</button>
+    <button type="button" onclick="Multiplication()">Multipplication(X)</button>
+    <button type="button" onclick="Division()">Division(/)</button>
+</form>
+<h2 id="end"></h2>
+<script>
+
+    function Addition() {
+        let n1 = document.getElementById("number1");
+        let n2 = document.getElementById("number2");
+        let a = parseInt(n1.value);
+        let b = parseInt(n2.value);
+        let c = a + b;
+        document.getElementById("end").innerHTML="Result Addition ="+ c ;
+    }
+    function Subtraction() {
+        let n1 = document.getElementById("number1");
+        let n2 = document.getElementById("number2");
+        let a = parseInt(n1.value);
+        let b = parseInt(n2.value);
+        let t = a - b;
+
+        document.getElementById("end").innerHTML="Result Addition = "+ t ;
+    }
+    function Multiplication() {
+        let n1 = document.getElementById("number1");
+        let n2 = document.getElementById("number2");
+        let a = parseInt(n1.value);
+        let b = parseInt(n2.value);
+        let n = a*b;
+        document.getElementById("end").innerHTML="Result Addition = "+ n ;
+    }function Division() {
+        let n1 = document.getElementById("number1");
+        let n2 = document.getElementById("number2");
+        let a = parseInt(n1.value);
+        let b = parseInt(n2.value);
+        let ch = a/b;
+        document.getElementById("end").innerHTML="Result Addition = "+ ch ;
+    }
+</script>
 </body>
 </html>

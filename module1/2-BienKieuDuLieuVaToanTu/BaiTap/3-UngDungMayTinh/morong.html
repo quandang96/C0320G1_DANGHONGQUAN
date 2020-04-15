@@ -2,9 +2,63 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>mo_rong</title>
 </head>
+<style>
+.myclass{
+    width: 50px;
+}
+</style>
 <body>
-$END$
+<table >
+    <tr>
+        <td>
+        <label><input id="kq" type="text" style="height: 20px;width: 210px  "></label>
+        </td>
+    </tr>
+<script>
+        let a = document.getElementById("kq");
+</script><br>
+    <tr>
+        <td>
+
+            <button class="myclass" type="button" onclick="a.value +=7"> 7</button>
+            <button class="myclass" type="button" onclick="a.value +=8"> 8</button>
+            <button class="myclass" type="button" onclick="a.value +=9"> 9</button>
+            <button class="myclass" type="button" onclick="a.value +='+'"> +</button>
+        </td>
+        </tr>
+    <tr>
+        <td>
+            <button class="myclass" type="button" onclick="a.value +=4"> 4</button>
+            <button class="myclass" type="button" onclick="a.value +=5"> 5</button>
+            <button class="myclass" type="button" onclick="a.value +=6"> 6</button>
+            <button class="myclass" type="button" onclick="a.value +='-'"> -</button>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <button class="myclass" type="button" onclick="a.value +=1"> 1</button>
+            <button class="myclass" type="button" onclick="a.value +=2"> 2</button>
+            <button class="myclass" type="button" onclick="a.value +=3"> 3</button>
+            <button class="myclass" type="button" onclick="a.value +='*'"> *</button>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <button class="myclass" type="button" onclick="a.value +=0"> 0</button>
+            <button class="myclass" type="button" onclick="a.value =''"> C </button>
+            <button class="myclass" type="button" onclick="result() "> =</button>
+            <button class="myclass" type="button" onclick="a.value +='/'"> /</button>
+        </td>
+    </tr>
+
+</table>
+<script>
+function result() {
+    a.value = eval(a.value);
+
+}
+</script>
 </body>
 </html>

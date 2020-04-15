@@ -2,9 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
 </head>
 <body>
-$END$
+<script>
+    let a = parseFloat(prompt("Nhập chiều dài:"));
+    let b = parseFloat(prompt("Nhập chiều rộng:"));
+    if(0<a && 0<b){
+        let s = a*b;
+        alert('Diện tích hình chữ nhật: '+s);
+    } else {
+        alert("Nhập sai")
+    }
+</script>
 </body>
 </html>

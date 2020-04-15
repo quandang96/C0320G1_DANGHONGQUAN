@@ -2,9 +2,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
 </head>
 <body>
-$END$
+<script>
+    let count = 0;
+    let a=1;
+    let b=0;
+    let x;
+    let sum=0;
+    while (count<20){
+        x=a+b;
+        a=b;
+        b=x;
+        sum +=x;
+        count++;
+    }
+    document.write("Tổng 20 số đầu tiên trong dãy fibonacci là "+sum);
+</script>
 </body>
 </html>

@@ -2,9 +2,55 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Ứng Dụng Quản Lý Sản Phẩm </title>
 </head>
+<style>
+    .mybutton{
+        padding: 5px;
+        background:forestgreen;
+        color: white;
+        border: forestgreen;
+    }
+</style>
 <body>
-$END$
+<p>
+<h3>Add New Product</h3>
+<label>
+    <input id="product" type="text" placeholder="New Product">
+    <button class='mybutton'  type="button" onclick="add()" >Add </button>
+</label>
+<h3>Display All Product</h3>
+<h4>Product Name</h4>
+<table id="display"></table>
+<script>
+    let addProduct = document.getElementById("product");
+    let displayProduct = document.getElementById("display");
+    let product = [];
+    function add() {
+        if(addProduct.value !== ""){
+            product.push(addProduct.value);
+        }
+        addProduct.value="";
+        display();
+    }
+    function display() {
+        displayProduct.innerHTML="";
+        for (let i=0; i < product.length; i++) {
+            displayProduct.innerHTML +="<tr>"+ "<td style='width: 200px'>"+product[i]+ "</td>"  + "<td style='width: 100px'>"+
+                "<button class='mybutton'  type=\"button\" onclick='edit("+i+")'>Edit</button>"+"</td>"
+                +"<td>"+"<button class='mybutton' type=\"button\" onclick='deleteProduct("+i+")'>Delete </button>"+"</td>"+"</tr>";
+        }
+
+    }
+        function edit(a) {
+            product[a]=prompt("Chỉnh sửa lại sản phẩm");
+                       display();
+        }
+    function deleteProduct(b){
+            product.splice(b,1);
+            display();
+        }
+
+</script>
 </body>
 </html>

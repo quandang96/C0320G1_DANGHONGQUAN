@@ -2,9 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Bài 2</title>
 </head>
 <body>
-$END$
+<input type="number" oninput="myFunction(value)">
+<p><span id="display"></span></p>
+<script>
+    function  myFunction(i){
+           i++;
+           document.getElementById("display").innerHTML=i;
+    }
+</script>
 </body>
 </html>

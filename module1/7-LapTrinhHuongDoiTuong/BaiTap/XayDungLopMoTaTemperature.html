@@ -2,9 +2,26 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Xây dựng lớp mô tả Temperature</title>
 </head>
 <body>
-$END$
+<script>
+    let temperature = function (c) {
+             this.c =c;
+        this.coverCToF = function (){
+                return this.c*1.8 + 32;
+             };
+        this.coverCToK = function () {
+                return this.c + 273;
+        };
+
+             };
+    let temper = new temperature(25);
+    let c = temper.c;
+    let cToF = temper.coverCToF();
+    let cToK = temper.coverCToK();
+    document.writeln(+c+" độ C = "+cToF+" độ F"+"<br>");
+    document.writeln(+c+" độ C = "+cToK+" độ K");
+</script>
 </body>
 </html>

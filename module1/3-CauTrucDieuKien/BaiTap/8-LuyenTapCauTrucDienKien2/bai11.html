@@ -2,9 +2,38 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
 </head>
 <body>
-$END$
+<script>
+    let a = parseFloat(prompt("Nhập số tiền thu nhập:"));
+        if (0< a && a <= 10 ) {
+        alert("Không tính thuế");
+        } else if ( a < 15) {
+            x = (a - 10) * 5 / 100;
+            alert("Thuế TNCN: " + x + " Triệu");
+        } else if (a < 20) {
+            x = 5 * 5 / 100 + (a - 5) * 10 / 100;
+            alert("Thuế TNCN: " + x + " Triệu");
+        } else if (a < 28) {
+            x = 5 * 5 / 100 + 5 * 10 / 100 + (a - 20) * 15 / 100;
+            alert("Thuế TNCN: " + x + " Triệu");
+        } else if (a < 32) {
+            x = 5 * 5 / 100 + 5 * 10 / 100 + 8 * 15 / 100 + (a - 28) * 20 / 100;
+            alert("Thuế TNCN: " + x + " Triệu");
+        } else if (a < 52) {
+            x = 5 * 5 / 100 + 5 * 10 / 100 + 8 * 15 / 100 + 4 * 20 / 100 + (a - 32) * 25 / 100;
+            alert("Thuế TNCN: " + x + " Triệu");
+        } else if (a < 80) {
+            x = 5 * 5 / 100 + 5 * 10 / 100 + 8 * 15 / 100 + 4 * 20 / 100 + 20 * 25 / 100 + (a - 52) * 30 / 100;
+            alert("Thuế TNCN: " + x + " Triệu");
+        } else if (a > 80) {
+            x = 5 * 5 / 100 + 5 * 10 / 100 + 8 * 15 / 100 + 4 * 20 / 100 + 20 * 25 / 100 + 28 * 30 / 100 + (a - 80) * 35 / 100;
+            alert("Thuế TNCN: " + x + " Triệu");
+        } else if (0< a && a <= 10 ){
+            alert("Không tính thuế");
+        }
+
+</script>
 </body>
 </html>

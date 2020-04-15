@@ -2,9 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Bài 3</title>
 </head>
 <body>
-$END$
+<script>
+    function sum(a,b) {
+        if(a>b){
+            alert("Tham số thứ 1 lớn hơn Tham số thứ 2");
+        } else if (a<b){
+            return a+b
+        }
+    }
+    let number1 = parseFloat(prompt("Nhâp số thứ nhất:"));
+    let number2 = parseFloat(prompt("Nhâp số thứ hai:"));
+    let sum1 = sum(number1,number2);
+    document.write("Tổng 2 số: "+sum1);
+</script>
 </body>
 </html>

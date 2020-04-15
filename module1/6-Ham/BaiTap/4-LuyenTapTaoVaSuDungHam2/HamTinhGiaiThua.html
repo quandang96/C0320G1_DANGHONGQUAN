@@ -2,9 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Hàm Tính Giai Thừa</title>
 </head>
 <body>
-$END$
+<script>
+    let c=1;
+    function factorial(a) {
+        for (let i = 0; i < a; i++) {
+            c*=(a-i);
+        }
+        alert(a+"! = "+c);
+    }
+    let number = parseInt(prompt("Nhập số:"));
+    result = factorial(number);
+</script>
 </body>
 </html>

@@ -2,9 +2,36 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Chuyển đổi giữa feet và meters</title>
 </head>
 <body>
-$END$
+<h3> Met To Feet </h3>
+<label>
+   <input id="inputMet" type="text"  oninput="metToFeet(value)"> Met
+    <p>= <span id="displayFeet"></span> Feet</p> <hr>
+    <h3> Feet To Met </h3>
+    <input id="inputFeet" type="number" oninput="feetToMet(value)"> Feet
+    <p>=<span id="displayMet"></span> Met</p>
+</label>
+<script>
+
+   function metToFeet(met) {
+       met=parseFloat(met);
+       if(isNaN(met)){
+           document.getElementById("displayFeet").innerHTML= 0;
+       } else
+           document.getElementById("displayFeet").innerHTML= 3.279 * met ;
+
+
+   }
+   function feetToMet(feet) {
+       feet=parseFloat(feet);
+       if(isNaN(feet)){
+           document.getElementById("displayMet").innerHTML= 0;
+       } else
+       document.getElementById("displayMet").innerHTML=0.305 * feet;
+   }
+
+</script>
 </body>
 </html>

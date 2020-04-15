@@ -2,9 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Từ Điển</title>
 </head>
 <body>
-$END$
+<script>
+    let english = ["cat","dog","pig","mouse"];
+    let tiengViet = ["mèo","chó","lợn","chuột"];
+    let seach = prompt("Nhập từ cần tìm kiếm:");
+    for(let i=0;i<english.length;i++){
+        if(seach === english[i]){
+            alert(english[i]+" có nghĩa là: "+tiengViet[i]);
+        }
+    }
+    if (seach!==english[0] && seach!==english[1] && seach!==english[2] && seach!==english[3]){
+        alert("Không tìm thấy");
+    }
+</script>
 </body>
 </html>

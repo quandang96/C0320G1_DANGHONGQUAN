@@ -2,9 +2,45 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
 </head>
 <body>
-$END$
+<label>
+    <input id="a" type="text">
+</label>
+X2
+<label>
+    <input id="b" type="text">
+</label>
+X
+<label>
+    <input id="c" type="text">
+</label>
+<button type="button" onclick="result()">result</button>
+<p id="kq"></p>
+<script>
+    function result() {
+        let a = document.getElementById("a");
+        let b = document.getElementById("b");
+        let c = document.getElementById("c");
+        a= parseFloat(a.value);
+        b= parseFloat(b.value);
+        c= parseFloat(c.value);
+        let delta = b*b - 4*a*c;
+        if (a !== 0)
+        if(delta > 0){
+            let x1 = (-b- Math.sqrt(delta))/(2*a);
+            let x2 = (-b + Math.sqrt(delta))/(2*a);
+            document.getElementById("kq").innerHTML = "Phương Trình có hai nghiệm: X1="+x1 + " X2= "+x2;
+        } else if(delta === 0){
+            let x = -b / (2*a);
+            document.getElementById("kq").innerHTML = "Phương trình có nghiệm kép: X1=X2= "+x;
+            }else if(delta < 0) {
+            document.getElementById("kq").innerHTML = "Phương trình vô nghiệm"
+        }
+
+
+    }
+</script>
 </body>
 </html>

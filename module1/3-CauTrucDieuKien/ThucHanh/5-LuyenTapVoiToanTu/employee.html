@@ -2,9 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>employee</title>
 </head>
 <body>
-$END$
+<script>
+    let login = prompt("Name");
+    let message = (login === 'Employee') ?
+        'Hello':
+        (login === 'Director') ?
+            'Greetings' :
+            (login === '') ?
+                'No login' :
+                '';
+    alert(message);
+</script>
 </body>
 </html>

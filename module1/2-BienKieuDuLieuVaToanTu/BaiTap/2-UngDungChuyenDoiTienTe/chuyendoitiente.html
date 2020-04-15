@@ -32,9 +32,12 @@
 </form>
 <script>
     function convert() {
-        let tCurrent = document.getElementById("toCurrency").value;
-        let fCurrent = document.getElementById("fromCurrent").value;
-        let number = parseInt(document.getElementById("number").value);
+        let a = document.getElementById("toCurrency");
+        let b = document.getElementById("fromCurrent");
+        let c = document.getElementById("number");
+        let tCurrent = a.value;
+        let fCurrent = b.value;
+        let number = c.value;
         if(tCurrent ==="USD" && fCurrent === "VND"){
             let usdvn = number*230000;
             alert(+number + " USD = " + usdvn + " VND"  );}
@@ -45,7 +48,7 @@
             else if(tCurrent === "USD" && fCurrent === "USD"){
                 alert(+number +" USD =" + number+ " USD")
         }
-                else if ( tCurrent==="VND" && fCurrent ==="VND"){
+                else if ( tCurrent ==="VND" && fCurrent ==="VND"){
             alert(+number +" VND =" +number + " VND")
         }
         

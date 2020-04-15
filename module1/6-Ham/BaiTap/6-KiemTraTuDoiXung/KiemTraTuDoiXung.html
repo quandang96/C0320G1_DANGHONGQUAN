@@ -2,9 +2,26 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Kiểm tra từ đối xứng</title>
 </head>
 <body>
-$END$
+<script>
+    let count=0;
+    function isPalindrome(s) {
+        for (let i=0;i<s.length/2;i++){
+            if(s[i]!==s[s.length-i-1]){
+                return false;
+            }
+        } return true;
+
+    }
+    let arr =prompt("Nhập chuỗi cần kiểm tra");
+    if(isPalindrome(arr)){
+        alert("Chuỗi đối xứng");
+    }else {
+        alert("Chuỗi không đối xứng")
+    }
+
+</script>
 </body>
 </html>

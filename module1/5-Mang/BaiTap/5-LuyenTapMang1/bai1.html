@@ -2,9 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Bài 1</title>
 </head>
 <body>
-$END$
+<script>
+    let count=0;
+    let arr = [];
+    for(let i=0;i<10;i++){
+        arr[i]=Math.round(Math.random()*20);
+        if(arr[i]>=10){
+            count++;
+        }
+    }
+    alert(count);
+
+</script>
 </body>
 </html>

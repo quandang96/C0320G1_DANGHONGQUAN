@@ -2,9 +2,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Bai 6</title>
 </head>
 <body>
-$END$
+<script>
+    let count=0;
+    let arr = [];
+    for(let i=0;i<10;i++) {
+        arr[i] = prompt("Nhập phần tử " + i + " của mảng:");
+        if(arr[i]==="V"){
+            count++
+        }
+    }
+    if(count>=1){
+        alert("V is in the array");
+    }else{
+        alert("V is not in the array");
+    }
+</script>
 </body>
 </html>

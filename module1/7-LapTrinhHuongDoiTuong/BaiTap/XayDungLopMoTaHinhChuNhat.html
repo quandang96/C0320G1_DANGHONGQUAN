@@ -2,9 +2,40 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Xây dựng lớp mô tả hình chữ nhật</title>
 </head>
-<body>
-$END$
+<body >
+<canvas id="myCanvas" width="1000px" height="400px" style="border:1px solid #d3d3d3;"></canvas>
+<button type="button" onclick="changeValue()">ChangeValue </button>
+<p id="display1"></p>
+<p id="display2"></p>
+<script>
+    let Rectangle = function (length,width) {
+        this.length = length;
+        this.width = width;
+        this.getArea = function () {
+             return this.length * this.width;
+        };
+        this.getPeriMeter = function () {
+              return (this.length + this.width)*2;
+        };
+
+    };
+
+    changeValue();
+     function changeValue() {
+         let length =parseInt(prompt("Nhập chiều dài hình chữ nhật:"));
+         let width =parseInt(prompt("Nhập chiều rộng Hình chữ nhật:"));
+         let rectangle = new Rectangle(length,width);
+         let area = rectangle.getArea();
+         let perimeter = rectangle.getPeriMeter();
+          document.getElementById("display1").innerHTML="Chu vi hình chữ nhật: "+perimeter;
+          document.getElementById("display2").innerHTML="Diện tích hình chữ nhật: "+area;
+         let ctx = document.getElementById("myCanvas").getContext("2d");
+         ctx.clearRect(0,0,500,500);
+         ctx.fillRect(50,50,width,length);
+      }
+
+</script>
 </body>
 </html>

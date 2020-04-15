@@ -2,9 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Bài 5</title>
 </head>
 <body>
-$END$
+<script>
+    let starName = prompt("Nhập tên của ngôi sao:");
+    let star = ["Polaris","Aldebaran","Deneb","Vega","Altair","Dubhe","Regulus"];
+    let constellation = ["Ursa Minor", "Tarurus", "Cygnus", "Lyra", "Aquila", "Ursa Major", "Leo"];
+    let j;
+    function seachStar(a) {
+           for (let i=0;i<a.length;i++){
+               if(a[i]===starName){
+                   j=i;
+               }
+           }
+           alert("Ngôi sao "+starName+" thuộc chòm sao: "+constellation[j]);
+    }
+     display = seachStar(star);
+
+</script>
 </body>
 </html>

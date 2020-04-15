@@ -2,9 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
 </head>
 <body>
-$END$
+<script>
+    let number = 0;
+    let count = 0;
+    let sum = 0;
+    while(count<30){
+        if (number%7===0){
+            count++;
+            sum+=number;
+        }
+        number++;
+    }
+    document.write("Tổng 30 số đầu tiên chia hết cho 7 là "+sum);
+</script>
 </body>
 </html>

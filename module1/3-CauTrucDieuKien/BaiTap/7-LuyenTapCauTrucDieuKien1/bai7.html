@@ -2,9 +2,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>bai7</title>
 </head>
 <body>
-$END$
+<script>
+    let minute = parseInt(prompt("Nhập số phút:"));
+    if (0 < minute && minute <= 50){
+        let a = 25000 + minute*600 ;
+        alert("Tiền cước điện thoại: "+a );
+    } else if (minute => 200){
+        let b = 50*600 + (minute-50)*400;
+        alert("Tiền cước điện thoại: "+b);
+
+    } else {
+        let c = 50*600 + 150*400 + (minute-200)*200;
+        alert("Tiền cước điện thoại: "+c);
+    }
+</script>
+
 </body>
 </html>

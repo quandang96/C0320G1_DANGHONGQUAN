@@ -2,9 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Bài 5</title>
 </head>
 <body>
-$END$
+<script>
+    let a=prompt("Nhập chuỗi 1:");
+    let b=prompt("Nhập chuỗi 2:");
+    let count=0;
+    for(let i = 0;i<a.length;i++){
+        if(a.charAt(i)===b.charAt(i) && a.length===b.length){
+            count++;
+        }else {
+            alert("hai chuỗi không bằng nhau");
+            break;
+        }
+    }
+    if(count===a.length){
+        alert("hai chuỗi bằng nhau")
+    }
+</script>
 </body>
 </html>

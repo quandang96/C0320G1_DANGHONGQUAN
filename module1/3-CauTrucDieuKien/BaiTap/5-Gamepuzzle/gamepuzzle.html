@@ -2,9 +2,78 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
+    <style>
+    </style>
+
 </head>
 <body>
-$END$
+<button style="border-color: red ; border-width: 5px " id="button1" value="1" onclick="doihinhanh1(); kiemtra()"
+        class="btn image1"><img id="hang1" src="https://demo.codegym.vn/8/puzzlegame/img/funny-cat1_part1x1.jpg" height="196" width="622" alt=""/></button>
+<br>
+<button style="border-color: red ; border-width: 5px" id="button2" value="2" onclick="doihinhanh2(); kiemtra()"
+        class="btn image2"><img id="hang2" src="https://demo.codegym.vn/8/puzzlegame/img/funny-cat1_part2x1.jpg" height="196" width="622" alt=""/></button>
+<br>
+<button style="border-color: red ; border-width: 5px" id="button3" value="3" onclick="doihinhanh3(); kiemtra()"
+        class="btn image3"><img id="hang3" src="https://demo.codegym.vn/8/puzzlegame/img/funny-cat1_part3x1.jpg" height="196" width="622" alt=""/></button>
+<br>
+<script>
+    function doihinhanh1() {
+        let anhhang1 = document.getElementById("hang1").getAttribute('src');
+        if (anhhang1 === "https://demo.codegym.vn/8/puzzlegame/img/funny-cat1_part1x1.jpg") {
+            document.getElementById("hang1").src = "https://demo.codegym.vn/8/puzzlegame/img/monkey_part1x1.jpg";
+            document.getElementById("button1").value = 2;
+        } else if (anhhang1 === "https://demo.codegym.vn/8/puzzlegame/img/monkey_part1x1.jpg") {
+            document.getElementById("hang1").src = "https://demo.codegym.vn/8/puzzlegame/img/panda_swap_part1x1.jpg";
+            document.getElementById("button1").value = 3;
+        } else if (anhhang1 === "https://demo.codegym.vn/8/puzzlegame/img/panda_swap_part1x1.jpg") {
+            document.getElementById("hang1").src = "https://demo.codegym.vn/8/puzzlegame/img/funny-cat1_part1x1.jpg";
+            document.getElementById("button1").value = 1;
+        }
+    }
+    function doihinhanh2() {
+        let anhhang2 = document.getElementById("hang2").getAttribute('src');
+        if (anhhang2 === "https://demo.codegym.vn/8/puzzlegame/img/funny-cat1_part2x1.jpg") {
+            document.getElementById("hang2").src = "https://demo.codegym.vn/8/puzzlegame/img/monkey_part2x1.jpg";
+            document.getElementById("button2").value = 2;
+        } else if (anhhang2 === "https://demo.codegym.vn/8/puzzlegame/img/monkey_part2x1.jpg") {
+            document.getElementById("hang2").src = "https://demo.codegym.vn/8/puzzlegame/img/panda_swap_part2x1.jpg";
+            document.getElementById("button2").value = 3;
+        } else if (anhhang2 === "https://demo.codegym.vn/8/puzzlegame/img/panda_swap_part2x1.jpg") {
+            document.getElementById("hang2").src = "https://demo.codegym.vn/8/puzzlegame/img/funny-cat1_part2x1.jpg";
+            document.getElementById("button2").value = 1;
+        }
+    }
+    function doihinhanh3() {
+        let anhhang3 = document.getElementById("hang3").getAttribute('src');
+        if (anhhang3 === "https://demo.codegym.vn/8/puzzlegame/img/funny-cat1_part3x1.jpg") {
+            document.getElementById("hang3").src = "https://demo.codegym.vn/8/puzzlegame/img/monkey_part3x1.jpg";
+            document.getElementById("button3").value = 2;
+        } else if (anhhang3 === "https://demo.codegym.vn/8/puzzlegame/img/monkey_part3x1.jpg") {
+            document.getElementById("hang3").src = "https://demo.codegym.vn/8/puzzlegame/img/panda_swap_part3x1.jpg";
+            document.getElementById("button3").value = 3;
+        } else if (anhhang3 === "https://demo.codegym.vn/8/puzzlegame/img/panda_swap_part3x1.jpg") {
+            document.getElementById("hang3").src = "https://demo.codegym.vn/8/puzzlegame/img/funny-cat1_part3x1.jpg";
+            document.getElementById("button3").value = 1;
+        }
+    }
+    function kiemtra() {
+        let giatrianh1 = document.getElementById("button1").value;
+        let giatrianh2 = document.getElementById("button2").value;
+        let giatrianh3 = document.getElementById("button3").value;
+        if ((giatrianh1 === giatrianh2) && (giatrianh1 === giatrianh3)) {
+            document.getElementById("button1").style.borderColor = "green";
+            document.getElementById("button2").style.borderColor = "green";
+            document.getElementById("button3").style.borderColor = "green";
+            setTimeout(function () {
+                alert("Dung roi");
+            }, 200);
+        }else{
+            document.getElementById("button1").style.borderColor = "red";
+            document.getElementById("button2").style.borderColor = "red";
+            document.getElementById("button3").style.borderColor = "red";
+        }
+    }
+</script>
 </body>
 </html>

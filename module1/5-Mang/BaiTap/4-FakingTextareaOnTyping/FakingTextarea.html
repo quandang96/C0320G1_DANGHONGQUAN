@@ -2,9 +2,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Faking Textarea</title>
 </head>
 <body>
-$END$
+<h1 style="text-align: center">Type anthing slowly</h1>
+<label style="padding: 510px">
+    <textarea id="text" rows="10" cols="40" onkeydown="nhap()" ></textarea>
+</label>
+<script>
+    let arr = ["H","E","L","L","O"," ","W","O","R","L","D","!"];
+    function nhap() {
+        let a= document.getElementById("text");
+        let b="";
+            c = a.value.length;
+                for(let i=0;i<c;i++){
+                    b+=arr[i];
+                    if(i===12){
+                        a.value ="";
+                        b="";
+                    }
+            }
+                a.value=b;
+        setTimeout("nhap()", 1);
+    }
+</script>
 </body>
 </html>

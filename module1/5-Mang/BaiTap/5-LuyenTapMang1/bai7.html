@@ -2,9 +2,25 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Bài 7</title>
 </head>
 <body>
-$END$
+<script>
+    let arr = [];
+    for(let i=0;i<10;i++) {
+        arr[i] = prompt("Nhập phần tử " + i + " của mảng:");
+        }
+    for(let j=0;j<10;j++){
+        if(arr[j]==="V") {
+            arr.splice(j,1);
+            for(let k=j;k<(10-j);k++){
+                arr[j]=arr[j+1];
+            }
+            arr.push("0");
+        }
+    }
+
+    document.write(arr+" ");
+</script>
 </body>
 </html>

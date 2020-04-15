@@ -2,9 +2,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>In hình chữ nhật</title>
 </head>
 <body>
-$END$
+<script>
+    let n=7;
+    let m=20;
+    for(let i=0;i<n;i++) {
+        for (let j = 0; j < m; j++) {
+            if (i === 0 || i === (n - 1) || j === 0 || j === (m - 1)) {
+                document.write("*");
+            } else {
+                document.write("&nbsp&nbsp");
+            }
+        }
+        document.write("<br>");
+    }
+
+</script>
 </body>
 </html>

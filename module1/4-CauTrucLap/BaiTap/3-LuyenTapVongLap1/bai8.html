@@ -2,9 +2,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
 </head>
 <body>
-$END$
+<button type="button" onclick="play()">Play</button>
+<script>
+ function play() {
+     let start = parseInt(prompt("Nhập khoảng cần đoán băt đầu: "));
+     let end = parseInt(prompt("Nhập khoảng cần đoán kết thúc: "));
+     let random = Math.round(Math.random()*(end-start)+start);
+     for (let i=0;i<3;i++) {
+         let select = prompt("Nhập số cần đoán: ");
+         if (select == random) {
+             alert("Chúc Mừng!");
+             break;
+         } else if (select > random) {
+             alert("Lớn Hơn");
+
+         } else {
+             alert("Bé Thua");
+         }
+     }
+
+ }
+</script>
 </body>
 </html>

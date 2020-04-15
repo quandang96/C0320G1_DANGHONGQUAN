@@ -2,9 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Bài 9</title>
 </head>
 <body>
-$END$
+<script>
+    let a = [];
+    let b=[];
+    let c=[];
+    for(let i=0;i<10;i++) {
+        a[i] = prompt("Nhập phần tử " + i + " của mảng a:");
+    }
+    for(let j=0;j<10;j++) {
+        b[j] = prompt("Nhập phần tử " + j + " của mảng b:");
+    }
+    for(let k=0;k<20;k++) {
+        c[k] = prompt("Nhập phần tử " + k + " của mảng c:");
+    }
+    c = c.concat(a,b);
+    document.write("Mảng c: " +c);
+</script>
 </body>
 </html>

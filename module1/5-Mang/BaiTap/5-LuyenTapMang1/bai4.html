@@ -2,9 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Bài 4</title>
 </head>
 <body>
-$END$
+<script>
+    let arr = [];
+    for(let i=0;i<10;i++) {
+        arr[i] = parseInt(prompt("Nhập phần tử " + i + " của mảng:"));
+    }
+    document.write("Mảng ban đầu: "+arr+"<br>");
+    arr.reverse();
+    document.write("Mảng sau khi đảo: "+arr);
+</script>
 </body>
 </html>

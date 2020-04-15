@@ -2,9 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Hàm Tính Diện Tích</title>
+    <title>Hàm Tính Chu Vi Diện Tích</title>
 </head>
 <body>
-
+<script>
+    const PI=3.14;
+    function dienTich(a) {
+           return a*a*PI;
+    }
+    function chuVi(b) {
+        return 2*b*PI;
+    }
+    let r = prompt("Nhập bán kính hình tròn:");
+    s = dienTich(r);
+    alert("Diện tích hình tròn: "+s);
+    c = chuVi(r);
+    alert("Chu vi hình tròn: "+c);
+</script>
 </body>
 </html>

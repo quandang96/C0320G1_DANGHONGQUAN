@@ -2,9 +2,60 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>TicTacToe</title>
 </head>
 <body>
-$END$
+<h3>TicTacToe</h3>
+<p id="tictactoe"></p>
+<input type="button" value="Change Value" onclick="changeValue()">
+<script>
+    let b = document.getElementById("tictactoe");
+
+    let board = [];
+    let data = "";
+    for (let i = 0; i < 5; i++) {
+        board[i] = new Array("(.)","(.)","(.)","(.)","(.)");
+    }
+
+    for (let i = 0; i < 5; i++) {
+        data += "<br/>";
+        for (let j = 0; j < 5; j++) {
+            data += board[i][j] + "&nbsp;&nbsp;";
+        }
+    }
+    b.innerHTML = data;
+    function changeValue() {
+        let positionX = prompt("X: ");
+        let positionY = prompt("Y: ");
+        data = "";
+        board[positionX][positionY] = prompt("Nhập X hoặc O:");
+        for (let i = 0; i < 5; i++) {
+            data += "<br/>";
+            for (let j = 0; j < 5; j++) {
+                data += board[i][j] + "&nbsp;&nbsp;&nbsp;&nbsp;";
+            }
+        }
+        b.innerHTML = "<hr/>" + data;
+
+        for (let i = 0; i < 5; i++) {
+
+            for (let j = 0; j < 5; j++) {
+
+                if (board[i][j] === "X" && board[i][j + 1] === "X" && board[i][j + 2] === "X" ||
+                    board[i][j] === "O" && board[i][j + 1] === "O" && board[i][j + 2] === "O" ||
+                    board[i][j] === "X" && board[i + 1][j] === "X" && board[i + 2][j] === "X" ||
+                    board[i][j] === "O" && board[i + 1][j] === "O" && board[i + 2][j] === "O"||
+                    board[i][j] === "X" && board[i + 1][j+1] === "X" && board[i + 2][j+2] === "X" ||
+                    board[i][j] === "O" && board[i + 1][j+1] === "O" && board[i + 2][j+2] === "O"||
+                    board[i][j+2] === "X" && board[i + 1][j+1] === "X" && board[i + 2][j] === "X" ||
+                    board[i][j+2] === "O" && board[i + 1][j+1] === "O" && board[i + 2][j] === "O") {
+                    b.innerHTML="Chúc Mừng";
+                }
+
+
+                }
+        }
+    }
+</script>
 </body>
 </html>

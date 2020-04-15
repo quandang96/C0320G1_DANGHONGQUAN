@@ -2,9 +2,41 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
 </head>
 <body>
-$END$
+<p>Nhập số kWh:</p>
+<label>
+    <input id="kwh" type="text">
+</label>
+<button type="button" onclick="result()"> Tính tiền </button>
+<p id="dislay"></p>
+<script>
+    function result() {
+        let kWH = document.getElementById("kwh");
+        let a = document.getElementById("dislay");
+        kWH = parseFloat(kWH.value);
+        if (kWH > 0 && kWH < 50) {
+            x = kWH * 1678;
+            a.innerHTML = x;
+        } else if (kWH <= 100){
+            x = 50 * 1678 + (kWH - 50) * 1734;
+            a.innerHTML = x;
+        } else if (kWH <= 200){
+            x = 50 * 1678 + 50 * 1734 + (kWH - 100)*2014;
+            a.innerHTML = x;
+        } else if (kWH <= 300){
+            x= 50*1678 + 50*1734 + 100*2014 + (kWH-200)*2536;
+            a.innerHTML = x ;
+
+        }else if (kWH <= 400){
+            x= 50*1678 + 50*1734 + 100*2014 + 100 * 2536 +(kWH - 300)*2834;
+            a.innerHTML = x;
+        }else if (kWH > 400){
+            x= 50*1678 + 50*1734 + 100*2014 + 100 * 2536 + 100*2834 + (kWH - 400)*2927 ;
+            a.innerHTML = x;
+        }
+    }
+</script>
 </body>
 </html>

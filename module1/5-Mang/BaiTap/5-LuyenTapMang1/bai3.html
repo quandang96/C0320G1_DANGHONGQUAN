@@ -2,9 +2,25 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Bai 2</title>
 </head>
 <body>
-$END$
+<script>
+    let tb;
+    let sum;
+    let arr = [];
+    sum=arr[0]=parseInt(prompt("Nhập phần tử thứ 0 của mảng"));
+    let max =arr[0];
+    for(let i=1;i<10;i++){
+        arr[i]=parseInt(prompt("Nhập phần tử "+i+ " của mảng:"));
+         sum+=arr[i];
+        if (arr[i] > max) {
+            max=arr[i];
+        }
+    }
+    tb= sum/arr.length;
+    document.write("Giá Trị lớn nhất: "+max + "<br>");
+    document.write("Giá trị trung bình của mảng: "+tb);
+</script>
 </body>
 </html>

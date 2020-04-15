@@ -2,9 +2,38 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>good-fast-cheap</title>
 </head>
 <body>
-$END$
+<form>
+    <label><input id="good" type="radio"  onchange="check1()"> Good</label><br>
+    <label><input id="fast" type="radio"  onchange="check2()"> Fast</label><br>
+    <label><input id="cheap" type="radio" onchange="check3()"> Cheap</label>
+</form>
+<script>
+    let checkGood = document.getElementById("good");
+    let checkFast = document.getElementById("fast");
+    let checkCheap = document.getElementById("cheap");
+
+    function check1() {
+        if (checkGood.checked && checkFast.checked) {
+            checkGood.checked = true;
+            checkCheap.checked = false;
+        }
+    }
+    function check2() {
+            if (checkGood.checked && checkCheap.checked) {
+                checkFast.checked = true;
+                checkGood.checked = false;
+            }
+        }
+    function check3() {
+        if (checkFast.checked && checkCheap.checked) {
+            checkGood.checked = true;
+            checkFast.checked = false;
+        }
+    }
+
+</script>
 </body>
 </html>

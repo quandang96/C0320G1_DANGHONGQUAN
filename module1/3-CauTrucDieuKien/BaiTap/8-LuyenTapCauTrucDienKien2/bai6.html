@@ -2,9 +2,34 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
 </head>
 <body>
-$END$
+<label>
+<input id="a" type="text" >
+</label>
+X
+<label>
+<input id="b" type="text">
+</label><br><br>
+<button type="button" onclick="result1()"> Result </button> <br><br>
+<p id="kq"></p>
+<script>
+function result1() {
+    let a = document.getElementById("a");
+    let b = document.getElementById("b");
+    a = parseFloat(a.value);
+    b = parseFloat(b.value);
+    if (a !== 0) {
+        let x=(-b) / a;
+        document.getElementById("kq").innerHTML ="Phương trình có một nghiệm: " + x;
+    } else if (a === 0) {
+        document.getElementById("kq").innerHTML ="Phương trình vô nghiệm"
+    } else {
+        document.getElementById("kq").innerHTML ="Phương trình có vô số nghiệm"
+
+    }
+}
+</script>
 </body>
 </html>

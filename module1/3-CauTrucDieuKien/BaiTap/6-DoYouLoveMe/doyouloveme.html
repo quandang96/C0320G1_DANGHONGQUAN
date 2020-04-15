@@ -2,9 +2,26 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>DoYouLoveMe</title>
+
+
 </head>
 <body>
-$END$
+<h1 style="margin: 250px 250px 1px 250px">Do You Love Me ?</h1>
+<button  style="margin: 5px 5px 250px 300px" type="button" onclick="dislay()" > Yes </button>
+<button id="no" style=" position:absolute;margin: 5px 1px 250px 1px" type="button"  onmousemove="move()"> No </button>
+<script>
+    function dislay(){
+        alert("<3")
+    }
+    function move(){
+        let moveRanDom = document.getElementById("no");
+        let height = window.innerHeight;
+        let weight = window.innerWidth;
+        moveRanDom.style.left = Math.floor(Math.random()* weight)+'px';
+        moveRanDom.style.top = Math.floor(Math.random()* height)+'px';
+
+    }
+</script>
 </body>
 </html>

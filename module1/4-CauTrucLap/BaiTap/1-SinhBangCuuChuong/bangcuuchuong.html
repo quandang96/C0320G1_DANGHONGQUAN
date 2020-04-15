@@ -2,9 +2,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>bangcuuchuong</title>
 </head>
 <body>
-$END$
+    <script>
+        let i,j,x,k;
+        x = "<table border= '1' cellspacing='1' cellpadding='10'  >";
+        i=j=1;
+        while(i<=9){
+            x= x + "<tr>" ;
+            while (j<=8){
+                k = i*j;
+                x = x + "<td>"+i+" X "+j+" = "+k+ "</td>";
+                j++;
+            }
+            x = x + "</tr>";
+            j=1;
+            i++;
+        }
+        x=x+"</table>";
+        document.write(x);
+
+
+    </script>
+</table>
 </body>
 </html>

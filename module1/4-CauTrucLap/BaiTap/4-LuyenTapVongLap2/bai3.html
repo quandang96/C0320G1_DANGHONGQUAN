@@ -2,9 +2,63 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>In tam giác Vuông</title>
 </head>
 <body>
-$END$
+<script>
+    let print="" ;
+    let i=0;
+    while (i<8){
+        print += "*";
+        document.write(print+"<br>");
+        i++;
+    }
+    document.write("<br>");
+    document.write("<br>");
+     i=0;
+    let j=0;
+    while (i<8){
+        while (j<8){
+            document.write("*");
+            j++;
+        }
+        document.write("<br>");
+        i++;
+        j=i;
+    }
+    document.write("<br>");
+    document.write("<br>");
+     i=0;
+     print="";
+     j=0;
+    while (i<8){
+        while (j<7){
+            document.write("&nbsp&nbsp");
+            j++;
+        }
+        print += "*";
+        document.write(print+"<br>");
+        i++;
+        j=i;
+    }
+    document.write("<br>");
+    document.write("<br>");
+     i=0;
+     j=0;
+     print ="";
+    while (i<9){
+        document.write(print);
+        while (j<8){
+            document.write("*");
+            j++
+        }
+        print+="&nbsp&nbsp";
+        document.write("<br>");
+        i++;
+        j=i;
+
+    }
+
+</script>
 </body>
 </html>

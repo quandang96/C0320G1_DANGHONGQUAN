@@ -2,9 +2,79 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>calculator</title>
+    <style>
+        .myclass{
+            width: 50px;
+            height: 50px;
+            color: blue;
+            font-size: 20px;
+            background: white;
+            margin: 5px 7px;
+
+
+
+        }
+        table#t01 {
+            border-style: solid;
+            border-width: 5px;
+            border-color: black;
+            padding: 5px;
+
+        }
+        
+
+    </style>
 </head>
 <body>
-$END$
+<form>
+    <table id="t01">
+        <tr>
+            <td colspan="4">
+                <label><input id="kq" type="text" style="height: 30px;width: 270px  "></label>
+            </td>
+        </tr>
+        <tr >
+            <td>
+
+                <button class="myclass" type="button" onclick="a.value +=7">7</button>
+                <button class="myclass" type="button" onclick="a.value +=8"> 8</button>
+                <button class="myclass" type="button" onclick="a.value +=9"> 9</button>
+                <button class="myclass" type="button" onclick="a.value +='+'"> +</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button class="myclass" type="button" onclick="a.value +=4"> 4</button>
+                <button class="myclass" type="button" onclick="a.value +=5"> 5</button>
+                <button class="myclass" type="button" onclick="a.value +=6"> 6</button>
+                <button class="myclass" type="button" onclick="a.value +='-'"> -</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button class="myclass" type="button" onclick="a.value +=1"> 1</button>
+                <button class="myclass" type="button" onclick="a.value +=2"> 2</button>
+                <button class="myclass" type="button" onclick="a.value +=3"> 3</button>
+                <button class="myclass" type="button" onclick="a.value +='X'"> *</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button class="myclass" type="button" onclick="a.value +=0"> 0</button>
+                <button class="myclass" type="button" onclick="a.value =''"> C </button>
+                <button class="myclass" type="button" onclick="result() "> =</button>
+                <button class="myclass" type="button" onclick="a.value +='/'"> /</button>
+            </td>
+        </tr>
+
+    </table>
+    <script>
+        let a = document.getElementById("kq");
+        function result() {
+            a.value = eval(a.value);
+        }
+    </script>
+</form>
 </body>
 </html>
