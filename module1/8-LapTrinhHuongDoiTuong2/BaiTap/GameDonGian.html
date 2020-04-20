@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Game đơn giản </title>
+</head>
+<body>
+<div id="game"></div>
+<script>
+    function Hero(image, top, left,size){
+        this.image = image;
+        this.top = top;
+        this.left = left;
+        this.size = size;
+        this.getHeroElement = function(){
+            return '<img width="'+ this.size + '"' +
+                ' height="'+ this.size + '"' +
+                ' src="' + this.image +'"' +
+                ' style="top: '+this.top+'px; left:'+this.left+'px; right:'+this.right+'px;bottom: '+this.bottom+'px;position:absolute;"  />';
+        };
+
+        this.moveRight = function(){
+            this.left += 50;
+            console.log('ok: ' + this.left);
+        };
+        this.moveLeft = function () {
+              this.left -= 50;
+        };
+        this.moveTop = function () {
+              this.top -=50;
+        };
+        this.moveBottom = function () {
+              this.top +=50;
+        }
+
+    }
+    let hero = new Hero('https://getdrawings.com/image/naruto-sage-mode-drawing-58.jpg', 20, 30, 200);
+    function start() {
+        if (hero.left < window.innerWidth - hero.size) {
+            hero.moveRight();
+
+        } else if (hero.top < window.innerHeight - hero.size) {
+            hero.moveBottom();
+        }else {
+            clearTimeout(pause);
+            return stop() ;
+        }
+        document.getElementById('game').innerHTML = hero.getHeroElement();
+        pause = setTimeout(start,100)
+    }
+    let t;
+    let pause;
+    start();
+    function stop() {
+        if (hero.left > 0) {
+            hero.moveLeft();
+        } else if (hero.top > 0){
+            hero.moveTop()
+        }
+        else {
+             clearTimeout(t);
+             return start();
+        }
+        document.getElementById('game').innerHTML = hero.getHeroElement();
+          t = setTimeout(stop, 100);
+    }
+</script>
+</body>
+</html>

@@ -7,18 +7,20 @@
 <body>
 <script>
     let name = prompt("Họ và Tên");
-
-      while(1){
-        let idNumber =prompt("Số CMND");
+    let idNumber;
+    while(1){
+        idNumber =prompt("Số CMND");
         if(idNumber.length === 9){
             if(Number.isInteger(parseInt(idNumber))&& parseInt(idNumber)>0){
+
                 break;
             }
         }
     }
     let day,month,year;
+    let dateOfBirth;
       while (1){
-        let dateOfBirth = prompt("Ngày tháng năm sinh");
+         dateOfBirth = prompt("Ngày tháng năm sinh");
            if(dateOfBirth[2]==="/" && dateOfBirth[5]==="/"&& dateOfBirth.length===10){
                 day=dateOfBirth.substr(0,2);
                 month= dateOfBirth.substr(3,2);
@@ -74,10 +76,10 @@
             name2+=name[i].toLowerCase();
         }
       }
-    alert("Họ và Tên: "+name+ "\n" +"Số CMND: "+idNumber+ "\n" + "Ngày tháng năm sinh: "+dateOfBirth+ "\n"+"Email: "+mail+ "\n"
+    alert("Họ và Tên: "+name2+ "\n" +"Số CMND: "+idNumber+ "\n" + "Ngày tháng năm sinh: "+dateOfBirth+ "\n"+"Email: "+email+ "\n"
         + "Địa Chỉ: "+address+"\n"+"Loại Customer: "+customer+ "\n"+ "Giảm giá: "+discount+ "\n"
         + "Số lượng đi kèm: "+quantity+ "\n"+ "Số ngày thuê: "+rentDay+"\n"+"Loại dịch vụ: "+service+ "\n"
-        +"Loại phòng thuê: "+room+ "\n"+ " Số tiền phải trả: "+pay+ "$");
+        +"Loại phòng thuê: "+room+ "\n");
 </script>
 </body>
 </html>

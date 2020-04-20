@@ -7,7 +7,79 @@
 <body>
 
 <script>
+    let sms = " ";
+    let Mobile = function (mobileStatus, battery) {
+        this.statusOn = mobileStatus;
+        this.battery = battery;
+        this.massage = " ";
+        this.inboxMassage = new Array(0);
+        this.sentMassage = new Array(0);
+        this.checkMobileStatus = function () {
+            if (this.statusOn && this.battery > 0) {
+                return true;
+            } else if (this.statusOn === false || this.battery === 0) {
+                return false;
+            }
+        };
+        this.turnOn = function () {
+                  this.statusOn = true;
+                  return this.statusOn
+        };
+        this.turnOff = function () {
+            this.statusOn = false;
+            return this.statusOn;
+        };
 
+        this.addBattery = function (batteryStatus) {
+            if (batteryStatus === true && this.battery < 100) {
+                this.battery++;
+            }
+        };
+        this.writeSms = function (writing) {
+            if (nokia.checkMobileStatus()) {
+                this.massage = writing;
+                this.battery--;
+            }
+        };
+        this.sentSms = function () {
+            if (nokia.checkMobileStatus()) {
+                sms = this.massage;
+                this.sentMassage.push(this.massage);
+                this.battery--;
+
+            }
+        };
+        this.inboxSms = function () {
+            if (nokia.checkMobileStatus()) {
+                this.inboxMassage.push(sms);
+                this.battery--;
+            }
+        }
+    };
+    let iphone = new Mobile(true, 0);
+    let nokia = new Mobile(true, 0);
+    nokia.checkMobileStatus();
+    iphone.checkMobileStatus();
+    nokia.writeSms(prompt("Nhập tin nhắn trên điện thoại nokia"));
+    nokia.sentSms();
+    alert("Tin nhắn đã gửi điện thoại nokia: "+nokia.sentMassage);
+    iphone.inboxSms();
+    alert("Tin nhắn đã nhận điện thoại Iphone: "+iphone.inboxMassage[0]);
+    iphone.writeSms(prompt("Nhập tin nhắn trên Iphone"));
+    iphone.sentSms();
+    alert("Tin nhắn đã gửi trên điện thoại Iphone: "+iphone.sentMassage);
+    nokia.inboxSms();
+    alert("Tin nhắn đã nhận trên điện thoại Nokia: "+nokia.inboxMassage[0]);
+    setInterval(function() {
+        nokia.addBattery(true)
+    }, 1000);
+    setInterval(function() {
+        iphone.addBattery(true)
+    }, 1000);
+    setInterval(function () {
+        console.log(nokia.battery);
+        console.log(iphone.battery);
+    }, 1000);
 </script>
 </body>
 </html>

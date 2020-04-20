@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Phát triển game lái xe</title>
+
+</head>
+<body>
+<canvas id="myCanvas" width="1000px" height="400px" style="border: 5px solid #000000"></canvas>
+
+<script>
+    class game1 {
+        constructor(x,y) {
+            this.xPosition = x;
+            this.yPosition = y ;
+        }
+        car1(){
+            this.img = new Image();
+            this.ctx = document.getElementById("myCanvas").getContext("2d");
+            this.img.src =  "https://www.freeiconspng.com/uploads/green-top-car-png-16.png" ;
+            this.ctx.clearRect(this.xPosition- 10, this.yPosition-10, 230, 120);
+            this.ctx.drawImage(this.img, this.xPosition, this.yPosition,200,100);
+        }
+
+    }
+class game2 {
+    constructor(x2, y2) {
+        this.x2 = x2;
+        this.y2 = y2;
+        this.speed = 7;
+    }
+    car2() {
+        this.img = new Image();
+        this.ctx = document.getElementById("myCanvas").getContext("2d");
+        this.img.src = " https://www.freeiconspng.com/uploads/yellow-top-car-png-15.png";
+        this.ctx.drawImage(this.img, this.x2, this.y2, 200, 100);
+
+    }
+         top() {
+        this.y2 = this.y2 - this.speed;
+        this.ctx.clearRect(this.x2 - 20, this.y2-20, 260, 140);
+        this.car2();
+    }
+         bottom() {
+        this.y2 = this.y2 + this.speed;
+        this.ctx.clearRect(this.x2 - 20, this.y2-20, 250, 140);
+        this.car2();
+
+    }
+        left() {
+        this.x2 = this.x2 - this.speed;
+        this.ctx.clearRect(this.x2 - 20, this.y2-20, 250, 140);
+        this.car2();
+    }
+      right() {
+        this.x2 = this.x2 + this.speed;
+        this.ctx.clearRect(this.x2- 20, this.y2-20, 250, 140);
+        this.car2();
+    }
+      ctrl(){
+        this.speed = 20;
+      }
+
+}
+    function moveSelection(evt) {
+        switch (evt.keyCode) {
+            case 17:
+                start.ctrl();
+                break;
+            case 37:
+                start.left();
+                break;
+            case 39:
+                start.right();
+                break;
+            case 38:
+                 start.top();
+                break;
+            case 40:
+                 start.bottom();
+                break;
+        }
+    }
+
+    function docReady() {
+        window.addEventListener('keydown', moveSelection);
+    }
+    let start = new game2(500,80);
+    start.car2();
+    docReady();
+    let y=1;
+    let x = -210;
+    setInterval(function () {
+        x++;
+        if (x > 1000) {
+            x=-210;
+           y=Math.random()*120
+        } else if (x <= 1000) {
+            let carRed = new game1(x,y);
+            carRed.car1();
+        }
+    }, 1);
+
+
+</script>
+</body>
+</html>
