@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kiểm tra mã số bảo mật hợp lệ</title>
+</head>
+<body>
+<script>
+    let regExp = /^[A-Z]+[a-zA-Z0-9]{5}/;
+    function checkPassword(){
+        while (1){
+            let password=prompt("Nhập mã số bảo vệ");
+           if (regExp.test(password)){
+               break;
+           } else {
+               alert("Mã số bảo vệ không hợp lệ mời bạn nhập lại");
+           }
+        }
+    }
+    checkPassword()
+</script>
+</body>
+</html>
