@@ -5,8 +5,149 @@
     <title>Remote để điều khiển Tivi</title>
 </head>
 <body>
+<video  id="video"  width = "500" height="300" autoplay controls>
+
+</video> <br>
+<button type="button" onclick="on_Off()">On/Off</button>
+<button  type="button" onclick="channel(1)" >Channel1</button>
+<button  type="button" onclick="channel(2)" >Channel2</button>
+<button  type="button" onclick="channel(3)" >Channel3</button>
+<button  type="button" onclick="channel(4)" >Channel4</button>
+<button type="button" onclick="volIncrease()">Volume + </button>
+<button  type="button" onclick="volDecrease()">volume -</button><br><br>
+<table border="1px" solid="black" border-collapse="collapse"  padding="15px" >
+    <tr>
+        <th>Remote</th>
+    </tr>
+    <tr>
+        <td >
+            <button type="button" onclick="on_off_remote()">On/Off</button>
+        </td>
+    </tr>
+    <tr>
+        <td >
+<button type="button" onclick="remoteChannel(1)" >1</button>
+<button type="button" onclick="remoteChannel(2)" >2</button>
+<button type="button" onclick="remoteChannel(3)" >3</button>
+<button type="button" onclick="remoteChannel(4)" >4</button>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <button type="button" onclick="volUp()">Vol+</button>
+            <button type="button" onclick="volDown()">Vol-</button>
+        </td>
+    </tr>
+</table>
 <script>
-    
+    let video = document.getElementById("video");
+    class Tivi {
+        constructor(status,vol) {
+           this.status = status;
+           video.volume =vol;
+        }
+        changeChannel(number) {
+              switch(number){
+                  case 1:
+                  video.src="channel1.mp4";
+                  break;
+                  case 2:
+                  video.src="channel2.mp4";
+                      break;
+                  case 3:
+                   video.src="channel3.mp4";
+                      break;
+                  case 4:
+                      video.src="channel4.mp4";
+                      break;
+              }
+            }
+        changeVolumeIncrease(){
+            video.volume += 0.1;
+        }
+        changeVolumeDecrease(){
+            video.volume -=0.1;
+
+        }
+        turnOn_turnOff() {
+            if (this.status===true) {
+                video.src="";
+                this.status =false;
+            }else if(this.status===false) {
+                video.src = 'channel2.mp4';
+                this.status =true
+            }
+        }
+        }
+        class Remote {
+        constructor(tvStatus) {
+            this.tvStatus = tvStatus;
+        }
+        remoteChannel(numberChannel){
+            switch(numberChannel){
+                case 1:
+                    video.src="channel1.mp4";
+                    break;
+                case 2:
+                    video.src="channel2.mp4";
+                    break;
+                case 3:
+                    video.src="channel3.mp4";
+                    break;
+                case 4:
+                    video.src="channel4.mp4";
+                    break;
+            }
+        }
+        remoteVolUp(){
+            video.volume += 0.1;
+
+        }
+        remoteVolDown(){
+            video.volume -=0.1;
+        }
+         turnOn_Off_remote(){
+             if (this.tvStatus===true) {
+                 video.src="";
+                 this.tvStatus =false;
+             }else if(this.tvStatus===false) {
+                 video.src = 'channel2.mp4';
+                 this.tvStatus =true
+             }
+            }
+    }
+
+
+    let television = new Tivi(false,0.5);
+    let remoteTelevision = new Remote(television.status);
+    function on_Off() {
+        television.turnOn_turnOff()
+    }
+    function volIncrease() {
+        television.changeVolumeIncrease()
+    }
+    function volDecrease() {
+        television.changeVolumeDecrease()
+
+    }
+    function channel(code) {
+        television.changeChannel(code);
+
+    }
+    function remoteChannel(numberCode) {
+        remoteTelevision.remoteChannel(numberCode);
+    }
+    function volUp() {
+        remoteTelevision.remoteVolUp();
+    }
+    function volDown() {
+        remoteTelevision.remoteVolDown();
+
+    }
+    function on_off_remote() {
+         remoteTelevision.turnOn_Off_remote();
+
+    }
 </script>
 </body>
 </html>
