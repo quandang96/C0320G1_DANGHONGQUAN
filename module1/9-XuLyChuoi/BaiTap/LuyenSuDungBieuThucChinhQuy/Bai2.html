@@ -2,9 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Đếm số từ trong một chuỗi</title>
 </head>
 <body>
-$END$
+<script>
+    let count=0;
+    let regExp = /^[a-zA-Z]$/;
+    function check(word) {
+         for(let i=0;i<word.length;i++){
+             if (regExp.test(word[i])){
+                 count++
+             }
+
+         }
+        alert("Số từ trong chuỗi là: "+count);
+    }
+    check("Hello World!");
+</script>
 </body>
 </html>

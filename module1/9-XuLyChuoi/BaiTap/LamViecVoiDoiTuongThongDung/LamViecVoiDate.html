@@ -2,9 +2,51 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Làm việc với Date</title>
 </head>
 <body>
-$END$
+<script>
+    class myDate {
+        constructor(day, month, year) {
+           this.day = day;
+
+           this.month = month;
+
+           this.year = year;
+         }
+
+           getDay = function () {
+               return this.day;
+           };
+           getMonth = function () {
+               return this.month;
+           };
+           getYear = function () {
+               return this.year;
+           };
+       }
+    let birthday = new myDate(5, 11, 1996);
+    let today = new Date();
+    let month =  birthday.getMonth();
+    let currentMonth = today.getMonth()+1 ;
+    let dayBirthday = birthday.getDay();
+    let nam = today.getFullYear() - birthday.getYear();
+    document.write("Toi da song: " + nam + " nam <br>");
+
+    let thang = (nam * 12) + currentMonth - month ;
+    document.write("Tôi đã sống: " + thang + " tháng <br>");
+
+    let ngay = thang * 30 + today.getDate()+1-dayBirthday;
+    document.write("Tôi đã sống: " + ngay + " ngày<br>");
+
+    let gio = ngay * 24;
+    document.write("Tôi đã sống: " + gio + " giờ <br>");
+
+    let phut = gio * 60;
+    document.write("Tôi đã sống: " + phut + " phút <br>");
+
+    let giay = phut * 60;
+    document.write("Tôi đã sống: " + giay + " giây <br>");
+</script>
 </body>
 </html>

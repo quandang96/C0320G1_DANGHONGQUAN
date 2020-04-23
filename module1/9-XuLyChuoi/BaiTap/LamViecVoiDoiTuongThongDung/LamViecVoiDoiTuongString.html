@@ -2,9 +2,31 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Làm việc với đối tượng String</title>
 </head>
 <body>
-$END$
+<script>
+    let count=0;
+    let countWord =0;
+    let myString = "Tôi yêu ngôn ngữ lập trình Javascript";
+    for(let i=0;i<myString.length;i++){
+        if(myString[i]==="a"){
+            count++
+        }
+    }
+    document.write(count+"<br><br>");
+    document.write(myString.split("")+"<br><br>");
+    for(let i=0;i<myString.length;i++){
+        if (myString[i] !==" ") {
+            countWord++
+        }
+        }
+    document.write("Số lượng từ có trong chuỗi: "+countWord+"<br><br>");
+    let newString = myString.replace("Javascript","Typescript");
+    document.write(newString)
+
+
+
+</script>
 </body>
 </html>

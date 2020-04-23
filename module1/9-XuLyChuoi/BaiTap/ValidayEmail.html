@@ -2,9 +2,25 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Validate Email</title>
 </head>
 <body>
-$END$
+<script>
+    let regEx = /^[A-Za-z0-9]+[A-Za-z0-9]*@[A-Za-z0-9]+(\.[A-Za-z0-9]+)$/;
+    function checkMail(mail) {
+        if(regEx.test(mail)){
+            alert("Email hợp lệ");
+        }else {
+            alert("Email không hợp lệ");
+        }
+
+    }
+    checkMail("a@gmail.com");
+    checkMail("ab@yahoo.com");
+    checkMail("abc@hotmail.com");
+    checkMail("@gmail.com");
+    checkMail("ab@gmail.");
+    checkMail("@#abc@gmail.com");
+</script>
 </body>
 </html>

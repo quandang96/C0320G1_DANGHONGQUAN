@@ -2,9 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Kiểm tra Mã quốc gia nước Mỹ</title>
 </head>
 <body>
-$END$
+<script>
+    let regexp = /^[0-9]{5}(?:-[0-9]{4})?$/;
+    function is_usZipCode(str) {
+        return regexp.test(str);
+
+    }
+    let zipCode = "03201-2150";
+    console.log(is_usZipCode(zipCode));
+    zipCode = "9950";
+    console.log(is_usZipCode(zipCode));
+</script>
 </body>
 </html>

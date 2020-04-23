@@ -2,9 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Kiểm tra chuỗi</title>
 </head>
 <body>
-$END$
+<script>
+    let regExp = /^(([0-2]+[0-9])|([3]+[0-1]))\/(([0]+[1-9])|([1]+[0-2]))\/([0-9]{4})$/;
+    function check(date){
+        console.log(regExp.test(date));
+    }
+    check("30/01/1996")
+</script>
 </body>
 </html>

@@ -2,9 +2,128 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Ứng Dụng Quản Lý Khu nghỉ dưỡng Furama</title>
 </head>
 <body>
-$END$
+<script>
+    let k=true;
+    function displayMainMenu () {
+        while (k) {
+            let selection = parseInt(prompt("1.Add New Customer. \n" +
+                "2.Display Information Customer.\n" +
+                "3.Edit Information Customer.\n" +
+                "4.Delete Customer.\n" +
+                "5.Exit.\n"));
+            switch (selection) {
+                case 1:
+                    addNewCustomer();
+                    break;
+                case 2:
+                    displayCustomers();
+                    break;
+                case 3:
+                    editCustomer();
+                    break;
+                case 4:
+                    deleteCustomer();
+                    break;
+                case 5:
+                    k= false;
+                    break;
+
+            }
+        }
+    }
+    let arrNameCustomer = [];
+    let arrListCustomers =[];
+    let count=0;
+    function addNewCustomer() {
+            let name=prompt("Họ và Tên");
+            let idNumber;
+        name = name.trim();
+        while (1){
+            name=name.replace("  "," ");
+            if(name.search("  ")===-1){
+                break;
+
+            }
+        }
+
+        let name2="";
+        for (let i=0;i<name.length;i++){
+            if(i===0){
+                name2+=name[i].toUpperCase();
+            }else if(name[i-1]===" "&&name[i] !==" "){
+                name2+=name[i].toUpperCase();
+            }else {
+                name2+=name[i].toLowerCase();
+            }
+        }
+            while(1){
+                idNumber =prompt("Số CMND");
+                if(idNumber.length === 9){
+                    if(Number.isInteger(parseInt(idNumber))&& parseInt(idNumber)>0){
+
+                        break;
+                    }
+                }
+            }
+            let day,month,year;
+            let dateOfBirth;
+            while (1){
+                dateOfBirth = prompt("Ngày tháng năm sinh");
+                if(dateOfBirth[2]==="/" && dateOfBirth[5]==="/"&& dateOfBirth.length===10){
+                    day=dateOfBirth.substr(0,2);
+                    month= dateOfBirth.substr(3,2);
+                    year =dateOfBirth.substr(6,4);
+                    if(Number.isInteger(parseInt(day))&& parseInt(day)>0 && parseInt(day)<=31&&
+                        Number.isInteger(parseInt(month))&& parseInt(month)>0 && parseInt(month)<=12&&
+                        Number.isInteger(parseInt(year))&& parseInt(year)>0){
+                        break;
+                    }
+                }
+            }
+            let pattern = /^\w+@\w+\.+(\w){1,4}$/i;
+            let email;
+            while (1) {
+                email = prompt("Email");
+                if (pattern.test(email)) {
+                    break;
+                }
+            }
+            let address = prompt("Địa Chỉ");
+            let customer = prompt("Loại Customer (Diamond, Platinum, Gold, Silver, Member)");
+            let discount = prompt("Giảm giá");
+            let quantity,rentDay;
+            do{
+                quantity = parseInt(prompt("Số lượng đi kèm"));
+            }while (isNaN(quantity));
+
+            do{
+                rentDay = parseInt(prompt("Số ngày thuê"));
+            }while (isNaN(rentDay));
+
+            let service = prompt("Loại dịch vụ (Villa, House, Room)");
+            let room = prompt("Loại phòng thuê (Vip, Business,  Normal)");
+
+
+            arrListCustomers[count]="1.Họ và Tên: "+name2+ "\n" +"2.Số CMND: "+idNumber+ "\n" + "Ngày tháng năm sinh: "+dateOfBirth+ "\n"+"Email: "+email+ "\n"
+                + "Địa Chỉ: "+address+"\n"+"Loại Customer: "+customer+ "\n"+ "Giảm giá: "+discount+ "\n"
+                + "Số lượng đi kèm: "+quantity+ "\n"+ "Số ngày thuê: "+rentDay+"\n"+"Loại dịch vụ: "+service+ "\n"
+                +"Loại phòng thuê: "+room+ "\n";
+        arrNameCustomer [count] = name2;
+            count++;
+        }
+        function displayCustomers(){
+            let selectName = prompt("Danh sách khách hàng"+"\n"+arrNameCustomer.join("\n") + "\n" + "Nhập tên khách hàng bạn muốn xem thông tin");
+            for (let j = 0; j < arrNameCustomer.length; j++) {
+                if (selectName === arrNameCustomer[j]) {
+                    alert(arrListCustomers[j]);
+                    break;
+                }
+            }
+        }
+    displayMainMenu();
+</script>
 </body>
 </html>

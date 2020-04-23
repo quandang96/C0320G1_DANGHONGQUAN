@@ -2,9 +2,30 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Đếm số lần xuất hiện của phần tử</title>
 </head>
 <body>
-$END$
+<script>
+    let count=0;
+    let val = parseInt(prompt("Enter a value to count: "));
+    let nums = [];
+    for(let i=0; i<100; ++i){
+        nums[i] = Math.floor(Math.random() * 101);
+    }
+    function displayArr(arr) {
+        for (let i = 0; i < arr.length; ++i) {
+            if(arr[i]===val){
+                count++
+            }
+            document.write(arr[i] + " ");
+            if (i % 9 === 0 && i!==0) {
+                document.write("<br>");
+            }
+        }
+        document.write("<br> Số lần xuất hiện của "+val+ " là "+count);
+    }
+    displayArr(nums);
+
+</script>
 </body>
 </html>

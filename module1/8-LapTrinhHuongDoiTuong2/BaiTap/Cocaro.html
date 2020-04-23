@@ -2,36 +2,85 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Phát triển trò chơi cờ ca-ro</title>
+    <title>Caro</title>
 </head>
 <body>
-<table  border="1", style="border: black" id="table"  >
-    <tr>
-        <td id="1">X</td>
-    </tr>
-</table>
 <script>
-let table = document.getElementById("table");
-let display = "";
-for (let i=1;i<=10;i++){
-    display+="<tr>";
-    for( let j=1;j<=10;j++){
-        display+="<td width='50' height='50' align='center' id='"+i+j+"' onclick='caro("+i+j+")' >"+"</td>";
-    }
-    display+="</tr>"
-}
-table.innerHTML = display;
-let b=0;
-    function caro(a) {
-        if (b % 2 === 0) {
-            document.getElementById("" + a + "").innerHTML = "X"
-
-        } else {
-            document.getElementById("" + a + "").innerHTML = "O"
+    class Board {
+        constructor(col, row) {
+            this.col = col;
+            this.row = row;
+            this.board = [];
+            this.initBoard();
         }
-        b++;
+        initBoard() {
+            for (let i = 0; i < this.row; i++) {
+                this.board[i] = [];
+                for (let j = 0; j < this.row; j++) {
+                    this.board[i][j] = ""
+                }
+            }
+        }
+        draw() {
+            let temp = "<table border='1px' style='border-color: green' >";
+            for (let i = 0; i < this.row; i++) {
+                temp += "<tr>";
+                for (let j = 0; j < this.row; j++) {
+                    temp += "<td style='height:30px;width:30px; text-align: center;' onclick='play(" + i + "," + j + ")'>" + this.board[i][j] + "</td>"
+                }
+                temp += "</tr>"
+            }
+            temp += "</table>";
+            return temp;
+        }
+        playGame(i, j, char) {
+            this.board[i][j] = char;
+            document.body.innerHTML = "";
+            document.write(this.draw());
+            this.checkWin(char);
+        }
+        checkWin(char) {
+            let check = false;
+            for (let i = 0; i < this.row; i++) {
+                for (let j = 0; j < this.row; j++) {
+                    if (this.board[i][j] === char && this.board[i][j + 1] === char && this.board[i][j + 2] === char && this.board[i][j + 3] === char && this.board[i][j + 4] === char) {
+                        check = true;
+                    }
+                    if (this.board[i][j] === char && this.board[i + 1][j] === char && this.board[i + 2][j] === char && this.board[i + 3][j] === char && this.board[i + 4][j] === char) {
+                        check = true;
+                    }
+                    if (this.board[i][j] === char && this.board[i + 1][j + 1] === char && this.board[i + 2][j + 2] === char && this.board[i + 3][j + 3] === char && this.board[i + 4][j + 4] === char) {
+                        check = true;
+                    }
+                    if (this.board[i][j] === char && this.board[i + 1][j - 1] === char && this.board[i + 2][j - 2] === char && this.board[i + 3][j - 3] === char && this.board[i + 4][j - 4] === char) {
+                        check = true;
+                    }
+                    if (this.board[i][j] === char && this.board[i - 1][j + 1] === char && this.board[i - 2][j + 2] === char && this.board[i - 3][j + 3] === char && this.board[i - 4][j + 4] === char) {
+                        check = true;
+                    }
+                }
+            }
+            if (check) {
+                alert("Bạn " + char + " đã thắng");
+                location.reload()
+            }
+        }
     }
-
+    let count = 0;
+    let banCo = new Board(20, 20);
+    document.write(banCo.draw());
+    function play(i, j) {
+        if (banCo.board[i][j] != "X" && banCo.board[i][j] != "O") {
+            if (count % 2 === 0) {
+                banCo.playGame(i, j, "X");
+            } else {
+                banCo.playGame(i, j, "O")
+            }
+            count++
+        } else {
+            alert("Ô này đã được đánh. Yêu cầu bạn đánh ô khác.")
+        }
+    }
 </script>
 </body>
 </html>

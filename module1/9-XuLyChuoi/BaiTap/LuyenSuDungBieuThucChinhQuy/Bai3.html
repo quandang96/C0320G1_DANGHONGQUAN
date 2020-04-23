@@ -2,9 +2,28 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Đếm số nguyên âm/phụ âm trong một chuỗi</title>
 </head>
 <body>
-$END$
+<script>
+    let nguyenAm = /[ueoaiy]$/i;
+    let phuAm = /[bcdghklmnpqrstvx]$/i;
+    let countNguyenAm=0;
+    let countPhuAm=0;
+    function check(chuoi) {
+        for (let i=0;i<chuoi.length;i++){
+            if (nguyenAm.test(chuoi.charAt(i))){
+                countNguyenAm++;
+            }
+            else if (phuAm.test(chuoi.charAt(i))){
+                countPhuAm++;
+            }
+        }
+        alert("Chuỗi có "+countNguyenAm+" nguyên âm");
+        alert("Chuỗi có "+countPhuAm+" phụ âm");
+
+    }
+    check("Kiem Tra Nguyen Am Phu Am")
+</script>
 </body>
 </html>

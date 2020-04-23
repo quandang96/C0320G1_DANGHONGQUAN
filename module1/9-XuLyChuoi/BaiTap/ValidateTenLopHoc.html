@@ -2,9 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Validate tên của lớp học</title>
 </head>
 <body>
-$END$
+<script>
+    let regExp = /^[CAP]+[0-9]{4}[GHIKLM]$/;
+    function checkClassName (className){
+         console.log(regExp.test(className));
+    }
+    checkClassName("C0318G");
+    checkClassName("M0318G");
+    checkClassName("P0323A");
+</script>
 </body>
 </html>
