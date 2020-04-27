@@ -94,8 +94,12 @@
             }
             let address = prompt("Địa Chỉ");
             let customer = prompt("Loại Customer (Diamond, Platinum, Gold, Silver, Member)");
-            let discount = prompt("Giảm giá");
-            let quantity,rentDay;
+
+            let quantity,rentDay,discount;
+            do{
+            discount = prompt("Giảm giá");
+            }while (isNaN(discount));
+
             do{
                 quantity = parseInt(prompt("Số lượng đi kèm"));
             }while (isNaN(quantity));
@@ -109,6 +113,7 @@
         arrCustomer.push(name2);
         arrCustomer.push(idNumber);
         arrCustomer.push(dateOfBirth);
+        arrCustomer.push(email);
         arrCustomer.push(address);
         arrCustomer.push(customer);
         arrCustomer.push(discount);

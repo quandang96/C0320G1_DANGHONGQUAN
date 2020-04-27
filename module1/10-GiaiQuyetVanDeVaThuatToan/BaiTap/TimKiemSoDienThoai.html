@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tìm Kiếm Số Điện Thoại</title>
+</head>
+<body>
+<script>
+    let arrPhone=["0942458458","0916859859","0974058058","0868888140","0765666888","0939673366"];
+    let regExpPhone =/^[0]([3][2-9]|[8][6]|[9][78])[0-9]{7}$/;
+    function checkPhone(arr) {
+        document.writeln("Số điện thoại Viettel:");
+        for(let i=0;i<arr.length;i++){
+            if(regExpPhone.test(arr[i])){
+                document.writeln("<br>"+arr[i] )
+            }
+        }
+
+    }
+    checkPhone(arrPhone);
+
+</script>
+</body>
+</html>

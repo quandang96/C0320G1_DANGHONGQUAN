@@ -6,6 +6,46 @@
 </head>
 <body>
 <script>
+    let nums = [];
+    for(let i=0; i<100; ++i){
+        nums[i] = Math.floor(Math.random() * 101);
+    }
+    let numberSearch = parseInt(prompt("Nhập số cần đoán "));
+    function check(number) {
+        console.time("time tìm kiếm tuyến tính");
+        for (let j=0;j<number.length;j++){
+            if(nums[j] === numberSearch){
+                console.log("Đã tìm thấy số "+numberSearch );
+                console.timeEnd("time tìm kiếm tuyến tính");
+                break;
+            }
+        }
+
+    }
+    check(nums);
+    binarySearch(nums);
+    function binarySearch(arr) {
+        arr.sort(function (a,b) {return a-b});
+        let min = 0;
+        let max = arr.length - 1;
+        console.time("Time nhị phân");
+        while (min <= max) {
+            let mid = parseInt((min + max) / 2);
+
+            if (arr[mid] === numberSearch) {
+                console.log("Đã tìm thấy số "+arr[mid] );
+                console.timeEnd("Time nhị phân");
+                break;
+            } else if (arr[mid] < numberSearch) {
+                min = mid + 1;
+            } else {
+                max = mid - 1;
+            }
+        }
+        return -1;
+
+    }
+
 
 </script>
 </body>
