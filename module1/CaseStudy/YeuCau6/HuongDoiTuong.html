@@ -63,7 +63,7 @@
             return this.dateOfBirth=newDateOfBirth;
         }
         setEmail(newEmail) {
-            return this.address = newEmail;
+            return this.email = newEmail;
         }
         setAddress(newAddress){
             return this.address=newAddress;
@@ -89,21 +89,50 @@
         paid(){
             switch (this.service) {
                 case this.service="Villa":
-                    prices = 500;
+                    this.prices = 500;
                     break;
                 case this.service="House":
-                    prices = 300;
+                    this.prices = 300;
                     break;
                 case this.service="Room":
-                    prices = 100;
+                    this.prices = 100;
                     break;
             }
-             this.pay = prices*this.rentDay*(1-this.discount/100);
+             this.pay = this.prices*this.rentDay*(1-this.discount/100);
             return this.pay;
         }
 
     }
+    class Employees extends Customer{
+        constructor(name2,idNumber,dateOfBirth,email,address,level,position) {
+            super(name2,idNumber,dateOfBirth,email,address);
+            this.level = level;
+            this.position = position;
+        }
+        getLevel(){
+            return this.level;
+        }
+        getPosition(){
+            return this.position;
+        }
+
+        getSalary(){
+            switch (this.position) {
+                case "Manager":
+                    this.salary =500;
+                    break;
+                case "Sale":
+                    this.salary = 300;
+                    break;
+                case "Marketing":
+                    this.salary = 200;
+                    break;
+            }
+            return this.salary;
+        }
+    }
     let arrListCustomers =[];
+    let listEmployee=[];
     function addNewCustomer() {
         let name = prompt("Họ và Tên");
         let idNumber;
@@ -178,17 +207,16 @@
         let room = prompt("Loại phòng thuê (Vip, Business,  Normal)");
         for(let j=0;j<=arrListCustomers.length;j++){
             if(j===arrListCustomers.length){
-                arrListCustomers[j] = new Customer(name2,idNumber,dateOfBirth,address,customer,discount,quantity,rentDay,service,room);
+                arrListCustomers[j] = new Customer(name2,idNumber,dateOfBirth,email,address,customer,discount,quantity,rentDay,service,room);
                 break;
             }
 
         }
     }
-    arrNameCustomer =[];
+   let arrNameCustomer =[];
+    let nameEmployee= [];
     function displayCustomers(){
-        for(let k=0;k<arrListCustomers.length;k++){
-            arrNameCustomer[k]=arrListCustomers[k].getName();
-        }
+        getNameArr(arrNameCustomer,arrListCustomers);
         let selectName = prompt("Danh sách khách hàng"+"\n"+arrNameCustomer.join("\n") + "\n"
             + "Nhập tên khách hàng bạn muốn xem thông tin");
         for (let j = 0; j < arrNameCustomer.length; j++) {
@@ -196,7 +224,7 @@
                 alert("1.Ho va ten: " + arrListCustomers[j].getName()+ "\n" +
                     "2.So CMND: " + arrListCustomers[j].getIdNumber() + "\n" +
                     "3.Ngay Sinh: " + arrListCustomers[j].getDateOfBirth() + "\n" +
-                    "4.Email: " + arrListCustomers[j].getEmail + "\n" +
+                    "4.Email: " + arrListCustomers[j].getEmail() + "\n" +
                     "5.Dia chi: " + arrListCustomers[j].getAddress() + "\n" +
                     "6.Loai khach hang: " + arrListCustomers[j].getCustomer() + "\n" +
                     "7.Giam gia: " + arrListCustomers[j].getDiscount() + "\n" +
@@ -209,6 +237,7 @@
         }
     }
     function editCustomer() {
+        getNameArr(arrNameCustomer,arrListCustomers);
         let nameCustomers = prompt("Danh sách khách hàng" + "\n" + arrNameCustomer.join("\n") + "\n"
             + "Nhập tên khách hàng bạn muốn sửa thông tin");
         for (let j = 0; j < arrNameCustomer.length; j++) {
@@ -216,7 +245,7 @@
                 let list = parseInt(prompt("1.Ho va ten: " + arrListCustomers[j].getName()+ "\n" +
                     "2.So CMND: " + arrListCustomers[j].getIdNumber() + "\n" +
                     "3.Ngay Sinh: " + arrListCustomers[j].getDateOfBirth() + "\n" +
-                    "4.Email: " + arrListCustomers[j].getEmail + "\n" +
+                    "4.Email: " + arrListCustomers[j].getEmail() + "\n" +
                     "5.Dia chi: " + arrListCustomers[j].getAddress() + "\n" +
                     "6.Loai khach hang: " + arrListCustomers[j].getCustomer() + "\n" +
                     "7.Giam gia: " + arrListCustomers[j].getDiscount() + "\n" +
@@ -266,7 +295,7 @@
                         alert("1.Ho va ten: " + arrListCustomers[j].getName()+ "\n" +
                             "2.So CMND: " + arrListCustomers[j].getIdNumber() + "\n" +
                             "3.Ngay Sinh: " + arrListCustomers[j].getDateOfBirth() + "\n" +
-                            "4.Email: " + arrListCustomers[j].getEmail + "\n" +
+                            "4.Email: " + arrListCustomers[j].getEmail() + "\n" +
                             "5.Dia chi: " + arrListCustomers[j].getAddress() + "\n" +
                             "6.Loai khach hang: " + arrListCustomers[j].getCustomer() + "\n" +
                             "7.Giam gia: " + arrListCustomers[j].getDiscount() + "\n" +
@@ -280,6 +309,7 @@
         }
     }
     function deleteCustomer() {
+        getNameArr(arrNameCustomer,arrListCustomers);
         let nameDelete = prompt("Danh sách khách hàng" + "\n" + arrNameCustomer.join("\n") + "\n"
             + "Nhập tên khách hàng bạn muốn  xóa");
         for (let j = 0; j < arrNameCustomer.length; j++) {
@@ -290,7 +320,7 @@
         }
 
     }
-    displayMainMenu();
+
     let k=true;
     function displayMainMenu () {
         while (k) {
@@ -299,10 +329,13 @@
                 "3.Edit Information Customer.\n" +
                 "4.Delete Customer.\n" +
                 "5.Display total pay of customer.\n"+
-                "6.Exit"  ));
+                "6.Add new Employees.\n"+
+                "7.Display information Employees.\n"+
+                "8.Salary of Employees.\n"+
+                "9.Exit"  ));
             switch (selection) {
                 case 1:
-                    addNewCustomer();
+                    addNewCustomer(arrListCustomers);
                     break;
                 case 2:
                     displayCustomers();
@@ -317,13 +350,24 @@
                     displayTotal();
                     break;
                 case 6:
+                    addNewEmployee();
+                    break;
+                case 7:
+                    displayEmployee();
+                    break;
+                case 8:
+                    salaryEmployee();
+                    break;
+                case 9:
                     k= false;
                     break;
 
             }
         }
     }
+    displayMainMenu();
     function displayTotal() {
+        getNameArr(arrNameCustomer,arrListCustomers);
         let total = prompt("Danh sách khách hàng" + "\n" + arrNameCustomer.join("\n") + "\n"
             + "Nhập tên khách hàng bạn muốn  hiển thị tổng tiền cần thanh toán");
         for (let j = 0; j < arrNameCustomer.length; j++) {
@@ -332,6 +376,124 @@
             }
         }
     }
+
+    function addNewEmployee() {
+        let name = prompt("Họ và Tên");
+        name = name.trim();
+        while (1) {
+            name = name.replace("  ", " ");
+            if (name.search("  ") === -1) {
+                break;
+
+            }
+        }
+
+        let nameEmployee = "";
+        for (let i = 0; i < name.length; i++) {
+            if (i === 0) {
+                nameEmployee += name[i].toUpperCase();
+            } else if (name[i - 1] === " " && name[i] !== " ") {
+                nameEmployee += name[i].toUpperCase();
+            } else {
+                nameEmployee += name[i].toLowerCase();
+            }
+        }
+        let idNumberE;
+        while (1) {
+            idNumberE = prompt("Số CMND");
+            if (idNumberE.length === 9) {
+                if (Number.isInteger(parseInt(idNumberE)) && parseInt(idNumberE) > 0) {
+
+                    break;
+                }
+            }
+        }
+        let day, month, year;
+        let dateOfBirth;
+        while (1) {
+            dateOfBirth = prompt("Ngày tháng năm sinh");
+            if (dateOfBirth[2] === "/" && dateOfBirth[5] === "/" && dateOfBirth.length === 10) {
+                day = dateOfBirth.substr(0, 2);
+                month = dateOfBirth.substr(3, 2);
+                year = dateOfBirth.substr(6, 4);
+                if (Number.isInteger(parseInt(day)) && parseInt(day) > 0 && parseInt(day) <= 31 &&
+                    Number.isInteger(parseInt(month)) && parseInt(month) > 0 && parseInt(month) <= 12 &&
+                    Number.isInteger(parseInt(year)) && parseInt(year) > 0) {
+                    break;
+                }
+            }
+        }
+        let pattern = /^\w+@\w+\.+(\w){1,4}$/i;
+        let email;
+        while (1) {
+            email = prompt("Email");
+            if (pattern.test(email)) {
+                break;
+            }
+        }
+        let address = prompt("Địa Chỉ");
+        let conditionsLevel = true;
+        let level;
+        do {
+             level = prompt("Enter level(Intermediate,Colleges,University,After University)").trim();
+            if (level === "Intermediate" || level === "Colleges" || level === "University" || level === "After University") {
+                conditionsLevel = false;
+            }
+        } while (conditionsLevel);
+        let position;
+        let conditionsPosition = true;
+        do {
+             position = prompt("Enter your position(Sale,Marketing,Official,Staff,Manager)").trim();
+            if (position === "Sale" || position === "Staff" || position === "Marketing" ||
+                position === "Official" || position === "Manager") {
+                conditionsPosition  = false;
+            }
+        } while (conditionsPosition );
+
+        for (let j = 0; j <= listEmployee.length; j++) {
+            if (j === listEmployee.length) {
+                listEmployee[j] = new Employees(nameEmployee,idNumberE,dateOfBirth,email,address,level,position);
+                break;
+            }
+        }
+    }
+
+    function getNameArr(arrName,arrList) {
+        for(let k=0;k<arrList.length;k++){
+            arrName[k]=arrList[k].getName();
+        }
+    }
+    function displayEmployee(){
+        getNameArr(nameEmployee,listEmployee);
+        let employee = prompt("Danh sách Nhân Viên"+"\n"+nameEmployee.join("\n") + "\n"
+            + "Nhập tên khách hàng bạn muốn xem thông tin");
+        for (let j = 0; j < nameEmployee.length; j++) {
+            if (employee === nameEmployee[j]) {
+                alert("1.Ho va ten: " +listEmployee[j].getName()+ "\n" +
+                    "2.So CMND: " + listEmployee[j].getIdNumber() + "\n" +
+                    "3.Ngay Sinh: " + listEmployee[j].getDateOfBirth() + "\n" +
+                    "4.Email: " + listEmployee[j].getEmail() + "\n" +
+                    "5.Dia chi: " + listEmployee[j].getAddress() + "\n" +
+                    "6.Trình Độ: " + listEmployee[j].getLevel()+ "\n" +
+                    "7.Vị trí: " + listEmployee[j].getPosition() + "\n") ;
+                break;
+            }
+        }
+    }
+
+    function salaryEmployee() {
+        getNameArr(nameEmployee,listEmployee);
+        let salaryE = prompt("Danh sách nhân viên" + "\n" + nameEmployee.join("\n") + "\n"
+            + "Nhập tên nhân viên bạn muốn  hiển thị lương");
+        for (let j = 0; j < nameEmployee.length; j++) {
+            if (salaryE === nameEmployee[j]) {
+                alert("Salary: "+listEmployee[j].getSalary()+  " USD");
+            }
+        }
+
+    }
+
+
 
 </script>
 </body>
