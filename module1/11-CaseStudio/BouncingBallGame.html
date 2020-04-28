@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bouncing Ball Game</title>
+
+</head>
+<body>
+<h2 style="position: absolute;left: 560px">Bouncing Ball Game</h2>
+<h2 id="score" style="position: absolute ;left: 800px">0 Diem</h2>
+<p id="gameBoard"> </p>
+<script>
+    class GameBoard {
+        constructor(width, height, id) {
+            this.width = width;
+            this.height = height;
+            this.id = id;
+        }
+        drawGameBoard() {
+            document.getElementById("gameBoard").innerHTML = "<canvas id=" + this.id + " width=" + this.width + " height=" + this.height + " style='position:absolute;left: 410px;top:80px; border: 2px solid #000000 '></canvas>"
+        }
+        getId() {
+            return this.id;
+        }
+    }
+
+    class Bar {
+        constructor(cordX, cordY, gameBoard ){
+            this.cordX = cordX;
+            this.cordY = cordY;
+            this.gameBoard = gameBoard;
+        }
+
+        drawBar() {
+            this.rec = document.getElementById(this.gameBoard.getId()).getContext("2d");
+            this.rec.beginPath();
+            this.rec.fillStyle = "blue";
+            this.rec.fillRect(this.cordX, this.cordY, 100, 10);
+            this.rec.fill();
+        }
+
+        Left() {
+            this.rec.clearRect(this.cordX, this.cordY, 100, 10);
+            this.cordX -= 10;
+            this.drawBar();
+        }
+
+        Right() {
+            this.rec.clearRect(this.cordX, this.cordY, 100, 10);
+            this.cordX += 10;
+            this.drawBar();
+        }
+    }
+
+    class Ball {
+        constructor(cordX, cordY, gameBoard) {
+            this.cordX = cordX;
+            this.cordY = cordY;
+            this.gameBoard = gameBoard;
+            this.X = Math.floor((Math.random() * 5) + 5);
+            this.Y = Math.floor((Math.random() * 5) + 5);
+        }
+
+        drawBall() {
+            this.ball = document.getElementById(this.gameBoard.getId()).getContext("2d");
+            this.ball.beginPath();
+            this.ball.fillStyle ="gray" ;
+            this.ball.arc(this.cordX, this.cordY, 10, 0, 2 * Math.PI);
+            this.ball.fill();
+        }
+
+        move() {
+            this.cordX += this.X;
+            this.cordY += -this.Y;
+            if (this.cordY > 400) {
+                alert("Ban da thua cuoc");
+                this.cordX = 250;
+                this.cordY = 150;
+                this.drawBall();
+                location.reload();
+            }
+            this.drawBall();
+        }
+    }
+
+    let score = 0;
+    let newGame = new GameBoard(500, 400, "game");
+    newGame.drawGameBoard();
+    let bar = new Bar(230, 300, newGame);
+    let newBall = new Ball(250, 150, newGame);
+    newBall.drawBall();
+    setInterval(function () {
+        newBall.ball.clearRect(0, 0, 500, 400);
+        bar.drawBar();
+        if (newBall.cordX < 0 || newBall.cordX > 500) {
+            newBall.X = -newBall.X;
+            score++;
+        }
+        if (newBall.cordY < 0 || ((newBall.cordY >= 295 && newBall.cordY <= 315) && (newBall.cordX > (bar.cordX - 5) && newBall.cordX < (bar.cordX + 105)))) {
+            newBall.Y = -newBall.Y;
+            score++;
+        }
+        newBall.move();
+    }, 40);
+    setInterval(function () {
+        docReady();
+        document.getElementById("score").innerText = score + " Diem";
+    }, 1);
+
+    function moveSelection(evt) {
+        switch (evt.keyCode) {
+            case 37:
+                bar.Left();
+                break;
+            case 39:
+                bar.Right();
+                break;
+        }
+    }
+
+    function docReady() {
+        window.addEventListener('keydown', moveSelection);
+    }
+</script>
+</body>
+</html>
