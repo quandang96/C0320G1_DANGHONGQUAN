@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bai3</title>
+</head>
+<body>
+<script>
+    let regExp = /^([012]+[0-9]|[3]+[01])+[/]+([0]+[0-9]|[1]+[0-2])+[/]+([0-9]{4})$/;
+    while (true) {
+        let input = prompt("Nhập ngày tháng năm:");
+        if (regExp.test(input)) {
+            let month = parseInt(input.substr(3, 2));
+            let day = parseInt(input.substr(0, 2));
+            let year = parseInt(input.substr(6, 4));
+            let date=0;
+            for (let i = 1; i < month; i++) {
+                test(i);
+            }
+            function test(i) {
+                switch (i) {
+                    case 1:
+                    case 3:
+                    case 5:
+                    case 7:
+                    case 8:
+                    case 10:
+                    case 12:
+                        date += 31;
+                        break;
+                    case 2:
+                        if (year % 4 === 0) {
+                            if (year % 100 === 0) {
+                                if (year % 400 === 0) {
+                                     date+=29;
+                                } else {
+                                    date+=28;
+                                }
+                            } else {
+                                date+=29;
+                            }
+                        } else {
+                            date+=28;
+                        }
+
+                        break;
+                    case 4:
+                    case 6:
+                    case 9:
+                    case 11:
+                        date += 30;
+                        break;
+                }
+            }
+
+        let dayInYear = day + date;
+        alert(dayInYear );
+        break;
+        }
+    }
+</script>
+</body>
+</html>

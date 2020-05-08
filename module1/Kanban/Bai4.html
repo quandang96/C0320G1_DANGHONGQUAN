@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+     td,th {
+        padding: 15px;
+    }
+</style>
+<body>
+<table id="tableWorker"  >
+
+</table>
+<script>
+    class Worker{
+        constructor(number,name,birthDate,address,position) {
+            this.number = number;
+            this.name = name;
+            this.birthDate = birthDate;
+            this.address = address;
+            this.position = position;
+        }
+        getNumber() {
+            return this.number;
+        }
+        setNumber(newNumber){
+                return this.number = newNumber;
+        }
+        getName() {
+            return this.name;
+        }
+        setName(newName){
+            return this.name = newName;
+        }
+        getBirthDate(){
+            return this.birthDate;
+        }
+        setBirthDate(newBirthDate) {
+            return this.birthDate = newBirthDate;
+        }
+
+        getAddress() {
+            return this.address;
+        }
+        setAddress(newAddress){
+            return this.address = newAddress;
+        }
+        getPosition() {
+            return this.position;
+        }
+        setPosition(newPosition){
+            return this.name = newPosition;
+        }
+    }
+    let arrayWorker=[];
+      arrayWorker[0] = new Worker("1","Truong Tấn c","11-11-1997","Quảng Nam","Abc");
+      arrayWorker[1]= new Worker("2","truong Tấn a","11-11-1998","Đà Nẵng","Abc");
+    function display(arrayWorker) {
+        let output = document.getElementById("tableWorker");
+        output.innerHTML="<tr>"+"<th>STT</th>"+"<th>Tên Công Nhân</th>"+"<th>Ngày Sinh</th>"+"<th>Địa chỉ</th>"+"<th>Chức Vụ</th>"+"</tr>";
+        let arrSort = [];
+        for (let i=0;i<arrayWorker.length;i++){
+            arrSort.push(arrayWorker[i].getName());
+        }
+        arrSort.sort();
+        for(let i=0;i<arrSort.length;i++){
+            for(let j=0;j<arrayWorker.length;j++){
+                if(arrSort[i]=== arrayWorker[j].getName()){
+                    output.innerHTML+="<tr>" +"<td>"+`${arrayWorker[i].getNumber()}`+"</td>"+"<td>"+`${arrayWorker[j].getName()}`+"</td>"
+                        +"<td>"+`${arrayWorker[j].getBirthDate()}`+"</td>"+"<td>"+`${arrayWorker[j].getAddress()}`+"</td>"
+                        +"<td>"+`${arrayWorker[j].getPosition()}`+"</td>"+"</tr>"
+                }
+            }
+        }
+
+
+    }
+    addWorker(arrayWorker);
+    display(arrayWorker);
+
+    function addWorker(worker) {
+        let newNumber = worker.length+1;
+        let newName = prompt("Nhập tên công nhân");
+        let newBirthDate = prompt("Nhập ngày sinh công nhân");
+        let newAddress =prompt("Nhập địa chỉ của công nhân");
+        let newPosition = prompt("Nhập vị trí của công nhân");
+        worker[worker.length] = new Worker(newNumber,newName,newBirthDate,newAddress,newPosition );
+    }
+
+
+</script>
+</body>
+</html>

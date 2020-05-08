@@ -12,7 +12,9 @@
     let deleteNameCustomer;
     while (1) {
         let selection = prompt("1. Add Name Customer \n" + "2. Delete Customer");
-        if(selection ==="1"){
+        switch (selection){
+        case "1":
+
              do {
                  numberCustomer = parseInt(prompt("Số lượng Customer cần thêm"));
 
@@ -20,13 +22,14 @@
 
             addCustomer(arrNameCustomer.length);
             alert(arrNameCustomer.sort());
-
-        }else if(selection==="2"){
-            deleteNameCustomer =prompt("Nhập tên Customer cần delete");
+               break;
+        case "2":
+            deleteNameCustomer =prompt("Nhập tên Customer cần delete"+ arrNameCustomer.join("\n"));
             deleteCustomer();
             alert(arrNameCustomer);
+            break;
 
-        }else {
+        default:
         alert("nhập lại")
     }
         }

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bai2</title>
+</head>
+<body>
+<script>
+function removeFruit(input) {
+    let arrFruit = ["Apple","Banana","Lemon"];
+    for(let i=0;i<arrFruit.length;i++){
+        if(arrFruit[i]===input){
+            arrFruit.splice(i,1);
+            return arrFruit;
+        }
+    }
+
+}
+let nameFruit = prompt("Nhập tên trái cây cần xóa");
+alert(removeFruit(nameFruit));
+</script>
+</body>
+</html>

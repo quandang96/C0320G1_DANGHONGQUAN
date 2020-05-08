@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let arr=[];
+    let sum =0;
+    let count=0;
+    let stop=true;
+    while (true){
+        if(arr.length>50 || stop=== "N"){
+            break;
+        }
+        let input = parseInt(prompt("Nhập số nguyên:"));
+        arr.push(input);
+        stop = prompt("Nhập 'N' nếu dừng ")
+    }
+    for(let j=0;j<arr.length;j++){
+        if(arr[j]%3===0){
+            sum +=arr[j];
+            count++;
+        }
+    }
+    let averageValue = sum/count;
+    alert(averageValue);
+
+
+</script>
+</body>
+</html>

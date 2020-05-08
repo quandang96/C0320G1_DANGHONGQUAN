@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bai1</title>
+</head>
+<body>
+<script>
+    function findCar(car) {
+       let nameCar = ["Toyota","Mercedes","Hyundai","Daewon"];
+        for(let i=0;i<nameCar.length;i++){
+            for(let j=0;j<nameCar[i].length;j++){
+                if(nameCar[i][j]===car){
+                    return nameCar[i];
+                }
+
+            }
+        }
+
+    }
+    let nameSearch = prompt("Nhập tên cần tìm");
+    alert(findCar(nameSearch));
+</script>
+</body>
+</html>

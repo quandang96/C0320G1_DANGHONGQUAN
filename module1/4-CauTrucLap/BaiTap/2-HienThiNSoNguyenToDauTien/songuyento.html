@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>số nguyên tố</title>
 </head>
 <body>
 <script>
     let number =parseInt( prompt("Nhập số lượng số nguyên tố cần in: "));
     let count = 0;
-    let n = 2;
-
+    let n = 0;
+    console.time("test");
     while (count < number){
         if(check(n)){
             document.write("Số nguyên tố thứ "+count+" là: "+n+ "<br>" );
@@ -20,16 +20,18 @@
     function check(a) {
         if (a < 2) {
             return false;
-        }
-        for (let i=2 ; i<(a-1);i++){
-            if(a%i==0){
-                return false;
+        } else {
+            for (let i = 2; i <= Math.sqrt(a); i++) {
+                if (a % i === 0) {
+                    return false;
+                }
             }
         }
         return true;
 
 
     }
+    console.timeEnd("test");
 
 </script>
 </body>

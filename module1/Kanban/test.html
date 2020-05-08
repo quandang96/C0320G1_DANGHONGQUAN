@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<canvas id="myCanvas" height="300" width="500"></canvas>
+<script>
+    /*\d:số
+    \s:khoảng trắng
+    \b:bắt đầu kết thúc bằng chuỗi*/
+    function check(number) {
+        let squareNumber = parseInt(Math.sqrt(number));
+        let exponentNumber = Math.pow(squareNumber,2);
+        if(number === exponentNumber ){
+            return true;
+        } else {
+            return false;
+        }
+    }
+    let input = parseInt(prompt("Nhập số cần kiểm tra"));
+    alert(check(input));
+ // kiểm tra chuỗi đối xứng
+    function isPalindrome(input) {
+        for (let i=0;i<input.length/2;i++){
+            if(input[i]!==input[input.length-i-1]){
+                return false;
+            }
+        } return true;
+
+    }
+
+     let checkString = prompt("Nhập chuỗi cần kiểm tra");
+     alert(isPalindrome(checkString));
+     // tạo mảng mới các phần tử max min trung bình
+    let arr1=[1,5,10,-2];
+    maxMinAvg(arr1 );
+    function maxMinAvg(arr) {
+        //your code here
+        let avg=arr[0]/arr.length;
+        let min=arr[0];
+        let max=arr[0];
+        let arrNew=[];
+        for(let i=1;i<arr.length;i++){
+            avg+=arr[i]/arr.length;
+            if(arr[i]>max){
+                max=arr[i];
+            }else if(arr[i]<min){
+                min=arr[i]
+            }
+
+        }
+        arrNew.splice(0,1,max);
+        arrNew.splice(1,1,min);
+        arrNew.splice(2,1,avg);
+
+        return arrNew;
+    }
+</script>
+</body>
+</html>

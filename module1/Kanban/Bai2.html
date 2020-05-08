@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bai2</title>
+</head>
+<body>
+<script>
+    function check(number) {
+        let sum=0;
+        for (let i=0;i<number;i++){
+            if(number%i===0){
+                sum +=i;
+            }
+        }
+        if(sum === number){
+            return true;
+        }else {
+            return false;
+        }
+
+    }
+    alert(check(parseInt(prompt("Nhập số cần kiểm tra"))));
+
+</script>
+</body>
+</html>

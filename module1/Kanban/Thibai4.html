@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 4</title>
+</head>
+<body>
+<script>
+    class Employee {
+        constructor(name,day,money) {
+            this.name = name;
+            this.day = day;
+            this.money = money;
+        }
+        pay(){
+            return this.day * this.money;
+        }
+    }
+    let input = new Employee("Nguyễn Văn A",20,200000);
+    let result = input.pay();
+    alert("Số tiền lương "+input.name+ " là: " +result );
+</script>
+</body>
+</html>
