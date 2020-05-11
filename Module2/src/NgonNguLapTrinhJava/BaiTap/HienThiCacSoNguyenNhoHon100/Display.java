@@ -1,4 +1,4 @@
-package NgonNguLapTrinhJava.ThucHanh.HienThiCacSoNguyenNhoHon100;
+package NgonNguLapTrinhJava.BaiTap.HienThiCacSoNguyenNhoHon100;
 
 public class Display {
      static boolean isPrime( int number){

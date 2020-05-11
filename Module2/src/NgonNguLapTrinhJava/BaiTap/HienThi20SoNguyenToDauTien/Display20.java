@@ -1,4 +1,4 @@
-package NgonNguLapTrinhJava.ThucHanh.HienThi20SoNguyenToDauTien;
+package NgonNguLapTrinhJava.BaiTap.HienThi20SoNguyenToDauTien;
 
 public class Display20 {
      private static boolean isPrime( int number){
