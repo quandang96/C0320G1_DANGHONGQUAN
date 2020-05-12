@@ -3,12 +3,16 @@ package MangVaPhuongThucTrongJava.BaiTap.SuDungLopIllegalTriangleException;
 import java.util.Scanner;
 
 public class Triangle {
-    static void canh(int a) throws IllegalTriangleException{
+    static void check(int a) throws IllegalTriangleException{
 
         if(a<=0){
-            throw new IllegalTriangleException(a);
+            throw new IllegalTriangleException("Wrong value entered");
         }
-        System.out.println("đúng");
+    }
+    static  void checkTriangleEdge(int a,int b,int c) throws IllegalTriangleException{
+        if(a+b<c||a+c<b||b+c<a){
+            throw new IllegalTriangleException("The three-sided value of the triangle is incorrect");
+        }
     }
     public static void main(String[] args) {
 
@@ -17,17 +21,17 @@ try{
     System.out.println("Nhập cạnh thứ 1: ");
 
     int a = Integer.parseInt(scanner.nextLine());
-    canh(a);
+    check(a);
     System.out.println("Nhập cạnh thứ 2: ");
     int b = Integer.parseInt(scanner.nextLine());
-    canh(b);
+    check(b);
     System.out.println("Nhập cạnh thứ 3: ");
     int c = Integer.parseInt(scanner.nextLine());
-    canh(c);
+    check(c);
+    checkTriangleEdge(a,b,c);
 
-
-}catch (NullPointerException | IllegalTriangleException e){
-    System.out.println("Không đúng");
+}catch ( IllegalTriangleException e){
+    System.out.println(e.getMessage());
 }
     }
 }

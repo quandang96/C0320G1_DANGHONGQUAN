@@ -3,7 +3,9 @@ package MangVaPhuongThucTrongJava.BaiTap.ThemPhanTuVaoMang;
 import java.util.Scanner;
 
 public class AddElement {
+
     public static void main(String[] args) {
+
        int[] array = new int[10];
        int index;
         Scanner scanner = new Scanner(System.in);
@@ -33,4 +35,3 @@ public class AddElement {
         }
 
     }
-

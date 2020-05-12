@@ -1,12 +1,13 @@
 package MangVaPhuongThucTrongJava.BaiTap.SuDungLopIllegalTriangleException;
 
 public class IllegalTriangleException extends Exception {
-   private int message;
-    IllegalTriangleException (int b1){
-      
 
+    public IllegalTriangleException(String message) {
+        super(message);
     }
-
-
-
 }
+
+
+
+
+
