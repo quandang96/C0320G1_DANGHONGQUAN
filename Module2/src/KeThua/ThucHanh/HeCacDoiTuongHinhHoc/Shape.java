@@ -1,4 +1,4 @@
-package KeThua.ThucHanh;
+package KeThua.ThucHanh.HeCacDoiTuongHinhHoc;
 
 public class Shape {
     private String color = "green";
@@ -34,5 +34,12 @@ public class Shape {
                 + getColor()
                 + " and "
                 + (isFilled() ? "filled" : "not filled");
+    }
+    public static void main(String[] args) {
+        Shape shape = new Shape();
+        System.out.println(shape);
+
+        shape = new Shape("red", false);
+        System.out.println(shape);
     }
 }
