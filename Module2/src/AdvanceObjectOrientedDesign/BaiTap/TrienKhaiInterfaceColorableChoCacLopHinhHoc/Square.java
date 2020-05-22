@@ -1,6 +1,6 @@
-package KeThua.ThucHanh.HeCacDoiTuongHinhHoc;
+package AdvanceObjectOrientedDesign.BaiTap.TrienKhaiInterfaceColorableChoCacLopHinhHoc;
 
-public class Square extends Rectangle {
+public class Square extends Rectangle implements Colorable {
     public Square() {
     }
 
@@ -47,5 +47,10 @@ public class Square extends Rectangle {
 
         square = new Square(5.8, "yellow", true);
         System.out.println(square);
+    }
+
+    @Override
+    public void howToColor() {
+        System.out.println("Color all four sides.");
     }
 }

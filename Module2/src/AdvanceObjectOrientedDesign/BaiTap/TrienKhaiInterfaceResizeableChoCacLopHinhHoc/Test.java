@@ -1,4 +1,4 @@
-package AdvanceObjectOrientedDesign.BaiTap.TrienKhaiInterfaceResizeableChoCacLopHinhHoc.TrienKhaiInterfaceResizeableChoCacLopHinhHoc;
+package AdvanceObjectOrientedDesign.BaiTap.TrienKhaiInterfaceResizeableChoCacLopHinhHoc;
 
 
 import AdvanceObjectOrientedDesign.BaiTap.TrienKhaiInterfaceResizeableChoCacLopHinhHoc.Circle;

@@ -3,7 +3,7 @@ package MangVaPhuongThucTrongJava.BaiTap.SuDungLopIllegalTriangleException;
 import java.util.Scanner;
 
 public class Triangle {
-    static void check(int a) throws IllegalTriangleException{
+    static void check(int a) throws IllegalTriangleException {
 
         if(a<=0){
             throw new IllegalTriangleException("Wrong value entered");
