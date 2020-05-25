@@ -12,6 +12,15 @@ public class Villa extends Services {
     public Villa() {
     }
 
+    public Villa(String id, String nameService, double area, double rentalCosts, int maxNumberOfPeople, String typeRent,
+                 String roomStandard, String convenientDescription, double areaPool, int numberOfFloors) {
+        super(id, nameService, area, rentalCosts, maxNumberOfPeople, typeRent);
+        this.roomStandard = roomStandard;
+        this.convenientDescription = convenientDescription;
+        this.areaPool = areaPool;
+        this.numberOfFloors = numberOfFloors;
+    }
+
     public String getRoomStandard() {
         return roomStandard;
     }
@@ -44,13 +53,11 @@ public class Villa extends Services {
         this.numberOfFloors = numberOfFloors;
     }
 
-    public Villa(String id, String nameService, double area, double rentalCosts, int maxNumberOfPeople, String typeRent,
-                 String roomStandard, String convenientDescription, double areaPool, int numberOfFloors) {
-        super(id, nameService, area, rentalCosts, maxNumberOfPeople, typeRent);
-        this.roomStandard = roomStandard;
-        this.convenientDescription = convenientDescription;
-        this.areaPool = areaPool;
-        this.numberOfFloors = numberOfFloors;
+    public String[] getAllVilla(){
+        String[] villa = {getId(),getNameService(), String.valueOf(getArea()),String.valueOf(getRentalCosts()),
+                String.valueOf(getMaxNumberOfPeople()),getTypeRent(),this.roomStandard,this.convenientDescription,
+                String.valueOf(this.areaPool) , String.valueOf(this.numberOfFloors)};
+        return villa;
     }
 
 

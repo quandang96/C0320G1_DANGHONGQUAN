@@ -3,11 +3,10 @@ package models;
 public class House extends Services {
     private String roomStandard;
     private String convenientDescription;
+    private int numberOfFloors;
 
     public House() {
     }
-
-    private int numberOfFloors;
 
     public House(String id, String nameService, double area, double rentalCosts, int maxNumberOfPeople, String typeRent,
                  String roomStandard, String convenientDescription, int numberOfFloors) {
@@ -39,6 +38,13 @@ public class House extends Services {
 
     public void setNumberOfFloors(int numberOfFloors) {
         this.numberOfFloors = numberOfFloors;
+    }
+
+    public String[] getAllHouse(){
+        String[] house = {getId(),getNameService(), String.valueOf(getArea()),String.valueOf(getRentalCosts()),
+                String.valueOf(getMaxNumberOfPeople()),getTypeRent(),this.roomStandard,this.convenientDescription,
+                String.valueOf(this.numberOfFloors)};
+        return house;
     }
 
     @Override

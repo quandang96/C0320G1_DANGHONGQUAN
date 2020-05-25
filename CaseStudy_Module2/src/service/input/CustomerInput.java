@@ -1,13 +1,15 @@
-package service;
+package service.input;
 import exception.ValidationException;
 import models.Customer;
+import service.interfaces.CustomerService;
 
 import java.util.Scanner;
 import java.util.UUID;
 
-public class CustomerInput {
+public class CustomerInput implements CustomerService {
     public static Scanner scanner;
-    public static Customer inputNewCustomer(){
+    @Override
+    public Customer addNewCustomer(){
             scanner = new Scanner(System.in);
             Customer customer = new Customer();
             customer.setId(UUID.randomUUID().toString().replace("-", ""));
@@ -78,6 +80,5 @@ public class CustomerInput {
 
             return customer;
         }
-
-    }
+}
 

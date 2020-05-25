@@ -2,23 +2,34 @@ package controllers;
 
 import commons.CsvReaderWriter;
 import models.*;
-import service.*;
+import service.input.*;
+import service.interfaces.BookingCinema4DService;
+import service.interfaces.CustomerService;
+import service.interfaces.FilingCabinetsService;
+import service.interfaces.ServiceInterface;
 import sort.SortNameCustomer;
 
 import java.util.*;
 
 public class MainController {
+    private ServiceInterface villaService = new VillaInput();
+    private ServiceInterface houseService = new HouseInput();
+    private ServiceInterface roomService = new RoomInput();
+    private CustomerService customerService = new CustomerInput();
+    private BookingCinema4DService bookingCinema4DService = new BookingCinema4DServiceInput();
+    private FilingCabinetsService filingCabinetsService = new FilingCabinetsServiceInput();
+
     public void displayMainMenu() {
         System.out.println(
-                "1.\t Add New Services\n" +
+                "1.\tAdd New Services\n" +
                 "2.\tShow Services\n" +
                 "3.\tAdd New Customer\n" +
                 "4.\tShow Information of Customer\n" +
                 "5.\tAdd New Booking\n" +
                 "6.\tShow Information of Employee\n" +
-                "7. Add booking cinema 4D\n" +
-                "8. Show booking cinema 4D\n" +
-                "9. Search Filing Cabinets of Employee\n" +
+                "7.\tAdd booking cinema 4D\n" +
+                "8.\tShow booking cinema 4D\n" +
+                "9.\tSearch Filing Cabinets of Employee\n" +
                 "10.\tExit\n");
         Scanner scanner = new Scanner(System.in);
         int input = scanner.nextInt();
@@ -147,10 +158,8 @@ public class MainController {
 
     public void addNewCustomer() {
         List <String[]> customers = new ArrayList<>();
-        Customer customer =  CustomerInput.inputNewCustomer();
-        String[] arr =new String[]{customer.getId(),customer.getNameCustomer(),customer.getIdCard(),customer.getBirthday(),
-                customer.getGender(),customer.getPhoneNumber(),customer.getEmail(),customer.getTypeCustomer(),customer.getAddress()};
-        customers.add(arr);
+        Customer customer = customerService.addNewCustomer();
+        customers.add(customer.getAllCustomer());
         CsvReaderWriter.writerCsv(customers,"Customer");
         displayMainMenu();
     }
@@ -219,41 +228,34 @@ public class MainController {
     }
 
    public void  showInformationOfEmployee(){
-       Map<Integer, Employee> map = new HashMap<Integer, Employee>();
+       EmployeeInput.employee();
+       Map<Integer, Employee> map = new HashMap<>();
        List <Employee> listEmployee = CsvReaderWriter.readCsvFileEmployee();
        for(int i=0;i<listEmployee.size();i++){
            map.put(i, listEmployee.get(i));
        }
        System.out.println(map);
+       displayMainMenu();
    }
 
     public void addNewVilla () {
             List <String[]> villas = new ArrayList<>();
-            Villa villa = (Villa) VillaInput.inputNewVilla();
-            String[] arr =new String[]{villa.getId(),villa.getNameService(), String.valueOf(villa.getArea()),
-                    String.valueOf(villa.getRentalCosts()), String.valueOf(villa.getMaxNumberOfPeople()),villa.getTypeRent(),
-                    villa.getRoomStandard(),villa.getConvenientDescription(), String.valueOf(villa.getAreaPool()), String.valueOf(villa.getNumberOfFloors())};
-            villas.add(arr);
+            Villa villa = (Villa) villaService.addNewService();
+            villas.add(villa.getAllVilla());
             CsvReaderWriter.writerCsv(villas,"Villa");
         }
 
     public void addNewRoom () {
         List <String[]> rooms = new ArrayList<>();
-        Room room = (Room) RoomInput.inputNewRoom();
-        String[] arrRoom =new String[]{room.getId(),room.getNameService(), String.valueOf(room.getArea()),
-                String.valueOf(room.getRentalCosts()), String.valueOf(room.getMaxNumberOfPeople()),room.getTypeRent(),
-                room.getFreeService()};
-        rooms.add(arrRoom);
+        Room room = (Room)houseService.addNewService();
+        rooms.add(room.getAllRoom());
         CsvReaderWriter.writerCsv(rooms,"Room");
     }
 
     public void addNewHouse () {
         List <String[]> houses = new ArrayList<>();
-        House house = (House) HouseInput.inputNewHouse();
-        String[] arrHouse =new String[]{house.getId(),house.getNameService(), String.valueOf(house.getArea()),
-                String.valueOf(house.getRentalCosts()), String.valueOf(house.getMaxNumberOfPeople()),house.getTypeRent(),
-                house.getRoomStandard(),house.getConvenientDescription(),String.valueOf(house.getNumberOfFloors())};
-        houses.add(arrHouse);
+        House house = (House) roomService.addNewService();
+        houses.add(house.getAllHouse());
         CsvReaderWriter.writerCsv(houses,"House");
     }
 
@@ -275,11 +277,13 @@ public class MainController {
         }
         Customer customer = customers.get(choiceCustomer - 1);
         System.out.println("1. Booking Villa\n2. Booking House \n3. Booking Room");
+        System.out.print("Enter your choice: ");
         int choiceBooking = scanner.nextInt();
         while (choiceBooking < 1 || choiceBooking > 3) {
             System.out.println("Error!");
             System.out.println();
             System.out.println("1. Booking Villa\n2. Booking House \n3. Booking Room");
+            System.out.print("Enter your choice: ");
             choiceBooking = scanner.nextInt();
         }
         switch (choiceBooking) {
@@ -326,21 +330,26 @@ public class MainController {
                 displayMainMenu();
             }
         }
-        List<Customer> listBooking = CsvReaderWriter.readCsvFileCustomer();
+        List<Customer> listBooking = new ArrayList<>();
         listBooking.add(customer);
-        CsvReaderWriter.WriteCsvFileBooking(listBooking);
+        List <String[]> booking = new ArrayList<>();
+        for(Customer customerCSV:listBooking) {
+            booking.add(customerCSV.getAllCustomer());
+        }
+        CsvReaderWriter.writerCsv(booking,"Booking");
         displayMainMenu();
     }
 
     private void showBookingCinema() {
-        Queue<Customer> customers = BookingCinema4DServiceImpl.getAllBookingCinema();
+        Queue<Customer> customers = bookingCinema4DService.getAllBookingCinema();
         while (true) {
             Customer customer = customers.poll();
             if (customer == null) {
                 break;
             }
-            System.out.println(customer);
+            System.out.println(customer.toString());
         }
+        displayMainMenu();
     }
 
     private void addBookingCinema() {
@@ -351,16 +360,17 @@ public class MainController {
             System.out.println("Số lượng vé phải là số dương");
         }
         for (int i = 0; i < numberTicket; i++) {
-            Customer customer = CustomerInput.inputNewCustomer();
-            BookingCinema4DServiceImpl.addBookingCinema(customer);
+            Customer customer = customerService.addNewCustomer();
+            bookingCinema4DService.addBookingCinema(customer);
         }
+        displayMainMenu();
     }
 
     private void searchFilingCabinetsOfEmployee() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter id of Employee: ");
         String idEmployee = scanner.nextLine();
-        Employee employee = FilingCabinetsServiceImpl.findEmployeeById(idEmployee);
+        Employee employee = filingCabinetsService.findEmployeeById(idEmployee);
         if (employee == null) {
             System.out.println("Not found Filing Cabinets!");
         } else {

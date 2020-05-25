@@ -7,9 +7,19 @@ public abstract class Services {
     private double rentalCosts;
     private int maxNumberOfPeople;
     private String typeRent;
+
     public abstract String showInfo();
 
     public Services() {
+    }
+
+    public Services(String id, String nameService, double area, double rentalCosts, int maxNumberOfPeople, String typeRent) {
+        this.id = id;
+        this.nameService = nameService;
+        this.area = area;
+        this.rentalCosts = rentalCosts;
+        this.maxNumberOfPeople = maxNumberOfPeople;
+        this.typeRent = typeRent;
     }
 
     public String getId() {
@@ -59,13 +69,11 @@ public abstract class Services {
     public void setTypeRent(String typeRent) {
         this.typeRent = typeRent;
     }
-
-    public Services(String id, String nameService, double area, double rentalCosts, int maxNumberOfPeople, String typeRent) {
-        this.id = id;
-        this.nameService = nameService;
-        this.area = area;
-        this.rentalCosts = rentalCosts;
-        this.maxNumberOfPeople = maxNumberOfPeople;
-        this.typeRent = typeRent;
+    public String[] getAllService(){
+        String[] service = {id,nameService,String.valueOf(area),String.valueOf(rentalCosts),
+                String.valueOf(maxNumberOfPeople),typeRent};
+        return service;
     }
+
+
 }

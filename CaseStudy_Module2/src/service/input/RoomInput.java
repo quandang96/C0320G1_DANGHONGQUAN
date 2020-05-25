@@ -1,17 +1,19 @@
-package service;
+package service.input;
 
 
 import models.*;
+import service.interfaces.ServiceInterface;
 import validation.Validation;
 
 import java.util.Scanner;
+import java.util.UUID;
 
-public class RoomInput {
-    public  static Services inputNewRoom(){
+public class RoomInput implements ServiceInterface {
+    @Override
+    public Services addNewService(){
         Scanner scanner = new Scanner(System.in);
         Services room = new Room();
-        System.out.println("Enter ID: ");
-        room.setId(scanner.nextLine());
+        room.setId(UUID.randomUUID().toString().replace("-", ""));
         System.out.println("Enter name Service: ");
         room.setNameService(Validation.validationNamService());
         System.out.println("Enter area use: ");

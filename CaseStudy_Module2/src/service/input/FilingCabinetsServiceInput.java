@@ -1,10 +1,11 @@
-package service;
+package service.input;
 
 import models.Employee;
+import service.interfaces.FilingCabinetsService;
 
 import java.util.Stack;
 
-public class FilingCabinetsServiceImpl {
+public class FilingCabinetsServiceInput implements FilingCabinetsService {
     private static Stack<Employee> employees;
 
     static {
@@ -17,8 +18,8 @@ public class FilingCabinetsServiceImpl {
         employees.push(new Employee("006","Nguyen Hong Son",20,"Da Nang"));
         employees.push(new Employee("007","Nguyen Hong Son",20,"Da Nang"));
     }
-
-    public static Employee findEmployeeById(String id) {
+@Override
+    public  Employee findEmployeeById(String id) {
         Stack<Employee> employees1=employees;
         while (true) {
             Employee employee=employees1.pop();

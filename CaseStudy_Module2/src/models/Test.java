@@ -2,7 +2,7 @@ package models;
 
 
 
-import service.EmployeeInput;
+import controllers.MainController;
 
 import java.io.*;
 import java.io.IOException;
@@ -10,6 +10,8 @@ import java.io.IOException;
 public class Test {
     private static final String PATH_FILE_VILLA = "src/data/Villa.csv";
     private static final char DEFAULT_SEPARATOR = ',';
+    private static final String PATH_FILE_EMPLOYEE = "src/data/Employee.csv";
+    private static final String[] FILE_HEADER_OF_EMPLOYEE = {"idEmployee", "nameEmployee", "age", "address"};
 
     // the character to use for quoted elements
     private static final char DEFAULT_QUOTE = '"';
@@ -25,9 +27,9 @@ public class Test {
 
 
     public static void main(String[] args) throws IOException {
-//        MainController mainController = new MainController();
-//        mainController.displayMainMenu();
-        String[] FILE_HEADER_OF_VILLA = {"id", "nameService", "area", "rentalCosts", "maxNumberOfPeople", "typeRent", "roomStandard", "convenientDescription", "areaPool", "numberOfFloors"};
+        MainController mainController = new MainController();
+        mainController.displayMainMenu();
+//        String[] FILE_HEADER_OF_VILLA = {"id", "nameService", "area", "rentalCosts", "maxNumberOfPeople", "typeRent", "roomStandard", "convenientDescription", "areaPool", "numberOfFloors"};
 
 
 //
@@ -53,11 +55,11 @@ public class Test {
 //            System.out.println(country);
 ////            System.out.println(((Villa)country).showInfo());
 //        }
-        EmployeeInput input = new EmployeeInput();
-        input.employee();
+
 
     }
-    }
+}
+
 
 
 

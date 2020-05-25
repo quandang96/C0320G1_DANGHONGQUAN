@@ -20,6 +20,12 @@ public class Room extends Services {
         this.freeService = freeService;
     }
 
+    public String[] getAllRoom(){
+        String[] room = {getId(),getNameService(), String.valueOf(getArea()),String.valueOf(getRentalCosts()),
+                String.valueOf(getMaxNumberOfPeople()),getTypeRent(),this.freeService};
+        return room;
+    }
+
     @Override
     public String showInfo() {
         return "Room:" + '\n' +

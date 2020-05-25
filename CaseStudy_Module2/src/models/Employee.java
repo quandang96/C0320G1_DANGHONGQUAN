@@ -6,6 +6,9 @@ public class Employee {
     int age;
     String address;
 
+    public Employee() {
+    }
+
     public Employee(String idEmployee, String nameEmployee, int age, String address) {
         this.idEmployee = idEmployee;
         this.nameEmployee = nameEmployee;
@@ -55,7 +58,6 @@ public class Employee {
                 "idEmployee= '" + idEmployee + '\'' +
                 " nameEmployee= '" + nameEmployee + '\'' +
                 " age= " + age +
-                " address= '" + address + '\'' +
-                '}';
+                " address= '" + address + '\'' ;
     }
 }

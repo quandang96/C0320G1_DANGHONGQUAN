@@ -1,22 +1,19 @@
 package commons;
 
 
+import com.opencsv.CSVReader;
 import com.opencsv.CSVWriter;
 import com.opencsv.bean.ColumnPositionMappingStrategy;
 import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.CsvToBeanBuilder;
 import models.*;
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class CsvReaderWriter {
-    private static final String NEW_LINE_SEPARATOR = "\n";
-    private static final char DEFAULT_SEPARATOR = ',';
-    private static final char DEFAULT_QUOTE = '"';
-    private static final int NUM_OF_LINE_SKIP = 1;
     private static final String PATH_FILE_EMPLOYEE = "src/data/Employee.csv";
-    private static final String[] FILE_HEADER_OF_EMPLOYEE ={"idEmployee","nameEmployee","age","address"};
     private static final String PATH_FILE_VILLA = "src/data/Villa.csv";
     private static final String PATH_FILE_HOUSE = "src/data/House.csv";
     private static final String PATH_FILE_ROOM = "src/data/Room.csv";
@@ -27,6 +24,7 @@ public class CsvReaderWriter {
     private static final String[] FILE_HEADER_OF_ROOM = {" id", " nameService", "area", "rentalCosts", "maxNumberOfPeople", "typeRent", "freeService"};
     private static final String[] FILE_HEADER_OF_CUSTOMER = {" id", " nameCustomer", "idCard", " birthday", " gender", " phoneNumber", " email", " typeCustomer", " address"};
     private static final String[] FILE_HEADER_OF_BOOKING = {" id", " nameCustomer", "idCard", " birthday", " gender", " phoneNumber", " email", " typeCustomer", " address", "idService", "nameService", "area", "rentalCosts", "maxNumberOfPeople", "typeRent"};
+    private static final String[] FILE_HEADER_OF_EMPLOYEE ={"idEmployee","nameEmployee","age","address"};
 
     public static void writerCsv(List<String[]> fileName, String service) {
         String path = null;
@@ -48,10 +46,18 @@ public class CsvReaderWriter {
                 path =PATH_FILE_CUSTOMER;
                 header =FILE_HEADER_OF_CUSTOMER;
                 break;
+            case "Employee":
+                path =PATH_FILE_EMPLOYEE;
+                header =FILE_HEADER_OF_EMPLOYEE;
+                break;
+            case "Booking":
+                path =PATH_FILE_BOOKING;
+                header =FILE_HEADER_OF_BOOKING;
+                break;
             default:
                 System.out.println("Error");
-
         }
+
         try (
                 Writer writer = new FileWriter(path, true);
                 CSVWriter csvWriter = new CSVWriter(writer,
@@ -63,10 +69,10 @@ public class CsvReaderWriter {
                 csvWriter.writeNext(header);
             }
             csvWriter.writeAll(fileName);
+            System.out.println("CSV file was created successfully !!!");
         } catch (IOException e) {
-            System.out.println("Error");
+            System.out.println("Error in CsvFileWriter !!!");
         }
-
     }
 
     public static String readHead(String path) throws IOException {
@@ -76,165 +82,126 @@ public class CsvReaderWriter {
     }
 
     public static List<Villa> readCsvFileVilla() {
-        ColumnPositionMappingStrategy<Villa> strategy = new ColumnPositionMappingStrategy<>();
-        strategy.setType(Villa.class);
-        strategy.setColumnMapping(FILE_HEADER_OF_VILLA);
-        CsvToBean<Villa> csvToBean = null;
-        try {
-            csvToBean = new CsvToBeanBuilder<Villa>(new FileReader(PATH_FILE_VILLA))
-                    .withMappingStrategy(strategy)
-                    .withSeparator(DEFAULT_SEPARATOR)
-                    .withQuoteChar(DEFAULT_QUOTE)
-                    .withSkipLines(NUM_OF_LINE_SKIP)
-                    .withIgnoreLeadingWhiteSpace(true)
-                    .build();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
+        List<Villa> villas = new ArrayList<>();
+        try (Reader reader = new FileReader(PATH_FILE_VILLA);
+             CSVReader csvReader = new CSVReader(reader);) {
+            csvReader.readNext();
+            String[] line;
+            while ((line = csvReader.readNext()) != null) {
+                Villa villa = new Villa();
+                villa.setId(line[0]);
+                villa.setNameService(line[1]);
+                villa.setArea(Double.parseDouble(line[2]));
+                villa.setRentalCosts(Double.parseDouble(line[3]));
+                villa.setMaxNumberOfPeople(Integer.parseInt(line[4]));
+                villa.setTypeRent(line[5]);
+                villa.setRoomStandard(line[6]);
+                villa.setConvenientDescription(line[7]);
+                villa.setAreaPool(Double.parseDouble(line[8]));
+                villa.setNumberOfFloors(Integer.parseInt(line[9]));
+                villas.add(villa);
+            }
+        } catch (IOException e) {
+            System.out.println("Error");
         }
-
-        return csvToBean.parse();
+        return villas;
     }
 
     public static List<House> readCsvFileHouse() {
-        ColumnPositionMappingStrategy<House> strategy = new ColumnPositionMappingStrategy<>();
-        strategy.setType(House.class);
-        strategy.setColumnMapping(FILE_HEADER_OF_HOUSE);
-        CsvToBean<House> csvToBean = null;
-        try {
-            csvToBean = new CsvToBeanBuilder<House>(new FileReader(PATH_FILE_HOUSE))
-                    .withMappingStrategy(strategy)
-                    .withSeparator(DEFAULT_SEPARATOR)
-                    .withQuoteChar(DEFAULT_QUOTE)
-                    .withSkipLines(NUM_OF_LINE_SKIP)
-                    .withIgnoreLeadingWhiteSpace(true)
-                    .build();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
+        List<House> houses = new ArrayList<>();
+        try (Reader reader = new FileReader(PATH_FILE_HOUSE);
+             CSVReader csvReader = new CSVReader(reader);) {
+            csvReader.readNext();
+            String[] line;
+            while ((line = csvReader.readNext()) != null) {
+                House house = new House();
+                house.setId(line[0]);
+                house.setNameService(line[1]);
+                house.setArea(Double.parseDouble(line[2]));
+                house.setRentalCosts(Double.parseDouble(line[3]));
+                house.setMaxNumberOfPeople(Integer.parseInt(line[4]));
+                house.setTypeRent(line[5]);
+                house.setRoomStandard(line[6]);
+                house.setConvenientDescription(line[7]);
+                house.setNumberOfFloors(Integer.parseInt(line[8]));
+                houses.add(house);
+            }
+        } catch (IOException e) {
+            System.out.println("Error");
         }
-
-        return csvToBean.parse();
+        return houses;
     }
 
     public static List<Room> readCsvFileRoom() {
-        ColumnPositionMappingStrategy<Room> strategy = new ColumnPositionMappingStrategy<>();
-        strategy.setType(Room.class);
-        strategy.setColumnMapping(FILE_HEADER_OF_ROOM);
-        CsvToBean<Room> csvToBean = null;
-        try {
-            csvToBean = new CsvToBeanBuilder<Room>(new FileReader(PATH_FILE_ROOM))
-                    .withMappingStrategy(strategy)
-                    .withSeparator(DEFAULT_SEPARATOR)
-                    .withQuoteChar(DEFAULT_QUOTE)
-                    .withSkipLines(NUM_OF_LINE_SKIP)
-                    .withIgnoreLeadingWhiteSpace(true)
-                    .build();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-
-        return csvToBean.parse();
+            List<Room> rooms = new ArrayList<>();
+            try (Reader reader = new FileReader(PATH_FILE_ROOM);
+                 CSVReader csvReader = new CSVReader(reader);) {
+                csvReader.readNext();
+                String[] line;
+                while ((line = csvReader.readNext()) != null) {
+                    Room room = new Room();
+                    room.setId(line[0]);
+                    room.setNameService(line[1]);
+                    room.setArea(Double.parseDouble(line[2]));
+                    room.setRentalCosts(Double.parseDouble(line[3]));
+                    room.setMaxNumberOfPeople(Integer.parseInt(line[4]));
+                    room.setTypeRent(line[5]);
+                    room.setFreeService(line[6]);
+                    rooms.add(room);
+                }
+            } catch (IOException e) {
+                System.out.println("Error");
+            }
+            return rooms;
     }
 
     public static List<Customer> readCsvFileCustomer() {
-        ColumnPositionMappingStrategy<Customer> strategy = new ColumnPositionMappingStrategy<>();
-        strategy.setType(Customer.class);
-        strategy.setColumnMapping(FILE_HEADER_OF_CUSTOMER);
-        CsvToBean<Customer> csvToBean = null;
-        try {
-            csvToBean = new CsvToBeanBuilder<Customer>(new FileReader(PATH_FILE_CUSTOMER))
-                    .withMappingStrategy(strategy)
-                    .withSeparator(DEFAULT_SEPARATOR)
-                    .withQuoteChar(DEFAULT_QUOTE)
-                    .withSkipLines(NUM_OF_LINE_SKIP)
-                    .withIgnoreLeadingWhiteSpace(true)
-                    .build();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-
-        return csvToBean.parse();
-    }
-
-    public static void WriteCsvFileBooking(List<Customer> listBooking)  {
-        FileWriter fileWriter = null;
-
-        try {
-            fileWriter = new FileWriter(PATH_FILE_BOOKING);
-
-            fileWriter.append(Arrays.toString(FILE_HEADER_OF_BOOKING));
-
-
-            fileWriter.append(DEFAULT_SEPARATOR);
-
-            for (Customer customerCSV : listBooking) {
-                fileWriter.append(customerCSV.getId());
-                fileWriter.append(NEW_LINE_SEPARATOR);
-                fileWriter.append(customerCSV.getNameCustomer());
-                fileWriter.append(NEW_LINE_SEPARATOR);
-                fileWriter.append(customerCSV.getIdCard());
-                fileWriter.append(NEW_LINE_SEPARATOR);
-                fileWriter.append(customerCSV.getBirthday());
-                fileWriter.append(NEW_LINE_SEPARATOR);
-                fileWriter.append(customerCSV.getGender());
-                fileWriter.append(NEW_LINE_SEPARATOR);
-                fileWriter.append(customerCSV.getPhoneNumber());
-                fileWriter.append(NEW_LINE_SEPARATOR);
-                fileWriter.append(customerCSV.getEmail());
-                fileWriter.append(NEW_LINE_SEPARATOR);
-                fileWriter.append(customerCSV.getTypeCustomer());
-                fileWriter.append(NEW_LINE_SEPARATOR);
-                fileWriter.append(customerCSV.getAddress());
-                fileWriter.append(NEW_LINE_SEPARATOR);
-                fileWriter.append(customerCSV.getService().getId());
-                fileWriter.append(NEW_LINE_SEPARATOR);
-                fileWriter.append(customerCSV.getService().getNameService());
-                fileWriter.append(NEW_LINE_SEPARATOR);
-                fileWriter.append(String.valueOf(customerCSV.getService().getArea()));
-                fileWriter.append(NEW_LINE_SEPARATOR);
-                fileWriter.append(String.valueOf(customerCSV.getService().getRentalCosts()));
-                fileWriter.append(NEW_LINE_SEPARATOR);
-                fileWriter.append(String.valueOf(customerCSV.getService().getMaxNumberOfPeople()));
-                fileWriter.append(NEW_LINE_SEPARATOR);
-                fileWriter.append(customerCSV.getService().getTypeRent());
-                fileWriter.append(DEFAULT_SEPARATOR);
+        List<Customer> customers = new ArrayList<>();
+        try (Reader reader = new FileReader(PATH_FILE_CUSTOMER);
+             CSVReader csvReader = new CSVReader(reader);) {
+            csvReader.readNext();
+            String[] line;
+            while ((line = csvReader.readNext()) != null) {
+                Customer customer = new Customer();
+                customer.setId(line[0]);
+                customer.setNameCustomer(line[1]);
+                customer.setIdCard(line[2]);
+                customer.setBirthday(line[3]);
+                customer.setGender(line[4]);
+                customer.setPhoneNumber(line[5]);
+                customer.setEmail(line[6]);
+                customer.setTypeCustomer(line[7]);
+                customer.setAddress(line[8]);
+                customers.add(customer);
             }
-            System.out.println("CSV file was created successfully !!!");
-
-        } catch (Exception e) {
-            System.out.println("Error in CsvFileWriter !!!");
-            e.printStackTrace();
-        } finally {
-
-            try {
-                fileWriter.flush();
-                fileWriter.close();
-            } catch (IOException e) {
-                System.out.println("Error while flushing/closing fileWriter !!!");
-                e.printStackTrace();
-            }
-
+        } catch (IOException e) {
+            System.out.println("Error");
         }
+        return customers;
     }
     public static List<Employee> readCsvFileEmployee() {
-        ColumnPositionMappingStrategy<Employee> strategy = new ColumnPositionMappingStrategy<>();
-        strategy.setType(Employee.class);
-        strategy.setColumnMapping(FILE_HEADER_OF_EMPLOYEE);
-        CsvToBean<Employee> csvToBean = null;
-        try {
-            csvToBean = new CsvToBeanBuilder<Employee>(new FileReader(PATH_FILE_EMPLOYEE))
-                    .withMappingStrategy(strategy)
-                    .withSeparator(DEFAULT_SEPARATOR)
-                    .withQuoteChar(DEFAULT_QUOTE)
-                    .withSkipLines(NUM_OF_LINE_SKIP)
-                    .withIgnoreLeadingWhiteSpace(true)
-                    .build();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
+        List<Employee> employees = new ArrayList<>();
+        try (Reader reader = new FileReader(PATH_FILE_EMPLOYEE);
+             CSVReader csvReader = new CSVReader(reader);) {
+            csvReader.readNext();
+            String[] line;
+            while ((line = csvReader.readNext()) != null) {
+                Employee employee = new Employee();
+                employee.setIdEmployee(line[0]);
+                employee.setNameEmployee(line[1]);
+                employee.setAge(Integer.parseInt(line[2]));
+                employee.setAddress(line[3]);
+                employees.add(employee);
+            }
+        } catch (IOException e) {
+            System.out.println("Error");
         }
-
-        return csvToBean.parse();
+        return employees;
     }
+
 }
+
+
 
 
 

@@ -1,7 +1,5 @@
 package models;
 
-
-
 public class Customer {
     private String id;
     private String nameCustomer;
@@ -108,6 +106,14 @@ public class Customer {
 
     public void setService(Services service) {
         this.service = service;
+    }
+
+    public String[] getAllCustomer(){
+     String[] customer ={this.id,this.nameCustomer,this.idCard,this.birthday,this.gender,this.phoneNumber,this.email,
+             this.typeCustomer,this.address,this.service.getId(),this.service.getNameService(),
+             String.valueOf(this.service.getArea()),String.valueOf(this.service.getRentalCosts()),
+             String.valueOf(this.service.getMaxNumberOfPeople()),this.service.getTypeRent()};
+        return customer;
     }
     public String showInfo() {
         return "IdCustomer: " + id + "\n" +
