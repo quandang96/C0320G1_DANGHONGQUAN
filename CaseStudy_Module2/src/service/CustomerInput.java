@@ -1,4 +1,4 @@
-package controllers;
+package service;
 import exception.ValidationException;
 import models.Customer;
 

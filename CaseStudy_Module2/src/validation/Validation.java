@@ -33,7 +33,7 @@ public class Validation {
 
     public static double validationArea() {
         while (true) {
-            String regexArea = "^([3]+[1-9])$|([1-9]+([0-9]){2,100})+$";
+            String regexArea = "^(([3-9][0-9])(\\.[\\d]+)?|([1-9](\\d){2,})(\\.[\\d]+)?)$";
             String input = scanner.nextLine();
             if (input.matches(regexArea)) {
                 return Double.parseDouble(input);

@@ -9,7 +9,6 @@ import models.*;
 import java.io.*;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
 
 public class CsvReaderWriter {
     private static final String NEW_LINE_SEPARATOR = "\n";
@@ -29,7 +28,30 @@ public class CsvReaderWriter {
     private static final String[] FILE_HEADER_OF_CUSTOMER = {" id", " nameCustomer", "idCard", " birthday", " gender", " phoneNumber", " email", " typeCustomer", " address"};
     private static final String[] FILE_HEADER_OF_BOOKING = {" id", " nameCustomer", "idCard", " birthday", " gender", " phoneNumber", " email", " typeCustomer", " address", "idService", "nameService", "area", "rentalCosts", "maxNumberOfPeople", "typeRent"};
 
-    public static void writerCsv(List<String[]> fileName, String path, String[] header) {
+    public static void writerCsv(List<String[]> fileName, String service) {
+        String path = null;
+        String[] header=null;
+        switch (service){
+            case "Villa":
+                path = PATH_FILE_VILLA;
+                header =FILE_HEADER_OF_VILLA;
+                break;
+            case "House":
+                path =PATH_FILE_HOUSE;
+                header =FILE_HEADER_OF_HOUSE;
+                break;
+            case "Room":
+                path =PATH_FILE_ROOM;
+                header =FILE_HEADER_OF_ROOM;
+                break;
+            case "Customer":
+                path =PATH_FILE_CUSTOMER;
+                header =FILE_HEADER_OF_CUSTOMER;
+                break;
+            default:
+                System.out.println("Error");
+
+        }
         try (
                 Writer writer = new FileWriter(path, true);
                 CSVWriter csvWriter = new CSVWriter(writer,
@@ -53,17 +75,6 @@ public class CsvReaderWriter {
         return csvReader.readLine();
     }
 
-    //    public static void readCsv(String path) {
-//        try (Reader reader = new FileReader(path);
-//             BufferedReader csvReader = new BufferedReader(reader)) {
-//            String line;
-//            while ((line = csvReader.readLine()) != null) {
-//                System.out.println(line);
-//            }
-//        } catch (IOException  e) {
-//            System.out.println("error");
-//        }
-//    }
     public static List<Villa> readCsvFileVilla() {
         ColumnPositionMappingStrategy<Villa> strategy = new ColumnPositionMappingStrategy<>();
         strategy.setType(Villa.class);

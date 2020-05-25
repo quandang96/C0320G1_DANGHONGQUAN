@@ -2,9 +2,9 @@ package controllers;
 
 import commons.CsvReaderWriter;
 import models.*;
+import service.*;
 import sort.SortNameCustomer;
 
-import java.io.IOException;
 import java.util.*;
 
 public class MainController {
@@ -60,6 +60,7 @@ public class MainController {
 
         }
     }
+
     public void  showServices() {
         System.out.println(
                         "1.\tShow all Villa\n" +
@@ -87,12 +88,15 @@ public class MainController {
                 break;
             case 4:
                 ShowAllNameVillaNotDuplicate();
+                displayMainMenu();
                 break;
             case 5:
-                   ShowAllNameHouseNotDuplicate();
+                ShowAllNameHouseNotDuplicate();
+                displayMainMenu();
                 break;
             case 6:
                 ShowAllNameRoomNotDuplicate();
+                displayMainMenu();
                 break;
             case 7:
                 displayMainMenu();
@@ -140,18 +144,17 @@ public class MainController {
 
             }
         }
+
     public void addNewCustomer() {
-        String PATH_FILE_CUSTOMER = "src/data/Customer.csv";
-        String[] FILE_HEADER_OF_CUSTOMER = {" id", " nameCustomer", "idCard", " birthday", " gender", " phoneNumber",
-                " email", " typeCustomer", " address"};
         List <String[]> customers = new ArrayList<>();
         Customer customer =  CustomerInput.inputNewCustomer();
         String[] arr =new String[]{customer.getId(),customer.getNameCustomer(),customer.getIdCard(),customer.getBirthday(),
                 customer.getGender(),customer.getPhoneNumber(),customer.getEmail(),customer.getTypeCustomer(),customer.getAddress()};
         customers.add(arr);
-        CsvReaderWriter.writerCsv(customers,PATH_FILE_CUSTOMER,FILE_HEADER_OF_CUSTOMER);
+        CsvReaderWriter.writerCsv(customers,"Customer");
         displayMainMenu();
     }
+
     public void ShowInformationOfCustomer(){
         List<Customer> customers;
         customers = CsvReaderWriter.readCsvFileCustomer();
@@ -171,6 +174,7 @@ public class MainController {
         }
 
     }
+
     public void showAllRoom()  {
         List<Room> rooms =CsvReaderWriter.readCsvFileRoom();
         for (Room room: rooms){
@@ -178,6 +182,7 @@ public class MainController {
             System.out.println(room.showInfo());
         }
     }
+
     public void showAllHouse()  {
         List<House> houses =CsvReaderWriter.readCsvFileHouse();
         for (House house: houses){
@@ -185,6 +190,7 @@ public class MainController {
             System.out.println(house.showInfo());
         }
     }
+
    public void  ShowAllNameVillaNotDuplicate(){
        TreeSet<String> treeSet = new TreeSet<>();
        List<Villa> villas =CsvReaderWriter.readCsvFileVilla();
@@ -193,6 +199,7 @@ public class MainController {
        }
        System.out.println(treeSet);
    }
+
     public void  ShowAllNameHouseNotDuplicate(){
         TreeSet<String> treeSet = new TreeSet<>();
         List<House> houses =CsvReaderWriter.readCsvFileHouse();
@@ -201,6 +208,7 @@ public class MainController {
         }
         System.out.println(treeSet);
     }
+
     public void  ShowAllNameRoomNotDuplicate(){
         TreeSet<String> treeSet = new TreeSet<>();
         List<Room> rooms =CsvReaderWriter.readCsvFileRoom();
@@ -209,6 +217,7 @@ public class MainController {
         }
         System.out.println(treeSet);
     }
+
    public void  showInformationOfEmployee(){
        Map<Integer, Employee> map = new HashMap<Integer, Employee>();
        List <Employee> listEmployee = CsvReaderWriter.readCsvFileEmployee();
@@ -219,42 +228,35 @@ public class MainController {
    }
 
     public void addNewVilla () {
-            String PATH_FILE_VILLA = "src/data/Villa.csv";
-            String[] FILE_HEADER_OF_VILLA = {"id", "nameService", "areaUse", "rentalCost", "maxNumberOfPeople",
-                    "typeRent", "roomStandard", "convenientDescription", "areaPool", "numberOfFloors"};
             List <String[]> villas = new ArrayList<>();
             Villa villa = (Villa) VillaInput.inputNewVilla();
             String[] arr =new String[]{villa.getId(),villa.getNameService(), String.valueOf(villa.getArea()),
                     String.valueOf(villa.getRentalCosts()), String.valueOf(villa.getMaxNumberOfPeople()),villa.getTypeRent(),
                     villa.getRoomStandard(),villa.getConvenientDescription(), String.valueOf(villa.getAreaPool()), String.valueOf(villa.getNumberOfFloors())};
             villas.add(arr);
-            CsvReaderWriter.writerCsv(villas,PATH_FILE_VILLA,FILE_HEADER_OF_VILLA);
+            CsvReaderWriter.writerCsv(villas,"Villa");
         }
+
     public void addNewRoom () {
-        String PATH_FILE_ROOM = "src/data/Room.csv";
-        String[] FILE_HEADER_OF_ROOM = {" id", " nameService", "areaUse", "rentalCosts", "maxNumberOfPeople",
-                "typeRent", "freeService"};
         List <String[]> rooms = new ArrayList<>();
         Room room = (Room) RoomInput.inputNewRoom();
         String[] arrRoom =new String[]{room.getId(),room.getNameService(), String.valueOf(room.getArea()),
                 String.valueOf(room.getRentalCosts()), String.valueOf(room.getMaxNumberOfPeople()),room.getTypeRent(),
                 room.getFreeService()};
         rooms.add(arrRoom);
-        CsvReaderWriter.writerCsv(rooms,PATH_FILE_ROOM,FILE_HEADER_OF_ROOM);
+        CsvReaderWriter.writerCsv(rooms,"Room");
     }
 
     public void addNewHouse () {
-        String PATH_FILE_HOUSE = "src/data/House.csv";
-        String[] FILE_HEADER_OF_HOUSE = {" id", " nameService", "area", "rentalCosts", "maxNumberOfPeople",
-                "typeRent", "roomStandard", "convenientDescription", "numberOfFloors"};
         List <String[]> houses = new ArrayList<>();
         House house = (House) HouseInput.inputNewHouse();
         String[] arrHouse =new String[]{house.getId(),house.getNameService(), String.valueOf(house.getArea()),
                 String.valueOf(house.getRentalCosts()), String.valueOf(house.getMaxNumberOfPeople()),house.getTypeRent(),
                 house.getRoomStandard(),house.getConvenientDescription(),String.valueOf(house.getNumberOfFloors())};
         houses.add(arrHouse);
-        CsvReaderWriter.writerCsv(houses,PATH_FILE_HOUSE,FILE_HEADER_OF_HOUSE);
+        CsvReaderWriter.writerCsv(houses,"House");
     }
+
     private void addNewBooking() {
         Scanner scanner = new Scanner(System.in);
         List<Customer> customers;
@@ -329,6 +331,7 @@ public class MainController {
         CsvReaderWriter.WriteCsvFileBooking(listBooking);
         displayMainMenu();
     }
+
     private void showBookingCinema() {
         Queue<Customer> customers = BookingCinema4DServiceImpl.getAllBookingCinema();
         while (true) {
@@ -352,6 +355,7 @@ public class MainController {
             BookingCinema4DServiceImpl.addBookingCinema(customer);
         }
     }
+
     private void searchFilingCabinetsOfEmployee() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter id of Employee: ");
@@ -368,4 +372,3 @@ public class MainController {
     }
 
 }
-
