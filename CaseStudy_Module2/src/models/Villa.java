@@ -1,6 +1,9 @@
 package models;
 
+
+
 public class Villa extends Services {
+
     private String roomStandard;
     private String convenientDescription;
     private double areaPool;

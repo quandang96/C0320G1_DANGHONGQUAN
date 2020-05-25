@@ -2,6 +2,7 @@ package controllers;
 
 
 import models.*;
+import validation.Validation;
 
 import java.util.Scanner;
 
@@ -12,17 +13,17 @@ public class RoomInput {
         System.out.println("Enter ID: ");
         room.setId(scanner.nextLine());
         System.out.println("Enter name Service: ");
-        room.setNameService(scanner.nextLine());
+        room.setNameService(Validation.validationNamService());
         System.out.println("Enter area use: ");
-        room.setArea(Double.parseDouble(scanner.nextLine()));
+        room.setArea(Validation.validationArea());
         System.out.println("Enter rental Costs: ");
-        room.setRentalCosts(Double.parseDouble(scanner.nextLine()));
+        room.setRentalCosts(Validation.validationRentalCosts());
         System.out.println("Enter Max Number Of People: ");
-        room.setMaxNumberOfPeople(Integer.parseInt(scanner.nextLine()));
+        room.setMaxNumberOfPeople(Validation.validationMaxNumberOfPeople());
         System.out.println("Enter type rent : ");
-        room.setTypeRent(scanner.nextLine());
+        room.setTypeRent(Validation.validationNamService());
         System.out.print("Enter room standard : ");
-        ((Room) room).setFreeService(scanner.nextLine());
+        ((Room) room).setFreeService(Validation.validationNamService());
         System.out.println("------------------------------------------------");
         return room;
     }
