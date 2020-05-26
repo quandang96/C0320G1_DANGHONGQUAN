@@ -72,7 +72,7 @@ public class MainController {
         }
     }
 
-    public void  showServices() {
+    private void  showServices() {
         System.out.println(
                         "1.\tShow all Villa\n" +
                         "2.\tShow all House\n" +
@@ -122,7 +122,7 @@ public class MainController {
         }
     }
 
-    public void addNewServices() {
+    private void addNewServices() {
         System.out.println(
                 "1.\tAdd New Villa\n" +
                 "2.\tAdd New House\n" +
@@ -156,7 +156,7 @@ public class MainController {
             }
         }
 
-    public void addNewCustomer() {
+    private void addNewCustomer() {
         List <String[]> customers = new ArrayList<>();
         Customer customer = customerService.addNewCustomer();
         customers.add(customer.getAllCustomer());
@@ -164,7 +164,7 @@ public class MainController {
         displayMainMenu();
     }
 
-    public void ShowInformationOfCustomer(){
+    private void ShowInformationOfCustomer(){
         List<Customer> customers;
         customers = CsvReaderWriter.readCsvFileCustomer();
         Collections.sort(customers, new SortNameCustomer());
@@ -175,7 +175,7 @@ public class MainController {
         displayMainMenu();
     }
 
-    public void showAllVilla()  {
+    private void showAllVilla()  {
        List<Villa> villas =CsvReaderWriter.readCsvFileVilla();
         for (Villa villa: villas){
             System.out.println("--------------------------------------------------");
@@ -184,7 +184,7 @@ public class MainController {
 
     }
 
-    public void showAllRoom()  {
+    private void showAllRoom()  {
         List<Room> rooms =CsvReaderWriter.readCsvFileRoom();
         for (Room room: rooms){
             System.out.println("--------------------------------------------------");
@@ -192,7 +192,7 @@ public class MainController {
         }
     }
 
-    public void showAllHouse()  {
+    private void showAllHouse()  {
         List<House> houses =CsvReaderWriter.readCsvFileHouse();
         for (House house: houses){
             System.out.println("--------------------------------------------------");
@@ -200,7 +200,7 @@ public class MainController {
         }
     }
 
-   public void  ShowAllNameVillaNotDuplicate(){
+    private void  ShowAllNameVillaNotDuplicate(){
        TreeSet<String> treeSet = new TreeSet<>();
        List<Villa> villas =CsvReaderWriter.readCsvFileVilla();
        for (Villa villa: villas){
@@ -209,7 +209,7 @@ public class MainController {
        System.out.println(treeSet);
    }
 
-    public void  ShowAllNameHouseNotDuplicate(){
+    private void  ShowAllNameHouseNotDuplicate(){
         TreeSet<String> treeSet = new TreeSet<>();
         List<House> houses =CsvReaderWriter.readCsvFileHouse();
         for (House house: houses){
@@ -218,7 +218,7 @@ public class MainController {
         System.out.println(treeSet);
     }
 
-    public void  ShowAllNameRoomNotDuplicate(){
+    private void  ShowAllNameRoomNotDuplicate(){
         TreeSet<String> treeSet = new TreeSet<>();
         List<Room> rooms =CsvReaderWriter.readCsvFileRoom();
         for (Room room: rooms){
@@ -227,7 +227,7 @@ public class MainController {
         System.out.println(treeSet);
     }
 
-   public void  showInformationOfEmployee(){
+    private void  showInformationOfEmployee(){
        EmployeeInput.employee();
        Map<Integer, Employee> map = new HashMap<>();
        List <Employee> listEmployee = CsvReaderWriter.readCsvFileEmployee();
@@ -238,21 +238,21 @@ public class MainController {
        displayMainMenu();
    }
 
-    public void addNewVilla () {
+    private void addNewVilla () {
             List <String[]> villas = new ArrayList<>();
             Villa villa = (Villa) villaService.addNewService();
             villas.add(villa.getAllVilla());
             CsvReaderWriter.writerCsv(villas,"Villa");
         }
 
-    public void addNewRoom () {
+    private void addNewRoom () {
         List <String[]> rooms = new ArrayList<>();
         Room room = (Room)houseService.addNewService();
         rooms.add(room.getAllRoom());
         CsvReaderWriter.writerCsv(rooms,"Room");
     }
 
-    public void addNewHouse () {
+    private void addNewHouse () {
         List <String[]> houses = new ArrayList<>();
         House house = (House) roomService.addNewService();
         houses.add(house.getAllHouse());
