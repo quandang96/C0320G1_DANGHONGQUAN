@@ -396,7 +396,7 @@ public class MainController {
         ArrayList<String> list = new ArrayList<String>();
         Arrays.asList(arr);
 
-                String
+      Collections.addAll(customer);
 
 
 
