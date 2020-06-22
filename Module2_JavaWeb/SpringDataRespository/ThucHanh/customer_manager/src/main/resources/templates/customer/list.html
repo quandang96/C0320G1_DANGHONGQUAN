@@ -7,6 +7,9 @@
 <body>
 <a href="/create-customer">Create new customer</a>
 <h1>Customers</h1>
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
 <table border="1">
     <tr>
         <th>First name</th>

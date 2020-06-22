@@ -5,22 +5,23 @@ import javax.persistence.*;
 @Entity
 @Table(name = "customers")
 public class Customer {
-
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
     private String firstName;
     private String lastName;
 
     @ManyToOne
-    @JoinColumn(name = "province_id")
+    @JoinColumn(name = "province_id" ,nullable = false)
     private Province province;
 
-    public Customer() {}
-
-    public Customer(String firstName, String lastName) {
+    public Customer(String firstName, String lastName, Province province) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.province = province;
+    }
+
+    public Customer() {
     }
 
     @Override

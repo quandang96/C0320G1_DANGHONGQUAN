@@ -1,5 +1,4 @@
 package com.customer_manager.cotrollers;
-
 import com.customer_manager.model.Customer;
 import com.customer_manager.model.Province;
 import com.customer_manager.services.CustomerService;
@@ -11,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class CustomerController {
@@ -53,15 +53,15 @@ public class CustomerController {
     @GetMapping("/edit-customer/{id}")
     public ModelAndView showEditForm(@PathVariable Long id){
         Customer customer = customerService.findById(id);
+        ModelAndView modelAndView;
         if(customer != null) {
-            ModelAndView modelAndView = new ModelAndView("/customer/edit");
+            modelAndView = new ModelAndView("/customer/edit");
             modelAndView.addObject("customer", customer);
-            return modelAndView;
 
         }else {
-            ModelAndView modelAndView = new ModelAndView("/error.404");
-            return modelAndView;
+            modelAndView = new ModelAndView("/error.404");
         }
+        return modelAndView;
     }
 
     @PostMapping("/edit-customer")
@@ -88,8 +88,9 @@ public class CustomerController {
     }
 
     @PostMapping("/delete-customer")
-    public String deleteCustomer(@ModelAttribute("customer") Customer customer){
+    public String deleteCustomer(@ModelAttribute("customer") Customer customer , RedirectAttributes redirectAttributes){
         customerService.remove(customer.getId());
-        return "redirect:customers";
+        redirectAttributes.addFlashAttribute("message","Đã Xóa");
+        return "redirect:/customers";
     }
 }

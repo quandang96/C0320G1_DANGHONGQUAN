@@ -13,7 +13,7 @@ public class Customer {
     private String lastName;
 
     @ManyToOne
-    @JoinColumn(name = "province_id")
+    @JoinColumn(name = "province_id" , nullable=false)
     private Province province;
 
     public Customer() {}

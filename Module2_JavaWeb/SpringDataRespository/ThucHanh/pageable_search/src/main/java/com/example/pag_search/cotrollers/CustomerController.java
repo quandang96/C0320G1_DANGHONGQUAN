@@ -10,6 +10,7 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.Optional;
 
@@ -29,14 +30,15 @@ public class CustomerController {
     }
 
     @GetMapping("/customers")
-    public ModelAndView listCustomers(@RequestParam("s") Optional<String> s, Pageable pageable){
+    public ModelAndView listCustomers( @RequestParam("s") Optional<String> s, @PageableDefault(size = 2) Pageable pageable){
         Page<Customer> customers;
+        ModelAndView modelAndView = new ModelAndView("/customer/list");
         if(s.isPresent()){
-            customers = customerService.findAllByFirstNameContaining(s.get(), pageable);
+            customers = customerService.findAllByFirstNameContaining( s.get(), pageable);
+
         } else {
             customers =  customerService.findAll(pageable);
         }
-        ModelAndView modelAndView = new ModelAndView("/customer/list");
         modelAndView.addObject("customers", customers);
         return modelAndView;
     }

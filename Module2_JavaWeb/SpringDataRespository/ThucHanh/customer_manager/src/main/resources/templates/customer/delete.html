@@ -11,9 +11,7 @@
     <a href="/customers">Customer list</a>
 </p>
 <form th:action="@{/delete-customer}" th:object="${customer}" method="post">
-    <label>
-        <input th:type="hidden" name="id" th:field="*{id}">
-    </label>
+    <input th:type="hidden" name="id" th:field="*{id}">
     <table>
         <tr>
             <td>First name:</td>
@@ -30,3 +28,4 @@
     </table>
 </form>
 </body>
+</html>

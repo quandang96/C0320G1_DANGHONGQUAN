@@ -43,15 +43,15 @@ public class ProvinceController {
     @GetMapping("/edit-province/{id}")
     public ModelAndView showEditForm(@PathVariable Long id){
         Province province = provinceService.findById(id);
+        ModelAndView modelAndView;
         if(province != null) {
-            ModelAndView modelAndView = new ModelAndView("/province/edit");
+            modelAndView = new ModelAndView("/province/edit");
             modelAndView.addObject("province", province);
-            return modelAndView;
 
         }else {
-            ModelAndView modelAndView = new ModelAndView("/error.404");
-            return modelAndView;
+            modelAndView = new ModelAndView("/error.404");
         }
+        return modelAndView;
     }
 
     @PostMapping("/edit-province")
