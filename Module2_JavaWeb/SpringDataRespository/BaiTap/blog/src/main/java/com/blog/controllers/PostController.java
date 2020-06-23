@@ -93,5 +93,6 @@ public class PostController {
         modelAndView.addObject("category",category);
      return modelAndView;
     }
+
 }
 

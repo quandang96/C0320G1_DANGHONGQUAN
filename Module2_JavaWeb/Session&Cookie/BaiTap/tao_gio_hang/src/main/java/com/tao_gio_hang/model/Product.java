@@ -10,7 +10,6 @@ public class Product {
     private Long id;
     private String name;
     private String Manufacturer;
-    private Integer quantity;
     private Double price;
 
     @ManyToOne
@@ -27,11 +26,10 @@ public class Product {
     public Product() {
     }
 
-    public Product(Long id, String name, String manufacturer, Integer quantity, Double price) {
+    public Product(Long id, String name, String manufacturer, Double price) {
         this.id = id;
         this.name = name;
         Manufacturer = manufacturer;
-        this.quantity = quantity;
         this.price = price;
     }
 
@@ -59,13 +57,6 @@ public class Product {
         Manufacturer = manufacturer;
     }
 
-    public Integer getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
-    }
 
     public Double getPrice() {
         return price;

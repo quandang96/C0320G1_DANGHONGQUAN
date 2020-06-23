@@ -29,19 +29,18 @@ public class ProductController {
 
     }
 
-    @GetMapping("/view/{id}")
-    public ModelAndView viewProduct(@PathVariable("id") Long id){
-        return new ModelAndView("view","product",productService.findById(id));
-    }
 
     @GetMapping("/buy/{id}")
     public String buyProduct(@PathVariable("id") Long id, @SessionAttribute("cart") Map<Product, Quantity> cart){
-        cart.put(productService.findById(id),new Quantity(1));
-        return "cart";
+        productService.findById(id,cart);
+        return "redirect:/";
     }
+
+
 
     @GetMapping("/delete/{id}")
     public ModelAndView deleteProduct(@PathVariable("id") Long id){
+
         return new ModelAndView("cart");
     }
 }

@@ -5,6 +5,7 @@
     <title>Title</title>
 </head>
 <body>
+<a th:href="@{/}">listProduct</a>
 <table class="table table-bordered table-striped" >
     <thead >
     <tr class="table-success">
@@ -18,7 +19,8 @@
     <tr th:each ="carts : ${cart}">
         <td th:text="${carts.getKey().name}"></td>
         <td th:text="${carts.getKey().price}"></td>
-        <td th:text="${carts.getValue().count}"></td>
+        <td>
+        <input type="text" th:value="${carts.getValue().count}"></td>
         <td> <a th:href="@{/delete/__${carts.getKey().id}__}"> Delete </a></td>
     </tr>
     </tbody>

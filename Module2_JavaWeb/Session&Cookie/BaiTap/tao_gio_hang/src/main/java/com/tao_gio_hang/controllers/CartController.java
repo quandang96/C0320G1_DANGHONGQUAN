@@ -14,11 +14,10 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.Map;
 
 @Controller
-@SessionAttributes("cart")
 public class CartController {
 
     @GetMapping("/cart")
-    public ModelAndView getCart(){
-        return new ModelAndView("cart");
+    public ModelAndView getCart(@SessionAttribute("cart") Map<Product,Quantity> cart ){
+        return new ModelAndView("cart","cart",cart);
     }
 }
