@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <title>Login V3</title>
     <meta charset="UTF-8">
@@ -33,7 +34,7 @@
 
     <div class="container-login100" style="background-image: url('img/bg-01.jpg');">
         <div class="wrap-login100">
-            <form class="login100-form validate-form" method="post" th:action="@{/}">
+            <form class="login100-form validate-form" method="post" th:action="@{/j_spring_security_check}">
 					<span class="login100-form-logo">
 						<i class="zmdi zmdi-landscape"></i>
 					</span>
@@ -66,8 +67,8 @@
                 </div>
 
                 <div class="text-center p-t-90">
-                    <a class="txt1" href="#">
-                        Forgot Password?
+                    <a class="txt1" href="/">
+                        Home
                     </a>
                 </div>
             </form>

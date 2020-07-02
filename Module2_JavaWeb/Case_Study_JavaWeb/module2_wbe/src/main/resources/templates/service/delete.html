@@ -1,10 +1,55 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="service/edit::layout">
+    <title>Delete Service</title>
 </head>
 <body>
-$END$
+<h3 class="d-flex justify-content-center" style="padding-top: 20px;padding-right: 55px">Delete Service</h3>
+<form th:action="@{/service/delete}" method="POST" th:object="${services}" class="form-horizontal" role="form">
+    <div class="d-flex justify-content-center">
+
+        <div class="tab-content" id="myTabContent">
+            <input type="hidden" th:field="*{id}">
+            <div class="col-md-10">
+                <input type="hidden" th:field="*{id}">
+                <h6 >Name</h6>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Name *" th:field="*{name}" readonly/>
+                </div>
+                <h6  >Area</h6>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Area *" th:field="*{area}" readonly/>
+                </div>
+                <h6>Floor</h6>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Floor*" th:field="*{floor}" readonly/>
+                </div>
+                <div class="form-group">
+                    <h6>MaxPerson</h6>
+                    <input type="text" class="form-control" placeholder="Max Person " th:field="*{maxPerson}" readonly/>
+                </div>
+                <div class="form-group">
+                    <h6>Price</h6>
+                    <input type="text" class="form-control" placeholder="Max Person " th:field="*{price}" readonly/>
+                </div>
+                <div class="form-group">
+                    <h6>Service Type</h6>
+                    <select  th:field="*{serviceType.id}" class="selectpicker mdb-select md-form colorful-select dropdown-primary" disabled>
+                        <th:block th:each="type : ${serviceType}">
+                            <option th:value="${type.id}" th:text="${type.name}">Service Type</option>
+                        </th:block>
+                    </select>
+                </div>
+                <div class="col-md-11">
+                    <input type="submit" class="btnRegister"  value="Delete"/>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</form>
+
 </body>
 </html>

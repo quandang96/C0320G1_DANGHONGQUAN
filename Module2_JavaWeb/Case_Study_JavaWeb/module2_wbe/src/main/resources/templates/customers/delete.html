@@ -1,10 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="service/edit::layout">
+    <title>Service</title>
 </head>
 <body>
-$END$
+<h3 class="d-flex justify-content-center" style="padding-top: 20px;padding-right: 55px">Customer</h3>
+<form th:action="@{/delete}" method="POST" th:object="${customers}" class="form-horizontal" role="form">
+    <div class="d-flex justify-content-center">
+
+        <div class="tab-content" id="myTabContent">
+            <div class="col-md-10">
+                <input type="hidden" th:field="*{id}">
+                <h6 >Code</h6>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Name *" th:field="*{code}" readonly/>
+                </div>
+                <h6  >Name</h6>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Area *" th:field="*{name}" readonly/>
+                </div>
+                <h6>ID Card</h6>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Floor*" th:field="*{idCard}" readonly/>
+                </div>
+                <div class="form-group">
+                    <h6>Phone Number</h6>
+                    <input type="text" class="form-control" placeholder="Max Person " th:field="*{phoneNumber}" readonly/>
+                </div>
+                <div class="form-group">
+                    <h6>Email</h6>
+                    <input type="text" class="form-control" placeholder="Max Person " th:field="*{email}" readonly/>
+                </div>
+                <div class="form-group">
+                    <h6>Birthday</h6>
+                    <input type="text" class="form-control" placeholder="Max Person " th:field="*{birthday}" readonly/>
+                </div>
+                <div class="form-group">
+                    <h6>Address</h6>
+                    <input type="text" class="form-control" placeholder="Max Person " th:field="*{address}" readonly/>
+                </div>
+                <div class="form-group">
+                    <h6>Customer Type</h6>
+                    <select  class="selectpicker mdb-select md-form colorful-select dropdown-primary" disabled>
+                            <option  th:text="${customers.customerType.name}"></option>
+                    </select>
+                </div>
+                <div class="col-md-11">
+                    <input type="submit" class="btnRegister"  value="Update"/>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</form>
+
 </body>
 </html>

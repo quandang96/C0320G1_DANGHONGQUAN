@@ -1,45 +1,28 @@
-package case_study.module2_wbe.service.impl;
-import case_study.module2_wbe.entity.Account;
-import case_study.module2_wbe.entity.Customer;
-import case_study.module2_wbe.service.AccountService;
-import case_study.module2_wbe.service.CustomerService;
-import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.CustomAutowireConfigurer;
+package case_study.module2_wbe.dto;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Controller;
-
+import org.springframework.validation.Errors;
+import org.springframework.validation.Validator;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 
-public class RegisterDto {
+public class RegisterDto implements Validator {
 
-    @Autowired
-    private CustomerServiceImpl customerService;
-
-    @Autowired
-    private AccountServiceImpl accountService;
-
+    @Size(min = 2,max = 20)
     private String username;
+
     @Pattern(regexp = "^([-\\w.])+[a-zA-Z\\d]@(\\w+\\.)+(\\w+)$", message = "Email is wrong format")
     private String email;
+    @NotBlank
     private String password;
+
     private String confirmPassword;
 
 
     public RegisterDto() {
     }
 
-
-
-    public void saveData(RegisterDto registerDto){
-        ModelMapper modelMapper = new ModelMapper();
-       Customer customer = modelMapper.map(registerDto,Customer.class);
-        customerService.save(customer);
-        Account account = modelMapper.map(registerDto,Account.class);
-        account.setCustomer(customer);
-        accountService.save(account);
-    }
 
     public String getUsername() {
         return username;
@@ -71,5 +54,20 @@ public class RegisterDto {
 
     public void setConfirmPassword(String confirmPassword) {
         this.confirmPassword = confirmPassword;
+    }
+
+    @Override
+    public boolean supports(Class<?> clazz) {
+        return RegisterDto.class.isAssignableFrom(clazz);
+    }
+
+    @Override
+    public void validate(Object target, Errors errors) {
+       RegisterDto registerDto = (RegisterDto) target;
+
+       if(!registerDto.password.equals(registerDto.confirmPassword) ){
+           errors.rejectValue("confirmPassword","message.confirmPassword");
+       }
+
     }
 }

@@ -1,14 +1,22 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
-<head>
+<head th:fragment="layout">
     <meta charset="UTF-8">
     <title>Title</title>
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!------ Include the above in your HEAD tag ---------->
     <style>
+        *[role="form"] {
+            max-width: 530px;
+            padding: 15px;
+            margin: 0 auto;
+            border-radius: 0.3em;
+            background-color: #f2f2f2;
+        }
         .register{
             background: -webkit-linear-gradient(left, #3931af, #00c6ff);
             margin-top: 0%;
@@ -120,16 +128,21 @@
             padding-left: 10px;
             padding-top: 5px;
         }
+        .selectpicker{
+            width: 286px;
+            height: 35px;
+        }
     </style>
 </head>
 <body>
 <h3 class="d-flex justify-content-center" style="padding-top: 20px;padding-right: 55px">Update Service</h3>
-<form th:action="@{/service/update}" method="POST" th:object="${services}">
+<form th:action="@{/service/update}" method="POST" th:object="${services} " class="form-horizontal" role="form">
 <div class="d-flex justify-content-center">
 
                 <div class="tab-content" id="myTabContent">
                             <input type="hidden" th:field="*{id}">
                             <div class="col-md-10">
+                                <input type="hidden" th:field="*{id}">
                                 <h6 >Name</h6>
                                 <div class="form-group">
                                     <input type="text" class="form-control" placeholder="Name *" th:field="*{name}" />
@@ -152,7 +165,7 @@
                                 </div>
                                 <div class="form-group">
                                     <h6>Service Type</h6>
-                                    <select  th:field="*{serviceType.id}">
+                                    <select  th:field="*{serviceType.id}" class="selectpicker mdb-select md-form colorful-select dropdown-primary">
                                         <th:block th:each="type : ${serviceType}">
                                             <option th:value="${type.id}" th:text="${type.name}">Service Type</option>
                                         </th:block>

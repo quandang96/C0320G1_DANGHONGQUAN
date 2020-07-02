@@ -1,12 +1,14 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
-<head>
+<head th:fragment="update">
     <meta charset="UTF-8">
     <title>Title</title>
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
     <!------ Include the above in your HEAD tag ---------->
     <style>
         .register{
@@ -110,19 +112,22 @@
                 min-width: 1200px;
                 max-width: 100%;
             }
+            .selectpicker{
+                width: 395px;
+                height: 37px;
+            }
         }
 
     </style>
 </head>
 <body>
-
-
 <div class="container register">
     <div class="row">
         <div class="col-md-3 register-left">
             <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt=""/>
-            <h3>Welcome</h3>
-            <p>Hello</p>
+            <h3> Wellcome </h3>
+            <h3 th:if="${customers.name != null}" th:text="${customers.name}"></h3>
+            <a style="margin-right: 73px;" class="btnRegister" href="/">Home</a>
         </div>
         <form class="col-md-9 register-right " th:action="@{/update}" method="POST" th:object="${customers}">
         <div class="col-md-9 register-right">
@@ -130,24 +135,29 @@
             <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                     <h3 class="register-heading text-primary">INFORMATION CUSTOMER</h3>
+                    <p th:if="${messages}" th:text="${messages}" class="text-success"></p>
                     <div class="row register-form">
-
                         <div class="col-md-6">
+                            <input type="hidden" th:field="*{id}">
                             <h6 >Code</h6>
                             <div class="form-group">
                                 <input type="text" class="form-control" placeholder="Code *" th:field="*{code}" />
+                                <p th:if="${#fields.hasErrors('code')} " th:errors="*{code}"></p>
                             </div>
                             <h6  >Name</h6>
                             <div class="form-group">
                                 <input type="text" class="form-control" placeholder="Name *" th:field="*{name}" />
+                                <p th:if="${#fields.hasErrors('name')} " th:errors="*{name}"></p>
                             </div>
                             <h6>ID Card</h6>
                             <div class="form-group">
                                 <input type="text" class="form-control" placeholder="ID Card*" th:field="*{idCard}" />
+                                <p th:if="${#fields.hasErrors('idCard')} " th:errors="*{idCard}"></p>
                             </div>
                             <div class="form-group">
                                 <h6>Phone Number</h6>
                                 <input type="text" class="form-control" placeholder="Phone Number " th:field="*{phoneNumber}" />
+                                <p th:if="${#fields.hasErrors('phoneNumber')} " th:errors="*{phoneNumber}"></p>
                             </div>
 
                         </div>
@@ -155,23 +165,29 @@
                             <div class="form-group">
                                 <h6>Email</h6>
                                 <input type="text" class="form-control"  placeholder="Email *" th:field="*{email}"/>
+                                <p th:if="${#fields.hasErrors('email')} " th:errors="*{email}"></p>
                             </div>
                             <div class="form-group">
                                 <h6>Birthday</h6>
-                                <input type="email" class="form-control" placeholder="Birthday *" th:field="*{birthday}"/>
+                                <input type="date" class="form-control" placeholder="Birthday *" th:field="*{birthday}"/>
+                                <p th:if="${#fields.hasErrors('birthday')} " th:errors="*{birthday}"></p>
                             </div>
                             <div class="form-group">
                                 <h6>Address</h6>
                                 <input type="text" minlength="10" maxlength="10" name="txtEmpPhone" class="form-control" placeholder="Address *" th:field="*{address}" />
+                                <p th:if="${#fields.hasErrors('address')} " th:errors="*{address}"></p>
                             </div>
                             <h6>Customer Type</h6>
-                            <select class="form-group">
-                                <option type="text" class="form-control"  value="Member" >Member</option>
+                            <select  class="selectpicker mdb-select md-form colorful-select dropdown-primary" th:field="*{customerType.id}">
+                                <option type="text" class="form-control"  value="1" >Member</option>
                             </select>
                         </div>
-                            <div class="col-md-8">
+
+                        <div class="col-md-8">
+
                             <input type="submit" class="btnRegister"  value="Update"/>
-                            </div>
+
+                        </div>
                     </div>
                 </div>
             </div>
