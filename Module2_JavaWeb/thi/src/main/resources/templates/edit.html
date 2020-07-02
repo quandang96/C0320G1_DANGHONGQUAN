@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<head>
+    <meta charset="UTF-8">
+    <title>Create</title>
+</head>
+<style>
+    body {
+        background: url('https://static-communitytable.parade.com/wp-content/uploads/2014/03/rethink-target-heart-rate-number-ftr.jpg') fixed;
+        background-size: cover;
+    }
+
+    *[role="form"] {
+        max-width: 530px;
+        padding: 15px;
+        margin: 0 auto;
+        border-radius: 0.3em;
+        background-color: #f2f2f2;
+    }
+
+    *[role="form"] h2 {
+        font-family: 'Open Sans' , sans-serif;
+        font-size: 40px;
+        font-weight: 600;
+        color: #000000;
+        margin-top: 5%;
+        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: 4px;
+    }
+
+</style>
+<body>
+<div class="container">
+    <form action="/edit" method="post" th:object="${customer}" class="form-horizontal" role="form">
+        <h2>Update Customer</h2>
+<!--        <span th:if="${message}" th:text="${message}" class="text-success"></span>-->
+        <input type="hidden" th:field="*{id}">
+        <div class="form-group">
+            <label for="firstName" class="col-sm-3 control-label">Mã khách hàng</label>
+            <div class="col-sm-9">
+                <input type="text"  placeholder="Mã Khách Hàng" th:field="*{code}" class="form-control" autofocus>
+                <span th:if="${#fields.hasErrors('code')}" th:errors="*{code}" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="lastName" class="col-sm-3 control-label">Loại Khách Hàng</label>
+            <div class="col-sm-9">
+                <input type="text"  placeholder="Loại khách Hàng" th:field="*{customerType}" class="form-control" autofocus>
+                <span th:if="${#fields.hasErrors('customerType')}" th:errors="*{customerType}" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="email" class="col-sm-3 control-label">Họ Tên </label>
+            <div class="col-sm-9">
+                <input type="text"  placeholder="Họ Tên" th:field="*{name}" class="form-control" name= "email">
+                <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="password" class="col-sm-3 control-label">Ngày Sinh</label>
+            <div class="col-sm-9">
+                <input type="date"  placeholder="Ngày sinh" th:field="*{birthday}" class="form-control">
+                <span th:if="${#fields.hasErrors('birthday')}" th:errors="*{birthday}" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label  class="col-sm-3 control-label">Giới tính</label>
+            <label>Nam</label>
+            <input type="radio"   th:field="*{male}" value="nam" class="form-control">
+            <label>nữ</label>
+            <input type="radio"   th:field="*{male}"  value="nữ" class="form-control">
+
+
+
+        </div>
+        <div class="form-group">
+            <label for="phone" class="control-label col-sm-4">Số Điện Thoại</label>
+            <div class="col-sm-9">
+                <input type="text"  placeholder="Phone number" th:field="*{phoneNumber}" class="form-control">
+                <span th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="phone" class="control-label col-sm-4">Số CMND</label>
+            <div class="col-sm-9">
+                <input type="text"  placeholder="Số CMND" th:field="*{idCard}" class="form-control">
+                <span th:if="${#fields.hasErrors('idCard')}" th:errors="*{idCard}" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="phone" class="control-label col-sm-4">Email</label>
+            <div class="col-sm-9">
+                <input type="text"  placeholder="Email" th:field="*{email}" class="form-control">
+                <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="phone" class="control-label col-sm-4">Địa Chỉ</label>
+            <div class="col-sm-9">
+                <input type="text"  placeholder="Địa chỉ" th:field="*{address}" class="form-control">
+                <span th:if="${#fields.hasErrors('address')}" th:errors="*{address}" class="text-danger"></span>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block">Update</button>
+    </form>
+</div>
+</body>
+</html>
