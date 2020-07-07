@@ -1,0 +1,95 @@
+#header {
+    position: fixed;
+    top: 0px;
+    height: 100px;
+    width: 100%;
+    background: #edf5f5;
+}
+
+#header-link {
+    position: relative;
+    margin-top: 90px;
+    background-color: rgb(9, 143, 143);
+    padding: 2%;
+
+}
+
+#left {
+    position: relative;
+    top: 10px;
+    float: left;
+    background: #dbe6db;
+    width: 200px;
+    height: 400px;
+
+}
+
+#content {
+    position: relative;
+    background-color: rgb(211, 202, 202);
+    height: 400px;
+    margin-left: 210px;
+    margin-right: 210px;
+    margin-top: 10px;
+}
+
+#right {
+    position: relative;
+    background: #dbe6db;
+    float: right;
+    width: 200px;
+    height: 400px;
+    top: 10px;
+}
+
+#footer {
+    position: fixed;
+    width: 100%;
+    height: 50px;
+    left: 0px;
+    bottom: 0px;
+    background: #454945;
+
+}
+
+#text {
+    float: right;
+    margin: 20px;
+
+}
+
+#banner {
+    position: relative;
+    float: right;
+    border: solid 2px;
+    width: 77%;
+    height: 80px;
+    background: #8b8f8b;
+    right: 20px;
+}
+
+#logo {
+    position: relative;
+    float: left;
+    border: solid 2px;
+    width: 20%;
+    height: 80px;
+    background: url('https://static.rfstat.com/renderforest/images/v2/logo-homepage/gradient_2.png');
+    background-size: 100% 100%;
+}
+
+a {
+    margin: 10px;
+    color: aliceblue;
+
+}
+
+p {
+    margin-left: 10px;
+}
+
+span {
+    float: left;
+    margin: 20px;
+    color: #dbe6db;
+}

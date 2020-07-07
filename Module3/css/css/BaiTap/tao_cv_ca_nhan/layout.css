@@ -1,0 +1,67 @@
+.left {
+    position: relative;
+    float: left;
+    width: 35%;
+    background-color: rgb(9, 11, 77);
+    height: 1500px;
+}
+
+.content {
+    width: 50%;
+    height: 1500px;
+    background: #e4ebec;
+    float: left;
+
+
+}
+
+.pictrure {
+    position: absolute;
+    left: 25%;
+    top: 50px;
+    width: 40%;
+    height: 200px;
+    background-image: url('https://mcnewsmd1.keeng.net/netnews/archive/images/2020060304/tinngan_043729_37972994_0wap_320.jpg');
+    background-size: 100% 100%;
+    border-radius: 100%;
+}
+
+.text {
+    position: absolute;
+    top: 270px;
+    left: 100px;
+}
+
+.content2 {
+    position: relative;
+    width: 94%;
+    height: 1470px;
+    background: #e4ebec;
+    border: solid 1px;
+    float: left;
+    margin: 17px;
+
+}
+
+.text2 {
+    position: relative;
+    top: 10px;
+    left: 20px;
+    color: black;
+    padding-bottom: 300px;
+
+}
+
+.text3 {
+    position: relative;
+    top: 200px;
+}
+
+h2 {
+    color: aliceblue;
+}
+
+h4 {
+    color: aliceblue;
+
+}
