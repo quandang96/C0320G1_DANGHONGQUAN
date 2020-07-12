@@ -1,0 +1,29 @@
+<meta charset="utf-8">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<style>
+    #dialog {
+        width: 800px
+    }
+</style>
+<script>
+    $(function () {
+        $("#dialog").dialog({
+            autoOpen: false,
+            show: { effect: "blind" },
+            hide: { effect: "explode" },
+            width: '600px'
+        });
+        $("#btnykien").on("click", function () {
+            $("#dialog").dialog("open");
+        });
+    });
+</script>
+<div id="dialog" title="Nhập ý kiến của bạn">
+    <p>Mời nhập ý kiến dưới 1000 từ và trên 10 từ nhé</p>
+    <p>Form nhập ý kiến bạn đọc</p>
+    <p>Form nhập ý kiến bạn đọc</p>
+    <p>Cảm ơn bạn</p>
+</div>
+<button id="btnykien">Ý kiến của bạn</button>
