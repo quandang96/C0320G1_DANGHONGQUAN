@@ -1,0 +1,99 @@
+<div class="container ">
+    <div class=" d-flex justify-content-center  ">
+        <div class="col-md-12 mt-0">
+            <div class="d-flex justify-content-center mt-4 mb-4">
+                <h2>ADD NEW CUSTOMER</h2>
+            </div>
+            <form (ngSubmit)="onSubmit()" [formGroup]="customerForm" class="pl-5 pr-5 ml-4 mr-4">
+
+                <div class="form-group">
+                    <label for="code">Code:</label>
+                    <input type="text" class="form-control" id="code" placeholder="Enter Code" formControlName="code">
+                    <p *ngIf="customerForm.get('code').errors?.required && customerForm.controls.code.touched"
+                        class="text-danger">Please enter code</p>
+                    <p *ngIf="customerForm.get('code').errors?.pattern && customerForm.controls.code.touched"
+                        class="text-danger">Customer code must be KH-XXXX</p>
+                </div>
+                <div class="form-group">
+                    <label for="pwd">Name:</label>
+                    <input type="text" class="form-control" id="pwd" placeholder="Enter Name" formControlName="name">
+                    <p *ngIf="customerForm.controls.name.errors?.required && customerForm.controls.name.touched"
+                        class="text-danger">Please enter a name</p>
+                    <p *ngIf="customerForm.controls.name.errors?.minlength && customerForm.controls.name.touched"
+                        class="text-danger">The name is too short</p>
+                    <p *ngIf="customerForm.controls.name.errors?.maxlength && customerForm.controls.name.touched"
+                        class="text-danger">The name is too Long</p>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="text" class="form-control" id="email" placeholder="Enter Email"
+                        formControlName="email">
+                    <p *ngIf="customerForm.controls.email.errors?.required && customerForm.controls.email.touched"
+                        class="text-danger">Please enter email</p>
+                    <p *ngIf="customerForm.controls.email.errors?.email && customerForm.controls.email.touched"
+                        class="text-danger">Email is wrong format</p>
+                </div>
+
+                <div class="form-group">
+                    <label for="idCard">ID Card</label>
+                    <input type="text" class="form-control" id="idCard" placeholder="Enter ID Card"
+                        formControlName="idCard">
+                    <p *ngIf="customerForm.controls.idCard.errors?.required && customerForm.controls.idCard.touched"
+                        class="text-danger">Please enter ID Card</p>
+                    <p *ngIf="customerForm.controls.idCard.errors?.pattern && customerForm.controls.idCard.touched"
+                        class="text-danger">ID Card format must be 9 number!</p>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number:</label>
+                    <input type="text" class="form-control" id="phone" placeholder="Enter Phone Number"
+                        formControlName="phoneNumber">
+                    <p *ngIf="customerForm.controls.phoneNumber.errors?.required && customerForm.controls.phoneNumber.touched"
+                        class="text-danger">Please enter Phone Number</p>
+                    <p *ngIf="customerForm.controls.phoneNumber.errors?.pattern && customerForm.controls.phoneNumber.touched"
+                        class="text-danger">Phone number is wrong format</p>
+                </div>
+
+                <div class="form-group">
+                    <label for="address">Address:</label>
+                    <input type="text" class="form-control" id="address" placeholder="Enter Address"
+                        formControlName="address">
+                    <p *ngIf="customerForm.controls.address.errors?.required && customerForm.controls.address.touched"
+                        class="text-danger">Please enter Address </p>
+
+                </div>
+
+                <div class="form-group">
+                    <label for="birthday">Birthday:</label>
+                    <div>
+                        <mat-form-field>
+                            <mat-label>Choose a date</mat-label>
+                            <input matInput [matDatepicker]="picker" id="birthday" formControlName="birthday">
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="type">Customer Type:</label>
+                    <select class="custom-select custom-select mb-3" formControlName="customerType">
+                        <option value="Member">Member</option>
+                        <option value="Silver">Silver</option>
+                        <option value="Gold">Gold</option>
+                        <option value="Platinum">Platinum</option>
+                        <option value="Diamond">Diamond</option>
+                    </select>
+                    <p *ngIf="customerForm.controls.customerType.errors?.required && customerForm.controls.customerType.touched"
+                        class="text-danger">Please select Customer Type</p>
+                </div>
+
+
+                <div class="d-flex justify-content-center mt-2 mb-3">
+                    <button type="submit" class="btn btn-primary mr-3 pr-3 pl-3">Create</button>
+                    <button mat-dialog-close="cancel" type="button" class="btn btn-danger pr-3 pl-3 ">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
