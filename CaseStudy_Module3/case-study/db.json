@@ -5,42 +5,20 @@
       "code": "KH-9632",
       "name": "Rolph",
       "idCard": "682406927",
-      "phoneNumber": "+84903901573",
+      "phoneNumber": "0903901573",
       "email": "rbrearton1@gmpg.org",
-      "birthday": "18/06/1997",
+      "birthday": "07/02/2020",
       "address": "Da Nang",
       "customerType": "Platinum"
-    },
-    {
-      "id": 1,
-      "code": "KH-5631",
-      "name": "Jordain",
-      "birthday": "08/16/1992",
-      "email": "jspittal2@surveymonkey.com",
-      "idCard": "880804206",
-      "phoneNumber": "+84901558502",
-      "address": "Da Nang",
-      "customerType": "Platinum"
-    },
-    {
-      "id": 3,
-      "code": "KH-4609",
-      "name": "Brett",
-      "birthday": "07/29/2000",
-      "email": "btaplow3@free.fr",
-      "idCard": "814247100",
-      "phoneNumber": "0902927576",
-      "address": "Ha Noi",
-      "customerType": "Member"
     },
     {
       "id": 4,
       "code": "KH-4242",
       "name": "Louie",
-      "birthday": "08/20/1988",
-      "email": "lmenzies4@clickbank.net",
       "idCard": "912711945",
       "phoneNumber": "+84902218034",
+      "email": "lmenzies4@clickbank.net",
+      "birthday": "08/22/1988",
       "address": "Ha Noi",
       "customerType": "Diamond"
     },
@@ -59,10 +37,10 @@
       "id": 6,
       "code": "KH-0880",
       "name": "Nelle",
-      "birthday": "04/26/1995",
-      "email": "nrusse6@fc2.com",
       "idCard": "291895640",
       "phoneNumber": "+84910241021",
+      "email": "nrusse6@fc2.com",
+      "birthday": "04/25/1995",
       "address": "Ha Noi",
       "customerType": "Gold"
     },
@@ -221,26 +199,26 @@
       "customerType": "Diamond"
     },
     {
-      "id": 21,
-      "code": "KH-1236",
-      "name": "Cường",
-      "idCard": "012345678",
-      "phoneNumber": "0911234658",
+      "code": "KH-1235",
+      "name": "Hoang",
+      "idCard": "123456789",
+      "phoneNumber": "0911234578",
       "email": "cuong@gmail.com",
-      "birthday": "25/11/2010",
+      "birthday": "07/14/2020",
       "address": "da  nang",
-      "customerType": "Gold"
+      "customerType": "Gold",
+      "id": 23
     },
     {
-      "id": 22,
-      "code": "KH-1234",
-      "name": "Ngân",
-      "idCard": "123456780",
-      "phoneNumber": "0911234560",
-      "email": "ngan@gmail.com",
-      "birthday": "20/07/2020",
+      "code": "KH-1285",
+      "name": "Thien",
+      "idCard": "789456123",
+      "phoneNumber": "+84901558578",
+      "email": "thien@gmail.com",
+      "birthday": "07/01/2020",
       "address": "da  nang",
-      "customerType": "Gold"
+      "customerType": "Gold",
+      "id": 24
     }
   ],
   "Staff": [
@@ -255,72 +233,59 @@
       "address": "Ha Noi",
       "salary": "1878",
       "edu_bg": "Bachelor",
-      "position": "Staff"
+      "position": "HR Manager"
     },
     {
       "id": 2,
       "code": "NV-3352",
       "name": "Amelina",
-      "birthday": "12/18/1990",
-      "email": "adonaho1@behance.net",
       "idCard": "301864905",
       "phone": "0906591243",
+      "email": "adonaho1@behance.net",
+      "birthday": "12/18/1990",
       "address": "Ha Noi",
       "salary": "1798",
-      "position": "Staff",
-      "edu_bg": "Bachelor"
+      "edu_bg": "Bachelor",
+      "position": "Receptionist"
     },
     {
       "id": 3,
       "code": "NV-7223",
       "name": "Jada",
-      "birthday": "05/17/1993",
-      "email": "jchantler2@zdnet.com",
       "idCard": "223912446",
       "phone": "+84908758494",
+      "email": "jchantler2@zdnet.com",
+      "birthday": "05/17/1993",
       "address": "Ha Noi",
       "salary": "1776",
-      "position": "Staff",
-      "edu_bg": "Bachelor"
+      "edu_bg": "Bachelor",
+      "position": "HR Manager"
     },
     {
       "id": 4,
       "code": "NV-9135",
       "name": "Trent",
-      "birthday": "12/31/1995",
-      "email": "twinyard3@nba.com",
       "idCard": "874686962",
       "phone": "+84900211843",
+      "email": "twinyard3@nba.com",
+      "birthday": "12/31/1995",
       "address": "Ha Noi",
       "salary": "1050",
-      "position": "Staff",
-      "edu_bg": "Bachelor"
-    },
-    {
-      "id": 5,
-      "code": "NV-9933",
-      "name": "Emile",
-      "birthday": "04/25/1988",
-      "email": "edhillon4@cbsnews.com",
-      "idCard": "271558292",
-      "phone": "0912112132",
-      "address": "Da Nang",
-      "salary": "1127",
-      "position": "Supervisor",
-      "edu_bg": "Bachelor"
+      "edu_bg": "Bachelor",
+      "position": "Marketing "
     },
     {
       "id": 6,
       "code": "NV-7199",
       "name": "Stanwood",
-      "birthday": "05/26/1985",
-      "email": "sflemmich5@cargocollective.com",
       "idCard": "738161443",
       "phone": "0909047149",
+      "email": "sflemmich5@cargocollective.com",
+      "birthday": "05/26/1985",
       "address": "Da Nang",
-      "salary": "1817",
-      "position": "Staff",
-      "edu_bg": "Bachelor"
+      "salary": "18176",
+      "edu_bg": "Bachelor",
+      "position": "Reservation"
     },
     {
       "id": 7,
@@ -417,27 +382,27 @@
       "id": 14,
       "code": "NV-3149",
       "name": "Carroll",
-      "birthday": "03/18/1992",
-      "email": "cathowed@paginegialle.it",
       "idCard": "233892475",
       "phone": "+84911162080",
+      "email": "cathowed@paginegialle.it",
+      "birthday": "03/18/1992",
       "address": "Hue",
       "salary": "1736",
-      "position": "Manager",
-      "edu_bg": "Bachelor"
+      "edu_bg": "Bachelor",
+      "position": "Reservation"
     },
     {
       "id": 15,
       "code": "NV-0109",
       "name": "Linda",
-      "birthday": "05/16/1989",
-      "email": "lburrowse@ovh.net",
       "idCard": "678693219",
       "phone": "0902100716",
+      "email": "lburrowse@ovh.net",
+      "birthday": "05/16/1989",
       "address": "Hue",
       "salary": "1149",
-      "position": "Staff",
-      "edu_bg": "Bachelor"
+      "edu_bg": "Bachelor",
+      "position": "Marketing "
     },
     {
       "id": 16,
@@ -516,6 +481,19 @@
       "salary": "200",
       "edu_bg": "College",
       "position": "HR Manager"
+    },
+    {
+      "id": 22,
+      "code": "NV-1278",
+      "name": "Hoang2",
+      "idCard": "123456789",
+      "phone": "0911234567",
+      "email": "admin@gmail.com",
+      "birthday": "07/02/2020",
+      "address": "da  nang",
+      "salary": "da  nang",
+      "edu_bg": "Bachelor",
+      "position": "Receptionist"
     }
   ],
   "service": [
@@ -527,7 +505,7 @@
       "floor": 5,
       "maxPerson": 9,
       "price": 163,
-      "serviceType": "House"
+      "serviceType": "Room"
     },
     {
       "id": 2,
@@ -546,7 +524,7 @@
       "area": 651,
       "floor": 8,
       "maxPerson": 16,
-      "price": 399,
+      "price": "3996",
       "serviceType": "Villa"
     },
     {
@@ -728,6 +706,282 @@
       "price": "786",
       "serviceType": "house",
       "id": 21
+    },
+    {
+      "id": 22,
+      "code": "DV-1235",
+      "name": "Villa 2",
+      "area": "100",
+      "floor": "2",
+      "maxPerson": "13",
+      "price": "100",
+      "serviceType": "Villa"
+    }
+  ],
+  "contract": [
+    {
+      "id": 1,
+      "code": "HD-1234",
+      "service": {
+        "id": 1,
+        "code": "DV-8439",
+        "name": "Valley Of Flowers",
+        "area": 352,
+        "floor": 5,
+        "maxPerson": 9,
+        "price": 163,
+        "serviceType": "Room"
+      },
+      "date": {
+        "dateStart": "08/11/2020",
+        "dateEnd": "08/15/2020"
+      },
+      "employee": {
+        "id": 2,
+        "code": "NV-3352",
+        "name": "Amelina",
+        "idCard": "301864905",
+        "phone": "0906591243",
+        "email": "adonaho1@behance.net",
+        "birthday": "12/18/1990",
+        "address": "Ha Noi",
+        "salary": "1798",
+        "edu_bg": "Bachelor",
+        "position": "Receptionist"
+      },
+      "customer": {
+        "id": 6,
+        "code": "KH-0880",
+        "name": "Nelle",
+        "birthday": "04/26/1995",
+        "email": "nrusse6@fc2.com",
+        "idCard": "291895640",
+        "phoneNumber": "+84910241021",
+        "address": "Ha Noi",
+        "customerType": "Gold"
+      },
+      "deposit": 123,
+      "total": 800
+    },
+    {
+      "id": 4,
+      "code": "HD-1239",
+      "service": {
+        "id": 5,
+        "code": "DV-9320",
+        "name": "Ace Ventura: Pet Detective",
+        "area": 766,
+        "floor": 8,
+        "maxPerson": "13",
+        "price": 266,
+        "serviceType": "Villa"
+      },
+      "date": {
+        "dateStart": "08/08/2020",
+        "dateEnd": "10/07/2020"
+      },
+      "employee": {
+        "id": 14,
+        "code": "NV-3149",
+        "name": "Carroll",
+        "idCard": "233892475",
+        "phone": "+84911162080",
+        "email": "cathowed@paginegialle.it",
+        "birthday": "03/18/1992",
+        "address": "Hue",
+        "salary": "1736",
+        "edu_bg": "Bachelor",
+        "position": "Reservation"
+      },
+      "customer": {
+        "id": 4,
+        "code": "KH-4242",
+        "name": "Louie",
+        "birthday": "08/20/1988",
+        "email": "lmenzies4@clickbank.net",
+        "idCard": "912711945",
+        "phoneNumber": "+84902218034",
+        "address": "Ha Noi",
+        "customerType": "Diamond"
+      },
+      "deposit": 7855,
+      "total": 11554
+    },
+    {
+      "id": 5,
+      "code": "HD-1234",
+      "service": {
+        "id": 4,
+        "code": "DV-4553",
+        "name": "Time of Favor (Ha-Hesder)",
+        "area": 273,
+        "floor": 4,
+        "maxPerson": 7,
+        "price": 170,
+        "serviceType": "House"
+      },
+      "date": {
+        "dateStart": "07/23/2020",
+        "dateEnd": "07/24/2020"
+      },
+      "employee": {
+        "id": 2,
+        "code": "NV-3352",
+        "name": "Amelina",
+        "idCard": "301864905",
+        "phone": "0906591243",
+        "email": "adonaho1@behance.net",
+        "birthday": "12/18/1990",
+        "address": "Ha Noi",
+        "salary": "1798",
+        "edu_bg": "Bachelor",
+        "position": "Receptionist"
+      },
+      "customer": {
+        "id": 6,
+        "code": "KH-0880",
+        "name": "Nelle",
+        "birthday": "04/26/1995",
+        "email": "nrusse6@fc2.com",
+        "idCard": "291895640",
+        "phoneNumber": "+84910241021",
+        "address": "Ha Noi",
+        "customerType": "Gold"
+      },
+      "deposit": 4566,
+      "total": 12354
+    },
+    {
+      "code": "HD-1234",
+      "service": {
+        "id": 4,
+        "code": "DV-4553",
+        "name": "Time of Favor (Ha-Hesder)",
+        "area": 273,
+        "floor": 4,
+        "maxPerson": 7,
+        "price": 170,
+        "serviceType": "House"
+      },
+      "date": {
+        "dateStart": "07/01/2020",
+        "dateEnd": "07/02/2020"
+      },
+      "employee": {
+        "id": 4,
+        "code": "NV-9135",
+        "name": "Trent",
+        "idCard": "874686962",
+        "phone": "+84900211843",
+        "email": "twinyard3@nba.com",
+        "birthday": "12/31/1995",
+        "address": "Ha Noi",
+        "salary": "1050",
+        "edu_bg": "Bachelor",
+        "position": "Marketing "
+      },
+      "customer": {
+        "id": 18,
+        "code": "KH-6696",
+        "name": "Jami",
+        "birthday": "11/12/1986",
+        "email": "jmccaugheyi@topsy.com",
+        "idCard": "727488816",
+        "phoneNumber": "0915453695",
+        "address": "Hai Phong",
+        "customerType": "Member"
+      },
+      "deposit": 4564,
+      "total": 370,
+      "id": 6
+    },
+    {
+      "id": 7,
+      "code": "HD-1234",
+      "service": {
+        "id": 4,
+        "code": "DV-4553",
+        "name": "Time of Favor (Ha-Hesder)",
+        "area": 273,
+        "floor": 4,
+        "maxPerson": 7,
+        "price": 170,
+        "serviceType": "House"
+      },
+      "date": {
+        "dateStart": "07/09/2020",
+        "dateEnd": "07/11/2020"
+      },
+      "employee": {
+        "id": 4,
+        "code": "NV-9135",
+        "name": "Trent",
+        "idCard": "874686962",
+        "phone": "+84900211843",
+        "email": "twinyard3@nba.com",
+        "birthday": "12/31/1995",
+        "address": "Ha Noi",
+        "salary": "1050",
+        "edu_bg": "Bachelor",
+        "position": "Marketing "
+      },
+      "customer": {
+        "id": 17,
+        "code": "KH-6197",
+        "name": "Karen",
+        "birthday": "08/18/2000",
+        "email": "khaveh@google.ca",
+        "idCard": "043311981",
+        "phoneNumber": "0900609229",
+        "address": "Hai Phong",
+        "customerType": "Silver"
+      },
+      "deposit": 4564,
+      "total": 570
+    },
+    {
+      "id": 8,
+      "code": "HD-1234",
+      "service": {
+        "id": 10,
+        "code": "DV-3420",
+        "name": "Short Eyes",
+        "area": 356,
+        "floor": 6,
+        "maxPerson": 9,
+        "price": 173,
+        "serviceType": "House"
+      },
+      "date": {
+        "dateStart": "07/23/2020",
+        "dateEnd": "07/25/2020"
+      },
+      "employee": {
+        "id": 4,
+        "code": "NV-9135",
+        "name": "Trent",
+        "idCard": "874686962",
+        "phone": "+84900211843",
+        "email": "twinyard3@nba.com",
+        "birthday": "12/31/1995",
+        "address": "Ha Noi",
+        "salary": "1050",
+        "edu_bg": "Bachelor",
+        "position": "Marketing "
+      },
+      "customer": {
+        "id": 19,
+        "code": "KH-0967",
+        "name": "Uriah",
+        "birthday": "02/23/1999",
+        "email": "umingottij@quantcast.com",
+        "idCard": "963079753",
+        "phoneNumber": "0909682569",
+        "address": "Hai Phong",
+        "customerType": "Member"
+      },
+      "deposit": 4564,
+      "total": 2132
     }
   ]
 }

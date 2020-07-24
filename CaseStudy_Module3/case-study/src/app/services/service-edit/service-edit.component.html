@@ -2,10 +2,9 @@
     <div class=" d-flex justify-content-center  ">
         <div class="col-md-12 mt-0">
             <div class="d-flex justify-content-center mt-4 mb-4">
-                <h2>ADD NEW SERVICE</h2>
+                <h2>UPDATE SERVICE</h2>
             </div>
             <form [formGroup]="serviceForm" (ngSubmit)="onSubmit()" class=" pl-5 pr-5 ml-4 mr-4">
-                <input type="hidden" formControlName="id">
                 <div class="form-group">
                     <label for="code">Code:</label>
                     <input type="text" class="form-control" id="code" placeholder="Enter Code" formControlName="code"
@@ -19,33 +18,49 @@
                 <div class="form-group">
                     <label for="pwd">Name:</label>
                     <input type="text" class="form-control" id="pwd" formControlName="name">
-                    <div class="valid-feedback">Valid.</div>
-                    <div class="invalid-feedback">Please fill out this field.</div>
+                    <p *ngIf="serviceForm.controls.name.errors?.required && serviceForm.controls.name.touched"
+                        class="text-danger">Please enter a name</p>
+                    <p *ngIf="serviceForm.controls.name.errors?.minlength && serviceForm.controls.name.touched"
+                        class="text-danger">The name is too short</p>
+                    <p *ngIf="serviceForm.controls.name.errors?.maxlength && serviceForm.controls.name.touched"
+                        class="text-danger">The name is too Long</p>
                 </div>
                 <div class="form-group">
                     <label for="area">Area:</label>
                     <input type="text" class="form-control" id="area" formControlName="area">
-                    <div class="valid-feedback">Valid.</div>
-                    <div class="invalid-feedback">Please fill out this field.</div>
+                    <p *ngIf="serviceForm.controls.area.errors?.required && serviceForm.controls.area.touched"
+                        class="text-danger">Please enter Area</p>
+                    <p *ngIf="serviceForm.controls.area.errors?.min && serviceForm.controls.area.touched"
+                        class="text-danger">
+                        Area must be greater than zero</p>
                 </div>
                 <div class="form-group">
                     <label for="floor">Floor:</label>
                     <input type="text" class="form-control" id="floor" formControlName="floor">
-                    <div class="valid-feedback">Valid.</div>
-                    <div class="invalid-feedback">Please fill out this field.</div>
+                    <p *ngIf="serviceForm.controls.floor.errors?.required && serviceForm.controls.floor.touched"
+                        class="text-danger">Please enter Floor</p>
+                    <p *ngIf="serviceForm.controls.floor.errors?.min && serviceForm.controls.floor.touched"
+                        class="text-danger">
+                        Floor must be greater than zero</p>
                 </div>
                 <div class="form-group">
                     <label for="max">MaxPerson:</label>
                     <input type="text" class="form-control" id="max" formControlName="maxPerson">
-                    <div class="valid-feedback">Valid.</div>
-                    <div class="invalid-feedback">Please fill out this field.</div>
+                    <p *ngIf="serviceForm.controls.maxPerson.errors?.required && serviceForm.controls.maxPerson.touched"
+                        class="text-danger">Please enter MaxPerson</p>
+                    <p *ngIf="serviceForm.controls.maxPerson.errors?.min && serviceForm.controls.maxPerson.touched"
+                        class="text-danger">
+                        Max Person must be greater than zero</p>
                 </div>
 
                 <div class="form-group">
                     <label for="price">Price:</label>
                     <input type="text" class="form-control" id="price" formControlName="price">
-                    <div class="valid-feedback">Valid.</div>
-                    <div class="invalid-feedback">Please fill out this field.</div>
+                    <p *ngIf="serviceForm.controls.price.errors?.required && serviceForm.controls.price.touched"
+                        class="text-danger">Please enter Price</p>
+                    <p *ngIf="serviceForm.controls.price.errors?.min && serviceForm.controls.price.touched"
+                        class="text-danger">
+                        Price must be greater than zero</p>
                 </div>
                 <div class="form-group">
                     <label for="type">Service Type</label>
@@ -53,10 +68,12 @@
                         <option selected>--select--</option>
                         <option value="Villa">Villa</option>
                         <option value="Room">Room</option>
-                        <option value="house">House</option>
+                        <option value="House">House</option>
                     </select>
 
                 </div>
+                <p *ngIf="serviceForm.controls.serviceType.errors?.required && serviceForm.controls.serviceType.touched"
+                    class="text-danger">Please select Service Type</p>
                 <div class="d-flex justify-content-center mt-2 mb-3">
                     <button type="submit" class="btn btn-primary mr-3 pr-3 pl-3">Update</button>
                     <button mat-dialog-close="cancel" type="button" class="btn btn-danger pr-3 pl-3 ">Cancel</button>

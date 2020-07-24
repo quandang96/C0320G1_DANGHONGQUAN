@@ -23,7 +23,7 @@ export class CustomerEditComponent implements OnInit {
 
   ngOnInit() {
     this.customerEditForm = this.fb.group({
-      id: [""],
+      id: [Number],
       code: ["", [Validators.required, Validators.pattern(/^KH-\d{4}$/)]],
       name: [
         "",
@@ -38,14 +38,18 @@ export class CustomerEditComponent implements OnInit {
         "",
         [
           Validators.required,
-          Validators.pattern(
-            /^(090|091|([\\(]84[\\)][\\+]90)|([\\(]84[\\)][\\+]91))[0-9]{7}$/
-          ),
+          Validators.pattern(/^(090|091|([+]8490)|([+]8491))[0-9]{7}$/),
         ],
       ],
-      email: ["", [Validators.required, Validators.email]],
+      email: [
+        "",
+        [
+          Validators.required,
+          Validators.pattern(/^([-\w.])+[a-zA-Z\d]@(\w+\.)[a-zA-Z\d]+$/),
+        ],
+      ],
       birthday: ["", Validators.required],
-      address: ["", Validators.required],
+      address: ["", [Validators.required, Validators.minLength(3)]],
       customerType: ["", Validators.required],
     });
 
@@ -55,7 +59,7 @@ export class CustomerEditComponent implements OnInit {
   onSubmit() {
     let customer = this.customerEditForm.value as ICustomer;
     let datePipe = new DatePipe("en-US");
-    customer.birthday = datePipe.transform(customer.birthday, "dd/MM/yyyy");
+    customer.birthday = datePipe.transform(customer.birthday, "MM/dd/yyyy");
     this.customerService.updateCustomer(customer).subscribe(() => {
       this.dialogRef.close();
     });

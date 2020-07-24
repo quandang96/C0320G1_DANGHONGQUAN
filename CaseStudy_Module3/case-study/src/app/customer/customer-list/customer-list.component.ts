@@ -44,8 +44,7 @@ export class CustomerListComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      if (result != "cancel") 
-      this.ngOnInit();
+      if (result != "cancel") this.ngOnInit();
     });
   }
 
@@ -58,9 +57,10 @@ export class CustomerListComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      if (result != "cancel") 
-      this.customerList = this.customerList.filter((t) => t.id != customer.id);
-      
+      if (result != "cancel")
+        this.customerList = this.customerList.filter(
+          (t) => t.id != customer.id
+        );
     });
   }
 
@@ -69,12 +69,11 @@ export class CustomerListComponent implements OnInit {
       disableClose: true,
       width: "50%",
       height: "100%",
-      autoFocus: true,
+
       data: { dataCustomer: customer },
     });
     dialogRef.afterClosed().subscribe((result) => {
-      if (result != "cancel") 
-      this.ngOnInit();
+      if (result != "cancel") this.ngOnInit();
     });
   }
 }

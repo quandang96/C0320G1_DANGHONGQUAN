@@ -1,3 +1,4 @@
+import { ValidateService } from "src/app/service/validate.service";
 import { Component, OnInit, Inject } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { EmployeeService } from "src/app/service/employee.service";
@@ -17,7 +18,7 @@ export class EmployeeEditComponent implements OnInit {
   constructor(
     private employeeService: EmployeeService,
     private fb: FormBuilder,
-    public dialogRef: MatDialogRef<EmployeeAddComponent>,
+    public dialogRef: MatDialogRef<EmployeeEditComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {}
 
@@ -38,13 +39,17 @@ export class EmployeeEditComponent implements OnInit {
         "",
         [
           Validators.required,
-          Validators.pattern(
-            /^(090|091|([\\(]84[\\)][\\+]90)|([\\(]84[\\)][\\+]91))[0-9]{7}$/
-          ),
+          Validators.pattern(/^(090|091|([+]8490)|([+]8491))[0-9]{7}$/),
         ],
       ],
-      email: ["", [Validators.required, Validators.email]],
-      birthday: ["", Validators.required],
+      email: [
+        "",
+        [
+          Validators.required,
+          Validators.pattern(/^([-\w.])+[a-zA-Z\d]@(\w+\.)[a-zA-Z\d]+$/),
+        ],
+      ],
+      birthday: ["", Validators.required, ValidateService.checkAge],
       address: ["", [Validators.required, Validators.minLength(3)]],
       salary: ["", [Validators.required, Validators.min(0)]],
       edu_bg: ["", Validators.required],

@@ -23,6 +23,11 @@ const routes: Routes = [
         loadChildren: () =>
           import("./services/services.module").then((m) => m.ServicesModule),
       },
+      {
+        path: "contract",
+        loadChildren: () =>
+          import("./contract/contract.module").then((m) => m.ContractModule),
+      },
     ],
   },
 

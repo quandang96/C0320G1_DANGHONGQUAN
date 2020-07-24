@@ -1,3 +1,4 @@
+import { ValidateService } from "src/app/service/validate.service";
 import { Component, OnInit, Inject } from "@angular/core";
 import { CustomerService } from "src/app/service/customer.service";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
@@ -15,13 +16,18 @@ export class CustomerAddComponent implements OnInit {
 
   constructor(
     private customerService: CustomerService,
+    private validateService: ValidateService,
     private fb: FormBuilder,
     public dialogRef: MatDialogRef<CustomerAddComponent>
   ) {}
 
   ngOnInit() {
     this.customerForm = this.fb.group({
-      code: ["", [Validators.required, Validators.pattern(/^KH-\d{4}$/)]],
+      code: [
+        "",
+        [Validators.required, Validators.pattern(/^KH-\d{4}$/)],
+        [this.validateService.validate.bind(this.validateService)],
+      ],
       name: [
         "",
         [
@@ -35,13 +41,17 @@ export class CustomerAddComponent implements OnInit {
         "",
         [
           Validators.required,
-          Validators.pattern(
-            /^(090|091|([\\(]84[\\)][\\+]90)|([\\(]84[\\)][\\+]91))[0-9]{7}$/
-          ),
+          Validators.pattern(/^(090|091|([+]8490)|([+]8491))[0-9]{7}$/),
         ],
       ],
-      email: ["", [Validators.required, Validators.email]],
-      birthday: ["", Validators.required],
+      email: [
+        "",
+        [
+          Validators.required,
+          Validators.pattern(/^([-\w.])+[a-zA-Z\d]@(\w+\.)[a-zA-Z\d]+$/),
+        ],
+      ],
+      birthday: ["", [Validators.required, ValidateService.checkAge]],
       address: ["", [Validators.required, Validators.minLength(3)]],
       customerType: ["", Validators.required],
     });

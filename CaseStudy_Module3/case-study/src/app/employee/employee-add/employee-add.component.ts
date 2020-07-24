@@ -1,6 +1,6 @@
-import { MAT_DIALOG_DATA } from "@angular/material";
+import { ValidateService } from "./../../service/validate.service";
 import { MatDialogRef } from "@angular/material/dialog";
-import { Component, OnInit, Inject } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { DatePipe } from "@angular/common";
 import { IEmployee } from "src/app/interface/employee";
@@ -35,15 +35,19 @@ export class EmployeeAddComponent implements OnInit {
         "",
         [
           Validators.required,
-          Validators.pattern(
-            /^(090|091|([\\(]84[\\)][\\+]90)|([\\(]84[\\)][\\+]91))[0-9]{7}$/
-          ),
+          Validators.pattern(/^(090|091|([+]8490)|([+]8491))[0-9]{7}$/),
         ],
       ],
-      email: ["", [Validators.required, Validators.email]],
-      birthday: ["", Validators.required],
+      email: [
+        "",
+        [
+          Validators.required,
+          Validators.pattern(/^([-\w.])+[a-zA-Z\d]@(\w+\.)[a-zA-Z\d]+$/),
+        ],
+      ],
+      birthday: ["", Validators.required, ValidateService.checkAge],
       address: ["", [Validators.required, Validators.minLength(3)]],
-      salary: ["", [Validators.required, Validators.min(0)]],
+      salary: ["", [Validators.required, Validators.min(1)]],
       edu_bg: ["", Validators.required],
       position: ["", Validators.required],
     });

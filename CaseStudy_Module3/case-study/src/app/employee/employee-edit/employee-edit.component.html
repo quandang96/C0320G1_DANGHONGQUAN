@@ -50,7 +50,7 @@
                         required>
                     <p *ngIf="employeeEditForm.controls.email.errors?.required && employeeEditForm.controls.email.touched"
                         class="text-danger">Please enter email</p>
-                    <p *ngIf="employeeEditForm.controls.email.errors?.email && employeeEditForm.controls.email.touched"
+                    <p *ngIf="employeeEditForm.controls.email.errors?.pattern && employeeEditForm.controls.email.touched"
                         class="text-danger">Email is wrong format</p>
                 </div>
 
@@ -66,7 +66,10 @@
                         </mat-form-field>
                     </div>
                 </div>
-
+                <p *ngIf="employeeEditForm.get('birthday').hasError('age') && employeeEditForm.get('birthday').touched"
+                    class="text-danger">Less than 18 years old</p>
+                <p *ngIf="employeeEditForm.controls.birthday.errors?.required && employeeEditForm.controls.birthday.touched"
+                    class="text-danger">Please enter Birthday </p>
                 <div class="form-group">
                     <label for="address">Address:</label>
                     <input type="text" class="form-control" id="address" placeholder="Enter Address"
@@ -85,6 +88,7 @@
                 <div class="form-group">
                     <label for="type">Education Background</label>
                     <select formControlName="edu_bg" class="custom-select custom-select mb-3">
+
                         <option value="College">College</option>
                         <option value="Bachelor">Bachelor</option>
                         <option value="University">University</option>
@@ -96,7 +100,7 @@
                 <div class="form-group">
                     <label for="type">Position</label>
                     <select formControlName="position" class="custom-select custom-select mb-3">
-                        <option selected>--select Position employee--</option>
+                        <option value="Staff">Staff </option>
                         <option value="Receptionist">Receptionist</option>
                         <option value="Reservation">Reservation</option>
                         <option value="HR Manager">HR Manager</option>

@@ -19,12 +19,15 @@ export class ServiceAddComponent implements OnInit {
   ngOnInit() {
     this.serviceForm = this.fb.group({
       code: ["", [Validators.required, Validators.pattern(/^DV-\d{4}$/)]],
-      name: [""],
-      area: [""],
-      floor: [""],
-      maxPerson: [""],
-      price: [""],
-      serviceType: [""],
+      name: [
+        "",
+        [Validators.required, Validators.minLength(2), Validators.max(20)],
+      ],
+      area: ["", [Validators.min(1), Validators.required]],
+      floor: ["", [Validators.required, Validators.min(1)]],
+      maxPerson: ["", [Validators.required, Validators.min(1)]],
+      price: ["", [Validators.required, Validators.min(1)]],
+      serviceType: ["", [Validators.required]],
     });
   }
 

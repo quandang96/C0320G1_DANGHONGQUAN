@@ -1,25 +1,104 @@
-<div class="container vh-100">
+<div class="container ">
     <div class=" d-flex justify-content-center  ">
-        <div class="col-md-6 mt-0" style="background-color: gainsboro;">
+        <div class="col-md-12 mt-0">
             <div class="d-flex justify-content-center mt-4 mb-4">
-                <h2>ADD NEW ATTACH SERVICE</h2>
+                <h2>ADD NEW CONTRACT</h2>
             </div>
-            <form [formGroup] class="was-validated pl-5 pr-5 ml-4 mr-4">
+            <form (ngSubmit)="onSubmit()" [formGroup]="contractForm" class="pl-5 pr-5 ml-4 mr-4">
 
                 <div class="form-group">
-                    <label for="pwd">Name:</label>
-                    <input type="text" class="form-control" id="pwd" name="pswd" required>
-                    <div class="valid-feedback">Valid.</div>
-                    <div class="invalid-feedback">Please fill out this field.</div>
+                    <label for="code">Code:</label>
+                    <input type="text" class="form-control" id="code" placeholder="Enter Code" formControlName="code">
+                    <p *ngIf="contractForm.get('code').errors?.required && contractForm.controls.code.touched"
+                        class="text-danger">Please enter code</p>
+                    <p *ngIf="contractForm.get('code').errors?.pattern && contractForm.controls.code.touched"
+                        class="text-danger">Contract code must be HD-XXXX</p>
                 </div>
+
                 <div class="form-group">
-                    <label for="price">Price:</label>
-                    <input type="text" class="form-control" id="price" name="uname" required>
-                    <div class="valid-feedback">Valid.</div>
-                    <div class="invalid-feedback">Please fill out this field.</div>
+                    <label for="type">Service</label>
+                    <select class="custom-select custom-select mb-3" formControlName="service"
+                        (ngModelChange)="onChangeService($event)">
+                        <option *ngFor="let service of facilities" [(ngValue)]="service">{{service.name}}</option>
+                    </select>
+                    <p *ngIf="contractForm.controls.service.errors?.required && contractForm.controls.service.touched"
+                        class="text-danger">Please select Service</p>
                 </div>
-                <div class="d-flex justify-content-center mb-2">
-                    <button type="submit" class="btn btn-primary ">Submit</button>
+                <div formGroupName="date">
+                    <div class="form-group">
+                        <label for="birthday">Date Start:</label>
+                        <div>
+                            <mat-form-field>
+                                <mat-label>Choose a date</mat-label>
+                                <input matInput [matDatepicker]="picker" formControlName="dateStart"
+                                    (dateChange)="onChangeStartDate($event.value)">
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>
+                            </mat-form-field>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="birthday">Date End:</label>
+                        <div>
+                            <mat-form-field>
+                                <mat-label>Choose a date</mat-label>
+                                <input matInput [matDatepicker]="picker1" formControlName="dateEnd"
+                                    (dateChange)="onChangeEndDate($event.value)">
+                                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                                <mat-datepicker #picker1></mat-datepicker>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <p class="col alert alert-danger"
+                        *ngIf="contractForm.get('date').hasError('invalidDate')&&contractForm.get('date.dateEnd').touched">
+                        Invalid Date
+                    </p>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="type">Employee</label>
+                    <select class="custom-select custom-select mb-3" formControlName="employee">
+                        <option *ngFor="let employee of employees" [ngValue]="employee">{{employee.name}}</option>
+                    </select>
+                    <p *ngIf="contractForm.controls.employee.errors?.required && contractForm.controls.employee.touched"
+                        class="text-danger">Please select Employee</p>
+                </div>
+
+                <div class="form-group">
+                    <label for="type">Customer</label>
+                    <select class="custom-select custom-select mb-3" formControlName="customer">
+                        <option *ngFor="let customer of customers" [ngValue]="customer">
+                            <h6>{{customer.name}}</h6>
+                        </option>
+                    </select>
+                    <p *ngIf="contractForm.controls.customer.errors?.required && contractForm.controls.customer.touched"
+                        class="text-danger">Please select Customer </p>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="email">Deposit:</label>
+                    <input type="number" class="form-control" id="email" formControlName="deposit">
+                    <p *ngIf="contractForm.controls.deposit.errors?.required && contractForm.controls.deposit.touched"
+                        class="text-danger">Please enter deposit</p>
+
+                </div>
+
+                <div class="form-group">
+                    <label for="idCard">Total</label>
+                    <input type="number" class="form-control" readonly formControlName="total" [value]="totals">
+                    <p *ngIf="contractForm.controls.total.errors?.required && contractForm.controls.total.touched"
+                        class="text-danger">Please enter Total</p>
+
+                </div>
+
+
+                <div class="d-flex justify-content-center mt-2 mb-3">
+                    <button [disabled]="contractForm.invalid" type="submit"
+                        class="btn btn-primary mr-3 pr-3 pl-3">Create</button>
+                    <button mat-dialog-close="cancel" type="button" class="btn btn-danger pr-3 pl-3 ">Cancel</button>
                 </div>
             </form>
         </div>

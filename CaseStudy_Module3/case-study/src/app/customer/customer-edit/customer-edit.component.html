@@ -4,8 +4,9 @@
             <div class="d-flex justify-content-center mt-4 mb-4">
                 <h2>UPDATE CUSTOMER</h2>
             </div>
-            <form (submit)="onSubmit()" [formGroup]="customerEditForm" class="pl-5 pr-5 ml-4 mr-4">
+            <form (ngSubmit)="onSubmit()" [formGroup]="customerEditForm" class="pl-5 pr-5 ml-4 mr-4">
                 <input type="hidden" formControlName="id">
+
                 <div class="form-group">
                     <label for="code">Code:</label>
                     <input type="text" class="form-control" id="code" placeholder="Enter Code" formControlName="code">
@@ -31,7 +32,7 @@
                         formControlName="email">
                     <p *ngIf="customerEditForm.controls.email.errors?.required && customerEditForm.controls.email.touched"
                         class="text-danger">Please enter email</p>
-                    <p *ngIf="customerEditForm.controls.email.errors?.email && customerEditForm.controls.email.touched"
+                    <p *ngIf="customerEditForm.controls.email.errors?.pattern && customerEditForm.controls.email.touched"
                         class="text-danger">Email is wrong format</p>
                 </div>
 
@@ -60,8 +61,6 @@
                         formControlName="address">
                     <p *ngIf="customerEditForm.controls.address.errors?.required && customerEditForm.controls.address.touched"
                         class="text-danger">Please enter Address </p>
-                    <p *ngIf="customerEditForm.controls.address.errors?.minlength && customerEditForm.controls.address.touched"
-                        class="text-danger">Address is too short </p>
 
                 </div>
 
@@ -70,14 +69,17 @@
                     <div>
                         <mat-form-field>
                             <mat-label>Choose a date</mat-label>
-                            <input matInput [matDatepicker]="picker" formControlName="birthday"
-                                value="{{customerEditForm.get('birthday').value | date :  'yyyy-MM-dd\'T\'HH:mm:ss.SSS\'Z\''}}">
-                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                            <mat-datepicker #picker></mat-datepicker>
+                            <input matInput [matDatepicker]="picker4" formControlName="birthday"
+                                [value]="customerEditForm.get('birthday').value|date:'yyyy-MM-dd\'T\'HH:mm:ss.SSS\'Z\''">
+                            <mat-datepicker-toggle matSuffix [for]="picker4"></mat-datepicker-toggle>
+                            <mat-datepicker #picker4></mat-datepicker>
                         </mat-form-field>
                     </div>
                 </div>
-
+                <p *ngIf="customerEditForm.get('birthday').hasError('age') && customerEditForm.get('birthday').touched"
+                    class="text-danger">Less than 18 years old</p>
+                <p *ngIf="customerEditForm.controls.birthday.errors?.required && customerEditForm.controls.birthday.touched"
+                    class="text-danger">Please enter Birthday </p>
                 <div class="form-group">
                     <label for="type">Customer Type:</label>
                     <select class="custom-select custom-select mb-3" formControlName="customerType">
@@ -93,8 +95,8 @@
 
 
                 <div class="d-flex justify-content-center mt-2 mb-3">
-                    <button class="btn btn-primary mr-3 pr-3 pl-3">Update</button>
-                    <button mat-dialog-close type="button" class="btn btn-danger pr-3 pl-3 ">Cancel</button>
+                    <button type="submit" class="btn btn-primary mr-3 pr-3 pl-3">Update</button>
+                    <button mat-dialog-close="cancel" type="button" class="btn btn-danger pr-3 pl-3 ">Cancel</button>
                 </div>
             </form>
         </div>

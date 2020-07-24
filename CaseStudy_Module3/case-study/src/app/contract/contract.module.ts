@@ -1,10 +1,11 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { EmployeeRoutingModule } from "./employee-routing.module";
-import { EmployeeListComponent } from "./employee-list/employee-list.component";
-import { EmployeeAddComponent } from "./employee-add/employee-add.component";
-import { EmployeeDeleteComponent } from "./employee-delete/employee-delete.component";
-import { EmployeeEditComponent } from "./employee-edit/employee-edit.component";
+
+import { ContractRoutingModule } from "./contract-routing.module";
+import { ContractListComponent } from "./contract-list/contract-list.component";
+import { ContractAddComponent } from "./contract-add/contract-add.component";
+import { ContractEditComponent } from "./contract-edit/contract-edit.component";
+import { ContractDeleteComponent } from "./contract-delete/contract-delete.component";
 import { MaterialModule } from "../material/material.module";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { Ng2SearchPipeModule } from "ng2-search-filter";
@@ -13,14 +14,14 @@ import { MatNativeDateModule, MatInputModule } from "@angular/material";
 
 @NgModule({
   declarations: [
-    EmployeeListComponent,
-    EmployeeAddComponent,
-    EmployeeDeleteComponent,
-    EmployeeEditComponent,
+    ContractListComponent,
+    ContractAddComponent,
+    ContractDeleteComponent,
+    ContractEditComponent,
   ],
   imports: [
     CommonModule,
-    EmployeeRoutingModule,
+    ContractRoutingModule,
     MaterialModule,
     FormsModule,
     Ng2SearchPipeModule,
@@ -30,9 +31,9 @@ import { MatNativeDateModule, MatInputModule } from "@angular/material";
     MatInputModule,
   ],
   entryComponents: [
-    EmployeeAddComponent,
-    EmployeeDeleteComponent,
-    EmployeeEditComponent,
+    ContractAddComponent,
+    ContractDeleteComponent,
+    ContractEditComponent,
   ],
 })
-export class EmployeeModule {}
+export class ContractModule {}

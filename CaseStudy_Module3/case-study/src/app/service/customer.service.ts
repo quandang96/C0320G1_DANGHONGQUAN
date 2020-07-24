@@ -1,5 +1,5 @@
+import { ICustomer } from "./../interface/customer";
 import { Injectable } from "@angular/core";
-import { ICustomer } from "../interface/customer";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 
@@ -28,5 +28,8 @@ export class CustomerService {
 
   deleteCustomer(customer: ICustomer): Observable<any> {
     return this.httpClient.delete(this.API_URL + `/${customer.id}`);
+  }
+  findCustomerId(customer: ICustomer): Observable<ICustomer> {
+    return this.httpClient.get<ICustomer>(this.API_URL + `${customer.id}`);
   }
 }
